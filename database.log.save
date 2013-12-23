@@ -1,0 +1,46 @@
+2013-11-24 03:11:11
+Exception: Class: Exception
+Exception: "Class Auto Loader could not fine class mydb"
+in file /homepages/45/d454707514/htdocs/siteautoload.php
+on line 123
+Trace back:
+file: 
+line: 
+class: 
+function: siteAutoLoad("mydb")
+file: /homepages/45/d454707514/htdocs/v1.08/testmysql.php
+line: 16
+class: 
+function: spl_autoload_call("mydb")
+*****
+2013-11-24 03:11:43
+Exception: Class: Exception
+Exception: "Class Auto Loader could not fine class dbMySqli"
+in file /homepages/45/d454707514/htdocs/siteautoload.php
+on line 123
+Trace back:
+file: 
+line: 
+class: 
+function: siteAutoLoad("dbMySqli")
+file: /homepages/45/d454707514/htdocs/v1.08/testmysql.php
+line: 16
+class: 
+function: spl_autoload_call("dbMySqli")
+*****
+2013-11-24 03:11:18
+SqlException: "dbMysqli::opendb Can't select database"
+error="", errno=""
+called from /homepages/45/d454707514/htdocs/includes/database-engines/dbMysqli.class.php
+on line 91
+Back Trace:
+dbMysqli::opendb()
+in /homepages/45/d454707514/htdocs/v1.08/testmysql.php
+on line 23
+mymysqli::openDb()
+in /homepages/45/d454707514/htdocs/includes/database-engines/dbMysqli.class.php
+on line 62
+dbMysqli::__construct(array(host=>'db459221984.db.1and1.com', user=>'dbo459221984', password=>'akipoo94', database=>'db459221984', engine=>'mysqli'))
+in /homepages/45/d454707514/htdocs/v1.08/testmysql.php
+on line 28
+*****

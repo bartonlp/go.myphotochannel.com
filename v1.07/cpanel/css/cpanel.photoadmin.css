@@ -1,0 +1,94 @@
+/* cpanel.photoadmin.css for use by cpanel.photoadmin.php */
+
+/* prev 100, next 100, help buttons at the top left. */
+#prevnexthelp {
+        position:absolute; 
+        top:0px;
+        float:left;
+        z-index:10;
+        display:inline;
+}
+/* for html, filehtml items */
+.htmlitem, .typefilehtml {
+        max-width: 200px;
+        max-height: 100px;
+        overflow: auto;
+        border: 2px solid white;
+        padding: 5px;
+        margin: 2px;
+        float: left;
+}
+/* the <td> for the image */
+.itemimage {
+        width: 50%;
+}
+/* enlarged photo pop up */
+#popup {
+        z-index: 100;
+        position: fixed;
+        top: 50px;
+        left: 50px;
+}
+#popup img {
+        max-width: 600px;
+        max-height: 400px;
+        border: 3px solid white;
+}
+/* cpanel is a div that contains the itemsTable which contains the frame table which has the status
+table. So a <div id=cpanel><table id=itemsTable><table id=frame><table>
+*/
+#cpanel {
+        font-size: 10px;
+        z-index: 100;        
+        display: none;
+        padding: 2px;
+        border: 6px ridge tan;
+        position: absolute; /* absolute position inside of the 'body' */
+        top: 30px;
+        left: 5px;
+        background-color: tan;
+}
+/* make the labels inside of the cpanel the same as the other text */
+#cpanel label {
+        font-size: 10px;
+}
+/* itemsTable is the control panel row data for the photo */
+#itemsTable {
+        max-height: 100%;
+        color: black;
+        /*  background-color: tan; */
+}
+/* this is the frame table */
+#cpanel table.frame {
+        border: none;
+}
+/* this is the status table inside the frame */
+#cpanel table.frame table {
+        border: none;
+}
+/* the thumbnail images on the main page and in the control panel */
+#photos img, #cpanel img {
+        max-width: 200px;
+        max-height: 100px;
+        border: 1px solid black;
+        margin: 2px;
+}
+/* text area for editing the html */
+#textareadiv {
+        position: fixed;
+        top: 30px;
+        left: 5px;
+        z-index: 200;
+        background-color: black;
+        boarder: 2px solid white;
+}
+/* for cpanel.admin.php */
+#itemsTableDiv .itemimage {
+        width: 70%;
+}
+/* fixed div for Post All in cpanel.admin.php */
+#div2 {
+        position: fixed;
+        top: 10px;
+        right: 100px;
+}

@@ -1,0 +1,186 @@
+<!doctype html>
+<head>
+<meta charset="utf-8"/>
+<meta name="description" content="Detect Video Capabilities"/>
+<title>Detect Video Capabilities</title>
+
+<script>
+  console.log("nav pugins: ", navigator.plugins);
+
+  function showPlugins() {
+    var text = '<ul>\n', n = navigator.plugins.length;
+  
+    for(var i=0; i < n; ++i) {
+      var plugin = navigator.plugins[i];
+      text += "<li>Plugin: "+i+
+                "<ul>\n"+
+              "<li>Name: "+plugin.name+"</li>\n"+
+              "<li>Desc: "+plugin.description+"</li>\n"+
+              "<li>filename: "+plugin.filename+"</li>\n"+
+                  "<ul>\n";
+      
+      for(var j=0; j < plugin.length; ++j) {
+        var mime = plugin[j];
+        text += "<li>Mime: "+j+
+                    "<ul>\n"+
+                "<li>Desc: "+mime.description+"</li>\n"+
+                "<li>Suffixes: "+mime.suffixes+"</li>\n"+
+                "<li>Type: "+mime.type+"</li>\n"+
+                    "</ul>\n";
+      }
+      text += "</ul>\n"+
+              "</ul>\n";
+    }
+    text += "</ul>\n";
+    var p = document.createElement('p');
+    p.innerHTML = text;
+    document.body.appendChild(p);
+  }
+  
+  function testCodec(type, url) {
+    // Create a video object
+    
+    var e = document.createElement('video'),
+    c = document.createElement('p');
+    
+    c.innerHTML = 'canPlayType(' + type + '): ' + e.canPlayType(type);
+    document.body.appendChild(c);
+
+    c = document.createElement('p');
+    c.innerHTML = 'Supported: unknown';
+    document.body.appendChild(c);
+
+    // populate the video object
+    
+    e.setAttribute('type', type);
+    e.src = url;
+    e.width = 320;
+    e.height = 240;
+    e.controls = true;
+    
+    e.addEventListener('error', function(e) {
+      /* http://www.w3.org/TR/html5/embedded-content-0.html#htmlmediaelement,
+       * w3c media error deffinition: 
+       * interface MediaError {
+       *  const unsigned short MEDIA_ERR_ABORTED = 1;
+       *  const unsigned short MEDIA_ERR_NETWORK = 2;
+       *  const unsigned short MEDIA_ERR_DECODE = 3;
+       *  const unsigned short MEDIA_ERR_SRC_NOT_SUPPORTED = 4;
+       *  readonly attribute unsigned short code;
+       * };
+       */
+      
+      if (this.error.code == MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED) { 
+        c.innerHTML = 'Supported: no';
+      } 
+    }, true);
+    
+    e.addEventListener('loadedmetadata', function() { 
+      if (typeof this.duration == 'number') {
+        if(this.duration < 3) {
+          c.innerHTML = 'Supported: yes';
+        } else {
+          c.innerHTML = 'Supported: no. Duration is not valid: '+this.duration;
+        }
+      }
+    }, true);
+    
+    document.body.appendChild(e);
+  }
+
+  var testEl = document.createElement( "video" ),
+  mpeg4, h264, ogg, webm;
+
+  if(testEl.canPlayType) {
+    // Check for MPEG-4 support
+    mpeg4 = "" !== testEl.canPlayType( 'video/mp4; codecs="mp4v.20.8"' );
+
+    // Check for h264 support
+    h264 = "" !== ( testEl.canPlayType( 'video/mp4; codecs="avc1.42E01E"' )
+        || testEl.canPlayType( 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ) );
+
+    // Check for Ogg support
+    ogg = "" !== testEl.canPlayType( 'video/ogg; codecs="theora"' );
+
+    // Check for Webm support
+    webm = "" !== testEl.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
+  }
+  function showTest() {
+    var text = "<ul><li>mpeg4: "+mpeg4+"</li>"+
+               "<li>h264: "+h264+"</li>"+
+               "<li>ogg: "+ogg+"</li>"+
+               "<li>webM: "+webm+"</li></ul>";
+    var p = document.createElement("p");
+    p.innerHTML = text;
+    document.body.appendChild(p);
+  }
+              
+</script>
+</head>
+<body>
+<h1>MPEG-4 Visual</h1>
+<script>
+  testCodec('video/mp4; codecs="mp4v.20.8"', 'mpeg4-basic.mp4');
+</script>
+
+<h1>H.264 Baseline</h1>
+<script>
+  testCodec('video/mp4; codecs="avc1.42E01E"', 'h264-baseline.mp4');
+</script>
+
+<h1>Ogg Theora</h1>
+<script>
+  testCodec('video/ogg; codecs="theora"', 'theora.ogv');
+</script>
+
+<h1>WebM</h1>
+<script>
+  testCodec('video/webm; codecs="vp8"', 'vp8.webm');
+</script>
+
+<h2>Just the container mime type, without codec string</h2>
+<p>
+canPlayType('video/mp4'): 
+<script>
+  e = document.createElement('video');
+  document.write(e.canPlayType('video/mp4')); 
+</script>
+</p>
+<p>
+
+<p>
+canPlayType('video/ogg'): 
+<script>
+  e = document.createElement('video');
+  document.write(e.canPlayType('video/ogg')); 
+</script>
+</p>
+<p>
+
+<p>
+canPlayType('video/webm'): 
+<script>
+  e = document.createElement('video');
+  document.write(e.canPlayType('video/webm'));  
+</script>
+</p>
+<p>
+
+<p>
+canPlayType('video/avi'): 
+<script>
+  e = document.createElement('video');
+  document.write(e.canPlayType('video/avi')); 
+</script>
+</p>
+<h1>Another Test</h1>
+<script>
+   showTest();
+</script>
+
+<h1>Navigator Plugins</h1>
+<script>
+  showPlugins()
+</script>   
+</body>
+</html>
