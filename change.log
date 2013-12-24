@@ -548,4 +548,20 @@ TODO
   v1.08 & v1.08/slideshow/slideshow.php and cpanel/cpanel.top.php
     The version is now in the DOC_ROOT directory name which is vN.NN
 
-  
+2013-12-23
+  v1.09/slideshow/playloto.php
+    Added logic for skip days.
+
+  SQL playlotto table. Added skipdays, skipdaysleft and date. New table format:
+CREATE TABLE `playlotto` (
+  `siteId` varchar(255) NOT NULL,
+  `data` mediumtext,
+  `expires` varchar(20) DEFAULT '+30 day',
+  `game` int(2) DEFAULT '0',
+  `period` int(11) DEFAULT '30',
+  `skipdays` int(11) DEFAULT '0',
+  `skipdaysleft` int(11) DEFAULT '0',
+  `canPlay` int(11) DEFAULT '30',
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`siteId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

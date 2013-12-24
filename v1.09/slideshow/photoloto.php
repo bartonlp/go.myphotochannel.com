@@ -2,6 +2,27 @@
 <?php
 // Play Lotto Game
 // Can run as CLI or web program
+// 
+// CREATE TABLE `playlotto` (
+//   `siteId` varchar(255) NOT NULL,
+//   `data` mediumtext,
+//   `expires` varchar(20) DEFAULT '+30 day',
+//   `game` int(2) DEFAULT '0',
+//   `period` int(11) DEFAULT '30', 
+//   `skipdays` int(11) DEFAULT '0',      # how many days to skip
+//   `skipdaysleft` int(11) DEFAULT '0',  # counter of skipdays left
+//   `canPlay` int(11) DEFAULT '30',
+//   `date` date DEFAULT NULL,
+//   PRIMARY KEY (`siteId`)
+// ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+//
+// `skipdays` is number of days to skip before playing lotto
+// `skipdaysleft` is a counter that counts up till it reaches `skipdays` at which point we play
+// lotto and the counter is reset to zero.
+// We have a crontab like:
+// 0 0,18,20,22 * * * /kunden/homepages/45/d454707514/htdocs/slideshow/photoloto.php
+// and run this program at 6pm, 8pm, 10pm and midnight.
+// `game` counts modulo 4
 
 if(!$_SERVER['DOCUMENT_ROOT']) {
   $cli = true;
@@ -17,30 +38,57 @@ if(file_exists(TOPFILE)) {
 
 $S = new Tom;
 
-$debug = false;
+$debug = true;
 
 // Which bars are playing
 
 $sites = array();
 
-$S->query("select s.siteId, data, expires, game, period, canPlay from sites as s left join playlotto as p ".
+$n = $S->query("select s.siteId, data as lottoData, expires as lottoExpires, ".
+          "game, period, skipdays, skipdaysleft, canPlay, date, current_date() as now ".
+          "from sites as s left join playlotto as p ".
           "on s.siteId=p.siteId where playLotto='yes'");
 
-while(list($site, $lottoData, $lottoExpires, $game, $period, $canPlay) = $S->fetchrow('num')) {
-  array_push($sites, array('siteId'=>$site, 'lottoData'=>$lottoData,
-                           'lottoExpires'=>$lottoExpires, 'game'=>$game,
-                           'period'=>$period, 'canPlay'=>$canPlay));
+while($row = $S->fetchrow('assoc')) {
+  array_push($sites, $row);
 }
 
 // Main loop do it for each site
 
 foreach($sites as $site) {
-  $lottoData = json_decode($site['lottoData']);
+  $skipdays = $site['skipdays'];
+  $skipdaysleft = $site['skipdaysleft'];
   $siteId = $site['siteId'];
+  $lottoData = json_decode($site['lottoData']);
   $expires = date("F j, Y", strtotime($site['lottoExpires']));
   $game = ($site['game'] + 1) % 4;
   $period = $site['period'];
   $canPlay = $site['canPlay'];
+  $date = $site['date'];
+  $now = $site['now'];
+
+  echo "now: $now, date: $date\n";
+  if($now != $date) {
+    // just in case this gets out of wack by running this as a web app.
+    $game = 0;
+  }
+
+  echo "game: $game\n";
+  
+  if($game == 0) {
+    echo "game==0, skipdaysleft+1: ".($skipdaysleft+1).", skipdays: $skipdays\n";
+    if(++$skipdaysleft < $skipdays) {
+      // new day so add one to skipdaysleft
+      $x = $skipdaysleft;
+      echo "Plus one: $skipdaysleft\n";
+    } else {
+      // reset skipdaysleft to zero
+      $x = 0;
+      echo "Reset to zero: $skipdaysleft\n";
+    }
+    $S->query("update playlotto set skipdaysleft=$x, date=current_date() ".
+              "where siteId='$siteId'");
+  }
 
   echo "\nSiteId: $siteId\n";
   
@@ -49,6 +97,13 @@ foreach($sites as $site) {
   if($cli === true) {
     // update game
     $S->query("update playlotto set game='$game' where siteId='$siteId'");
+  }
+
+  // On a new day the value is either +1 or has been zeroed
+  
+  if($skipdaysleft < $skipdays) {
+    echo "Skip\nskipdays: $skipdays, skipdaysleft: $skipdaysleft\n";
+    continue;
   }
 
   if($lottoData[$site['game']]->game == false) {
