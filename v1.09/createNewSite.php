@@ -41,7 +41,9 @@ list($top, $footer) = $S->getPageTopBottom($h);
 // *****************************************************
 
 if($_POST['page'] == "createsite") {
-  extract($_POST);
+  foreach($_POST as $k=>$v) {
+    $$k = $S->escape($v);
+  }
 
   // Add new site to sites table
   
@@ -86,15 +88,17 @@ if($_POST['page'] == "createsite") {
   // Add new site to modified table
 
   $sql = "insert ignore into `modified` (siteId, xchange) values('$siteid', 0)";
-  $S->query($sql);
   //cout("$sql");
+  $S->query($sql);
 
+  $siteid = stripslashes($siteid);
+  $name = stripslashes($fname) . " " .stripslashes($lname);
   echo <<<EOF
 $top
 <h1>Site Created</h1>
 <ul>
 <li>Site: $siteid</li>
-<li>Owner: $fname $lname</li>
+<li>Owner: $name</li>
 </ul>
 <p>Use the control panel to edit site parameters. All parameters have been set to the defaults.</p>
 <hr>

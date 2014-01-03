@@ -565,3 +565,10 @@ CREATE TABLE `playlotto` (
   `date` date DEFAULT NULL,
   PRIMARY KEY (`siteId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-------------------------------------------------------
+NEW YEAR
+-------------------------------------------------------
+
+2014-01-03
+  track-startup.php restrict display to one week (7 day).

@@ -38,7 +38,7 @@ if(file_exists(TOPFILE)) {
 
 $S = new Tom;
 
-$debug = true;
+$debug = false;
 
 // Which bars are playing
 
@@ -76,15 +76,15 @@ foreach($sites as $site) {
   echo "game: $game\n";
   
   if($game == 0) {
-    echo "game==0, skipdaysleft+1: ".($skipdaysleft+1).", skipdays: $skipdays\n";
+    //echo "game==0, skipdaysleft+1: ".($skipdaysleft+1).", skipdays: $skipdays\n";
     if(++$skipdaysleft < $skipdays) {
       // new day so add one to skipdaysleft
       $x = $skipdaysleft;
-      echo "Plus one: $skipdaysleft\n";
+      //echo "Plus one: $skipdaysleft\n";
     } else {
       // reset skipdaysleft to zero
       $x = 0;
-      echo "Reset to zero: $skipdaysleft\n";
+      //echo "Reset to zero: $skipdaysleft\n";
     }
     $S->query("update playlotto set skipdaysleft=$x, date=current_date() ".
               "where siteId='$siteId'");
@@ -102,7 +102,7 @@ foreach($sites as $site) {
   // On a new day the value is either +1 or has been zeroed
   
   if($skipdaysleft < $skipdays) {
-    echo "Skip\nskipdays: $skipdays, skipdaysleft: $skipdaysleft\n";
+    //echo "Skip\nskipdays: $skipdays, skipdaysleft: $skipdaysleft\n";
     continue;
   }
 

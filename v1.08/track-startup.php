@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-01-03 -- Limit display to 1 week   
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
   include(TOPFILE);
@@ -12,6 +13,7 @@ if($_GET['name'] == 'gettable') {
          "convert_tz(starttime, '-4:00', '-5:00'), ".
          "convert_tz(lasttime, '-4:00', '-5:00') as last, ".
          "timediff(lasttime, starttime) from startup ".
+         "where lasttime != '' and (lasttime > (now() - interval 7 day))".
          "order by last";
   
   $S->query($sql);
@@ -158,7 +160,8 @@ $tz = date('T (O \G\M\T)');
 echo <<<EOF
 $top
 <p>Note: versions before 1.04 do not show.<br>
-Times are $tz.</p>
+Times are $tz.<br>
+Showing one week.</p>
 <button>Show All</button>
 <div id="table"></div>
 <hr>

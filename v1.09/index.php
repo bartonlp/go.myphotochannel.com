@@ -99,8 +99,8 @@ function getversion($path) {
 
 // List of file for slideshow and cpanel. Used all over.
 
-$slideshowRealName = realpath(DOC_ROOT ."/currentVersion/slideshow");
-$cpanelRealName = realpath(DOC_ROOT ."/currentVersion/cpanel");
+$slideshowRealName = realpath(DOC_ROOT ."currentVersion/slideshow");
+$cpanelRealName = realpath(DOC_ROOT ."currentVersion/cpanel");
 
 $slideshowAr = array("slideshow.php", "slideshow.ajax.php", "js/slideshow.js");
 $cpanelAr = array("cpanel.*php", "cpanel.ajax.php", "js/cpanel.*.js");
@@ -220,15 +220,17 @@ if($_GET['page'] == 'getlink') {
 // Ajax clearlog.
 
 if($_GET['page'] == 'clearlog') {
-  $logfile = DOC_ROOT . "/{$_GET['logfile']}";
+  $logfile = DOC_ROOT . "{$_GET['logfile']}";
   $old = file_get_contents($logfile);
   file_put_contents("{$logfile}.save", $old);
   file_put_contents($logfile, '');
+  //file_put_contents("/tmp/blpdebug.txt", "$logfile\n");
+  echo "Cleared $logfile";
   exit();
 }
 
 if($_POST['page'] == 'filesize') {
-  $file = DOC_ROOT . "/{$_POST['file']}";
+  $file = DOC_ROOT . "{$_POST['file']}";
   $size = filesize($file);
   echo "Size: $size";
   exit();
@@ -503,7 +505,7 @@ $h->banner = <<<EOF
 EOF;
 
 $h->extra =<<<EOF
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://js.pusher.com/2.1/pusher.min.js"></script>
 <script>
 var userId="$userId";

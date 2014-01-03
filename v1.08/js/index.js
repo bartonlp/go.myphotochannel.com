@@ -27,7 +27,7 @@ function getTable(callback) {
   });
 }
 
-// Every 30 seconds load the log files via Ajax and reposition the 'Clear Log' buttons.
+// Every 5 minutes load the log files via Ajax and reposition the 'Clear Log' buttons.
 
 function positionClearlog() {
   // class clearlog does not exist if this is not superuser.
@@ -46,7 +46,8 @@ function positionClearlog() {
       $(x[1]).css({position:'absolute', left: y+"px"});
     });
   });
-  positionTimeout = setTimeout(positionClearlog, 300000); // Every five minutes update
+  // Every five minutes update
+  positionTimeout = setTimeout(positionClearlog, 30000); 
 }
 
 // READY
@@ -150,7 +151,8 @@ jQuery(document).ready(function($) {
              setTimeout(function() { $("#posted").remove(); }, 2000);
 
              clearTimeout(positionTimeout); // Clear any pending timeout before calling positionClearlog
-
+             positionTimeout = null;
+             
              if(file != 'database.log') {
                $("[href*='emailphoto.log']").siblings(".size").load("index.php",
                  {page: 'filesize', file: file},

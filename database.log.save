@@ -1,46 +1,14 @@
-2013-11-24 03:11:11
-Exception: Class: Exception
-Exception: "Class Auto Loader could not fine class mydb"
-in file /homepages/45/d454707514/htdocs/siteautoload.php
-on line 123
-Trace back:
-file: 
-line: 
-class: 
-function: siteAutoLoad("mydb")
-file: /homepages/45/d454707514/htdocs/v1.08/testmysql.php
-line: 16
-class: 
-function: spl_autoload_call("mydb")
-*****
-2013-11-24 03:11:43
-Exception: Class: Exception
-Exception: "Class Auto Loader could not fine class dbMySqli"
-in file /homepages/45/d454707514/htdocs/siteautoload.php
-on line 123
-Trace back:
-file: 
-line: 
-class: 
-function: siteAutoLoad("dbMySqli")
-file: /homepages/45/d454707514/htdocs/v1.08/testmysql.php
-line: 16
-class: 
-function: spl_autoload_call("dbMySqli")
-*****
-2013-11-24 03:11:18
-SqlException: "dbMysqli::opendb Can't select database"
-error="", errno=""
+2013-12-30 05:12:37
+SqlException: "INSERT IGNORE INTO `sites` (siteId, siteCode, fname, lname, password, company, address, email, phone, emailServer, emailUsername, emailPassword, emailPort) VALUES ('JOHNNYS','JOHNNYS','First','Last','password','Johnny's','1017 Russel, St. Louis, MO  63104','johnnys@myphotochannel.com','314-865-0900','imap.1and1.com','johnnys@myphotochannel.com','akipoo94!','143')"
+error="You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's','1017 Russel, St. Louis, MO  63104','johnnys@myphotochannel.com','314-865-090' at line 1", errno="1064"
 called from /homepages/45/d454707514/htdocs/includes/database-engines/dbMysqli.class.php
-on line 91
+on line 122
 Back Trace:
-dbMysqli::opendb()
-in /homepages/45/d454707514/htdocs/v1.08/testmysql.php
-on line 23
-mymysqli::openDb()
-in /homepages/45/d454707514/htdocs/includes/database-engines/dbMysqli.class.php
-on line 62
-dbMysqli::__construct(array(host=>'db459221984.db.1and1.com', user=>'dbo459221984', password=>'akipoo94', database=>'db459221984', engine=>'mysqli'))
-in /homepages/45/d454707514/htdocs/v1.08/testmysql.php
-on line 28
+dbMysqli::query("INSERT IGNORE INTO `sites` (siteId, siteCode, fname, lname, password, company, address, email, phone, emailServer, emailUsername, emailPassword, emailPort) VALUES ('JOHNNYS','JOHNNYS','First','Last','password','Johnny's','1017 Russel, St. Louis, MO  63104','johnnys@myphotochannel.com','314-865-0900','imap.1and1.com','johnnys@myphotochannel.com','akipoo94!','143')")
+in /homepages/45/d454707514/htdocs/includes/database-engines/dbAbstract.class.php
+on line 41
+dbAbstract::query("INSERT IGNORE INTO `sites` (siteId, siteCode, fname, lname, password, company, address, email, phone, emailServer, emailUsername, emailPassword, emailPort) VALUES ('JOHNNYS','JOHNNYS','First','Last','password','Johnny's','1017 Russel, St. Louis, MO  63104','johnnys@myphotochannel.com','314-865-0900','imap.1and1.com','johnnys@myphotochannel.com','akipoo94!','143')")
+in /homepages/45/d454707514/htdocs/v1.08/createNewSite.php
+on line 54
+User: IP=97.86.10.90, AGENT=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36
 *****
