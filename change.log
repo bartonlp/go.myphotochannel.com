@@ -572,3 +572,17 @@ NEW YEAR
 
 2014-01-03
   track-startup.php restrict display to one week (7 day).
+
+2014-01-10
+  v1.09/emailphoto.php, v1.09/resize.php
+  Now the emailphoto.php which runs every minute as a CRON job just gets the image from the email and
+  writes it directly to the content/ directory and updates the items table. There is a new field,
+  resized enum('no', 'yes') default 'no'. That field is set to 'no'. The image is the full size image
+  that was emailed.
+  resize.php runs as a CRON job every 30 minutes. It looks at the items table for any item that has
+  resized='no'. It then resized the image and rewrite the items table. The resize.php writes to the
+  ~/resize.log file.
+  Added the new v1.09 versions to the crontab.
+  
+  v1.08/index.php v1.08/js/index.js
+  Updated them by adding logic to look at the resize.log just like the other two logs.

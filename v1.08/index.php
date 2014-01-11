@@ -1,5 +1,6 @@
 <?php
 // index for tomsproject
+// BLP 2014-01-10 -- Add resize.log by the other two logs
 // Javascript for this program is at js/index.js
 // 310-452-5409 Heidi store.
 
@@ -585,6 +586,11 @@ you have certified.</p>
 <li><a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
 <span class='size'></span>
 <button class="clearlog" data-logname="/emailphoto.log">Clear Log</button>
+</li>
+<!-- BLP 2014-01-10 -- add resize.log -->
+<li><a class='showlog' target="_blank" href="/resize.log">Resize Log</a>
+<span class='size'></span>
+<button class="clearlog" data-logname="/resize.log">Clear Log</button>
 </li>
 <li><a class='showlog' target="_blank" href="/database.log">Error Log</a>
 <span class='size'></span>
