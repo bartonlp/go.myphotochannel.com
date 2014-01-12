@@ -67,6 +67,8 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   }
 
   // Update the database table
+
+  $destfile = "content/" .basename($destfile);
   
   $S->query("update items set resized='yes', location='$destfile' where itemId='$itemId'");
   echo "Image $itemId $location Resized\n";
