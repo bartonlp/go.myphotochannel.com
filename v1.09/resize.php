@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-01-15 -- add database lost connection retries.   
 // BLP 2014-01-11 -- Add item counter. We didn't ask for only images (type='image'). Added
 // SITE_ROOT to filenames. Used pathinfo() to construct the $destfile and force '.jpg' as extension.
 // BLP 2014-01-10 -- New CRON program to run occasinally (like once an hour etc) to resize any
@@ -39,7 +40,20 @@ echo "Resize: version $version\n";
 echo date("Y-m-d H:i T") . "\n--------------------------\n";
 $starttime = time();
 
-$S->query("select itemId, location from items where resized='no' and type='image'");
+try {
+  $S->query("select itemId, location from items where resized='no' and type='image'");
+} catch(Exception $e) {
+    unset($S);
+  $S = new Database($GLOBALS['dbinfo']);
+  echo "RETRY: $sql\n";
+  try {
+    $S->query($sql); // try same sql again
+  } catch(Exception $e) {
+    echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
+    exit();
+  }
+}
+
 $r = $S->getResult();
 
 $itemCnt = 0;
@@ -69,8 +83,21 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   // Update the database table
 
   $destfile = "content/" .basename($destfile);
-  
-  $S->query("update items set resized='yes', location='$destfile' where itemId='$itemId'");
+
+  try {
+    $S->query("update items set resized='yes', location='$destfile' where itemId='$itemId'");
+  } catch(Exception $e) {
+    unset($S);
+    $S = new Database($GLOBALS['dbinfo']);
+    echo "RETRY: $sql\n";
+    try {
+      $S->query($sql); // try same sql again
+    } catch(Exception $e) {
+      echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
+      exit();
+    }
+  }
+
   echo "Image $itemId $location Resized\n";
   ++$itemCnt;
 }

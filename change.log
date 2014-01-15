@@ -592,3 +592,5 @@ NEW YEAR
 
   includes/database-engines/dbAbstract.class.php & dbMysqli.class.php: added freeRequest() and in
   dbMysql.class.php I added fetchrow('obj') to fetch a row as an object.
+
+  v1.09/resize.php: also added error logic like in emailphoto.php
