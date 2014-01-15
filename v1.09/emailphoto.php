@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-01-15 -- Added more error logic to retry database connection that gets lost.
 // BLP 2014-01-10 -- New approach. Just add photo to data base rename it and move it to content.
 // Then later go back and resize any of the unprocessed photos. I'll add a field to the items table
 // to indicate if the image is resized or not.
@@ -177,6 +178,24 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
           
           $S = fixupNewPhotos($S);
 
+          if($S === false) {
+            echo "fixupNewPhotos FAILED: trying one more time.";
+            unset($S);
+            $S = new Database($GLOBALS['dbinfo']);
+
+            $S->siteId = $siteId;
+            $S->subject = $header->subject;
+            $S->from = $S->escape(escapeltgt($from));
+            $S->image = base64_decode($part);
+            $S->ext = strtolower(pathinfo($f[1], PATHINFO_EXTENSION));
+            
+            $S = fixupNewPhotos($S);
+            if($S === false) {
+              echo "fixupNewPhotos FAILED AGAIN: Exiting!";
+              exit();
+            }
+          }
+
           ++$photonum;
           ++$totalphotos;
           
@@ -287,10 +306,19 @@ function fixupNewPhotos($S) {
     $sql = "select max(itemId) from items";
     $n = $S->query($sql);
   } catch(Exception $e) {
-    echo "Error: ".$e->getCode()."\n";
-    exit();
-  }
+    unset($S);
+    $S = new Database($GLOBALS['dbinfo']);
+    $S->siteId = $siteId;
+    echo "RETRY: $sql\n";
 
+    try {
+      $n = $S->query($sql); // try same sql again
+    } catch(Exception $e) {
+      echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
+      return false;
+    }
+  }
+  
   if(!$n) {
     echo "Error: ".$e->getCode()."\n";
     exit();
@@ -305,21 +333,29 @@ function fixupNewPhotos($S) {
            "values('$siteId', '$newid', '$cat', now(), ".
            "'$S->from', '$newid.jpg', 'new', 'content/$newid.$S->ext', 'no')";
 
-    //echo "sql: $sql";
     $S->query($sql);
   } catch(Exception $e) {
-    echo $e;
-    exit();
+    unset($S);
+    $S = new Database($GLOBALS['dbinfo']);
+    $S->siteId = $siteId;
+    echo "RETRY: $sql\n";
+
+    try {
+      $n = $S->query($sql); // try same sql again
+    } catch(Exception $e) {
+      echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
+      return false;
+    }
   }
 
   $S->msg .= "$newid.$S->ext\n";
-  $S->newfile = "$newid.$S->ext";
+  $newfile = "$newid.$S->ext";
 
   // Now just put this fullsized image in the content directory.
   // We will resize it later.
 
-  echo "Filename: ".SITE_ROOT ."/content/$S->newfile\n";
-  file_put_contents(SITE_ROOT ."/content/$S->newfile", $S->image);
+  echo "Filename: ".SITE_ROOT ."/content/$newfile\n";
+  file_put_contents(SITE_ROOT ."/content/$newfile", $S->image);
 
   return $S;
 }

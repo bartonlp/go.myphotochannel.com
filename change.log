@@ -586,3 +586,6 @@ NEW YEAR
   
   v1.08/index.php v1.08/js/index.js
   Updated them by adding logic to look at the resize.log just like the other two logs.
+
+2014-01-15
+  v1.09/emailphoto.php: added more error logic to try and cope with the lost connection problem.
