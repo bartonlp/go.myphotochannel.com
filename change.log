@@ -589,3 +589,6 @@ NEW YEAR
 
 2014-01-15
   v1.09/emailphoto.php: added more error logic to try and cope with the lost connection problem.
+
+  includes/database-engines/dbAbstract.class.php & dbMysqli.class.php: added freeRequest() and in
+  dbMysql.class.php I added fetchrow('obj') to fetch a row as an object.
