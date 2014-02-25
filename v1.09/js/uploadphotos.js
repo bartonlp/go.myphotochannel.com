@@ -19,7 +19,7 @@ function send(filelist) {
 
   // Reader onload callback
 
-  reader.onload = function (e) {
+  reader.onload = function(e) {
     var desc = this.desc;
     var url = e.target.result; // this is the data uri
     var image = new Image;

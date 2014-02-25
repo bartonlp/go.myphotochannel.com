@@ -594,3 +594,9 @@ NEW YEAR
   dbMysql.class.php I added fetchrow('obj') to fetch a row as an object.
 
   v1.09/resize.php: also added error logic like in emailphoto.php
+
+2014-01-21
+  v1.09/resize.php: Add error logic. If photo not found or a resize error mark the item inactive and
+  press on. Also when we fetch resized='no' only look for status='active'.
+
+  v1.09/emailphoto.php: Added echo each invocation for debugging. Only temp.

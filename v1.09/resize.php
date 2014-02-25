@@ -1,5 +1,8 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-01-21 -- We had two photos that were not found. It looks like they had be rotated but
+// the photo was never produced (xxxx.1.jpg). If we have unfound photos we mark them inactive and
+// continue. We also now only process resized=no if it is also active.
 // BLP 2014-01-15 -- add database lost connection retries.   
 // BLP 2014-01-11 -- Add item counter. We didn't ask for only images (type='image'). Added
 // SITE_ROOT to filenames. Used pathinfo() to construct the $destfile and force '.jpg' as extension.
@@ -41,9 +44,11 @@ echo date("Y-m-d H:i T") . "\n--------------------------\n";
 $starttime = time();
 
 try {
-  $S->query("select itemId, location from items where resized='no' and type='image'");
+  // BLP 2014-01-21 -- add status='active'
+  $S->query("select itemId, location from items where resized='no' ".
+            "and status='active' and type='image'");
 } catch(Exception $e) {
-    unset($S);
+  unset($S);
   $S = new Database($GLOBALS['dbinfo']);
   echo "RETRY: $sql\n";
   try {
@@ -68,7 +73,9 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   // Make sure the file exists
   
   if(!file_exists($location)) {
-    echo "ERROR: file $location does not exist\n";
+    // BLP 2014-01-21 -- If we can't find the photo mark the database item as inactive and press on.
+    echo "ERROR: file $location does not exist, marking inactive.\n";
+    $S->query("update items set status='inactive' where itemId=$itemId");
     continue;
   }
 
@@ -77,6 +84,8 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   if(resizeImage($location, $destfile) === false) {
     // ERROR
     echo "ResizeImage Error: $location\n";
+    // BLP 2014-01-21 -- If we got an error mark the item inactive and press on.
+    $S->query("update items set status='inactive' where itemId=$itemId");
     continue;
   }
 

@@ -1,5 +1,7 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-01-28 -- removed temp echo
+// BLP 2014-01-21 -- temp echo each invocation for debugging.
 // BLP 2014-01-15 -- Added more error logic to retry database connection that gets lost.
 // BLP 2014-01-10 -- New approach. Just add photo to data base rename it and move it to content.
 // Then later go back and resize any of the unprocessed photos. I'll add a field to the items table
@@ -285,6 +287,9 @@ if($totalphotos) {
 } elseif(preg_match("/:00 /", $d)) {
   echo "$d, Mark $version\n==========================\n";
 }
+
+// BLP 2014-01-21 -- Output every invocation for debugging.
+//echo "$d Debug\n************************\n";
 
 exit();
 

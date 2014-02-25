@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-02-25 -- $debug=true; This disables blacklist and outputs additional info to stdout
 // Play Lotto Game
 // Can run as CLI or web program
 
@@ -17,7 +18,8 @@ if(file_exists(TOPFILE)) {
 
 $S = new Tom;
 
-$debug = false;
+// Debug disables blacklist and outputs additional info to stdout.
+$debug = true;
 
 // Which bars are playing
 
@@ -79,6 +81,7 @@ foreach($sites as $site) {
   $S->query("select email from users where siteId='$siteId'");
 
   while(list($blacklist[]) = $S->fetchrow('num'));
+  
   array_pop($blacklist); // pop off the endoffile
 
   $sql = "select itemId, creatorName, location, creationTime from items ".
@@ -116,8 +119,12 @@ foreach($sites as $site) {
     }
 
     if(in_array($e, $blacklist)) {
-      if($debug) echo "$e: In Blacklist\n";
-      continue;
+      // While debugging and testing let blacklist members play.
+      if($debug) {
+        echo "$e: In Blacklist\n";
+      } else {
+        continue;
+      }
     }
     
     $ar[] = array($name, $e, $loc, $time, $itemId);
@@ -160,13 +167,13 @@ EOF;
     // Create the image and save it.
     
     $im = imagecreatetruecolor(800, 600);
-    $dest = imagecreatefromjpeg("../$loc");
-    list($width, $height) = getimagesize("../$loc");
+    $dest = imagecreatefromjpeg(DOC_ROOT ."/$loc");
+    list($width, $height) = getimagesize(DOC_ROOT ."/$loc");
 
     $newH = $height/$width*200;
     $white = imagecolorallocate($im, 255, 255, 255); // white
     $black = imagecolorallocate($im, 0, 0, 0); // black
-    $font = '../fonts/ARIALBD.TTF';
+    $font = DOC_ROOT .'/fonts/ARIALBD.TTF';
     $msg = <<<EOF
 You too can win the PhotoLoto,
 all you have to do is send in a photo.
@@ -185,18 +192,20 @@ EOF;
     imagecopyresampled($im, $dest, 50, 170, 0, 0, 200, $newH, $width, $height);
 
     header('Content-Type: image/png');
-    imagepng($im, "../content/lottowinner$siteId.png");
+    imagepng($im, DOC_ROOT ."/content/lottowinner$siteId.png");
     imagedestroy($im);
 
     // Send the email
     $msg = <<<EOF
 ($name, $email):
 You submitted a photo to $siteId that was randomly drawn for a special offer.
-Come in to redeem your $prize by presenting this email to a bartender or server.  Hurry, offer
-expires on $expires!!!”.  Thank you for sharing your photos!
+Come in to redeem your prize ($prize) by presenting this email to a bartender or server.
+Hurry, offer expires on $expires!!!”.  Thank you for sharing your photos!
 EOF;
 
-    mail("bartonphillips@gmail.com", "$siteId Photo Lotto Winner. Expires $expires", $msg,  null, "-fbartonphillips@gmail.com");
+    mail($email, "$siteId Photo Lotto Winner. Expires $expires", $msg,
+                 "From: info@myphotochannel.com\r\nCC: bartonphillips@gmail.com\r\n",
+                 "-fbartonphillips@gmail.com");
   }
 }
 ?>

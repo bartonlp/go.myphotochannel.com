@@ -27,11 +27,21 @@ $h->extra =<<<EOF
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 <script>
-
 jQuery(document).ready(function($) {
   $(".extrainfo").hide();
   $(".siteinfo").hide();
 
+  // Get the last day info and display it
+  var last = new Array;
+
+  $(".photonumbers tr td.numlastday").each(function() {
+    last.push($(this).text());
+  });
+
+  $(".lastday").each(function(i, v) {
+    $(v).html("<p>Photos for the last day: " + last[i]+"</p>");
+  });
+  
   $(".showmore").click(function() {
     var item = $(this).attr('data-item');
 
@@ -51,9 +61,11 @@ jQuery(document).ready(function($) {
     if(!this.item) {
       $(".site-"+item).show();
       $(this).text("Hide");
+      $(".site-"+item).prev().hide();
     } else {
       $(".site-"+item).hide();
       $(this).text("Show");
+      $(".site-"+item).prev().show();
     }
     this.item = !this.item;
   });
@@ -257,6 +269,7 @@ EOF;
 
   $content .=<<<EOF
 <h1>$site <button class="showsite" data-item="$siteId">Show</button></h1>
+<div class="lastday"></div>
 <div class="siteinfo site-$siteId">
 
 <button class="showmore" data-item="button-$siteId">Show More</button>
@@ -286,13 +299,13 @@ $userinfo
 $playbingo
 $playlotto
 </p>
-
 </div>
 
 <table class="photonumbers">
 EOF;
   
-  foreach(array('All photos'=>'', 'Added last day'=>'1 day',
+  foreach(array('All photos'=>'',
+                'Added last day'=>'1 day',
                 'Added last 2 days'=>'2 day',
                 'Added last 3 days'=>'3 day',
                 'Added last 4 days'=>'4 day',
@@ -312,13 +325,19 @@ EOF;
     if($int) {
       $gtlt = ">=";
       // This comparison must match exactaly with the aged line above!!!
-      if($m == "Aged (older than {$aged}s)") $gtlt = "<";
+      if($m == "Aged (older than {$aged}s)") {
+        $gtlt = "<";
+      }
       
       $d = " and creationTime $gtlt date_sub(now(), interval $int)";
     }
     $sql = "select itemId from items where siteId='$siteId'$d and status='active'";
     $n = number_format($S->query($sql));
-    $content .= "<tr><th>$m:</th><td>$n</td></tr>";
+    if($m == "Added last day") {
+      $content .= "<tr><th>$m:</th><td class='numlastday'>$n</td></tr>";
+    } else {
+      $content .= "<tr><th>$m:</th><td>$n</td></tr>";
+    }
   }
   $content .= "</table>\n</div>\n<hr>\n";
 }
