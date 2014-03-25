@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-03-25 -- added last day photos and total photos to table#sitesinfo
 // index for tomsproject
 // BLP 2014-01-10 -- Add resize.log by the other two logs
 // Javascript for this program is at js/index.js
@@ -7,7 +8,7 @@
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
   include(TOPFILE);
-} else throw new Exception(TOPFILE . "not found");
+} else throw new Exception(TOPFILE . " not found");
 
 // Here is a little bit of trickery
 // The function lastMod() returns the filemtine() for the filename in $x.
@@ -516,20 +517,37 @@ EOF;
 
 list($top, $footer) = $S->getPageTopBottom($h);
 
+// Create the sites table with all the siteId, sitCode, emailUsername, and #photos today, total
+// photos.
+
 $sql = "select siteId, emailUsername, siteCode from sites";
 $n = $S->query($sql);
+$r = $S->getResult();
+
 $sites = <<<EOF
 <p>There are now $n sites:</p>
-<table border="1">
+<style>
+#sitesinfo th {
+  padding: 3px;
+}
+</style>
+<table id="sitesinfo" border="1">
 <thead>
-<tr><th>Site Id</th><th>Upload Email Address</th><th>Site Code</th></tr>
+<tr><th>Site Id</th><th>Upload Email Address</th><th>Site Code</th>
+<th>Photos<br>Last Day</th><th>Total Photos</th></tr>
 </thead>
 <tbody>
 
 EOF;
 
-while(list($siteId, $email, $siteCode) = $S->fetchrow('num')) {
-  $sites .= "<tr><td>$siteId</td><td>$email</td><td>$siteCode</td></tr>\n";
+while(list($siteId, $email, $siteCode) = $S->fetchrow($r, 'num')) {
+  $sql = "select itemId from items where siteId='$siteId' ".
+         "and creationTime > date_sub(now(), interval 1 day) and status='active'";
+
+  $n = number_format($S->query($sql));
+  $sql = "select itemId from items where siteId='$siteId' and status='active'";
+  $tot = number_format($S->query($sql));
+  $sites .= "<tr><td>$siteId</td><td>$email</td><td>$siteCode</td><td>$n</td><td>$tot</td></tr>\n";
 }
 $sites .= "</tbody>\n</table>\n";
 

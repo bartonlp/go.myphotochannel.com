@@ -3,7 +3,9 @@
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
   include(TOPFILE);
-} else throw new Exception(TOPFILE . "not found");
+} else throw new Exception(TOPFILE . " not found");
+
+// Uses js/videocontrol.js which does the ajax calls to these Ajax items.
 
 // ************************************************************
 // Ajax, doSql
@@ -215,11 +217,11 @@ Select <select id="selectstatus">
 </select>
 
 <h1>Videos in 'ads' Table</h1>
-<div id='ads'></div>
+<div id='ads'><!-- from makepage(..,'ads') --></div>
 <button id="adssubmit">Submit Ads Changes</button>
 <hr>
 <h1>Videos in 'items' Table</h1>
-<div id='items'></div>
+<div id='items'><!-- from makepage(..,'items') --></div>
 <button id="itemssubmit">Submit Items Changes</button>
 <hr>
 $footer
@@ -328,7 +330,7 @@ $items_ads
 <li>$ctype</li>
 <li>$clen</li>
 </ul>
-<video id="video-{$row['itemId']}" controls='1' src="{$row['location']}?$nocache" type="video/$ext">
+<video id="video-{$row['itemId']}" controls='1' src="/{$row['location']}?$nocache" type="video/$ext">
 Your browser does not support HTML5 video.
 </video>
 </div>

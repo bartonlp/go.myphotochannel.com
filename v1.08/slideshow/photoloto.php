@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-02-28 --
 // BLP 2014-02-25 -- $debug=true; This disables blacklist and outputs additional info to stdout
 // Play Lotto Game
 // Can run as CLI or web program
@@ -19,7 +20,7 @@ if(file_exists(TOPFILE)) {
 $S = new Tom;
 
 // Debug disables blacklist and outputs additional info to stdout.
-$debug = true;
+//$debug = true;
 
 // Which bars are playing
 

@@ -21,23 +21,22 @@ function reload(which, callback) {
   });
 }
 
-// DOM Ready
-
-jQuery(document).ready(function($) {
-  // Start out with only active showing
-
+function reloadall() {
   reload('ads', function() {
     reload('items', function() {
-      $(".status").not("[data-item='active']").parent().parent().hide();
+      $(".status").not("[data-item='active']").closest('div').hide();
+      doall(); // All the data must be loaded first
     });
   });
+}
 
+function doall() {
   // Show select changed
 
   $("#selectstatus").change(function() {
     var status = $(this).val();
-    $(".status").parent().parent().show();
-    $(".status").not("[data-item='"+status+"']").parent().parent().hide();
+    $(".status").closest('div').show();
+    $(".status").not("[data-item='"+status+"']").closest('div').hide();
   });
 
   $("video").on('loadedmetadata', function(e) {
@@ -55,7 +54,7 @@ jQuery(document).ready(function($) {
                  "<div class='durslider' data-value='"+val+"'></div>\n"
                 );
   });
-  
+
   $(".skip").each(function(i, v) {
     var val = $(this).attr("data-value");
     $(this).html("<label>Skip: \n"+
@@ -97,11 +96,11 @@ jQuery(document).ready(function($) {
   });
 
   $("#adssubmit").on('click', function(e) {
-    // For each viddiv get the dur and skip for the itemId
+      // For each viddiv get the dur and skip for the itemId
 
     $(".ads").each(function(i, v) {
       console.log("ads each:", i, v);
-      
+
       var id = $(v).attr("id"),
       dur = $(".dur input", v).val(),
       desc = $(".desc input", v).val(),
@@ -111,7 +110,7 @@ jQuery(document).ready(function($) {
             "', description='"+desc+"' where itemId='"+id+"'";
 
       console.log("sql:", sql);
-      
+
       $.ajax({
         url: ajaxfile,
         data: { page: "doSql", sql: sql },
@@ -129,17 +128,12 @@ jQuery(document).ready(function($) {
     $("body").append("<div id='posted'>Posted</div>");
 
     setTimeout(function() { $("#posted").remove(); }, 2000);
-    reload('ads', function() {
-      var status = $("#selectstatus").val();
-      $(".status").parent().parent().show();
-      $(".status").not("[data-item='"+status+"']").parent().parent().hide();
-    });
-    
+    reloadall();
     return false;
   });
 
   $("#itemssubmit").on('click', function(e) {
-    // For each viddiv get the dur and skip for the itemId
+      // For each viddiv get the dur and skip for the itemId
 
     $(".items").each(function(i, v) {
       console.log("items each:", i, v);
@@ -172,12 +166,14 @@ jQuery(document).ready(function($) {
 
     setTimeout(function() { $("#posted").remove(); }, 2000);
 
-    reload('items', function() {
-      var status = $("#selectstatus").val();
-      $(".status").parent().parent().show();
-      $(".status").not("[data-item='"+status+"']").parent().parent().hide();
-    });
-
+    reloadall();
     return false;
   });
+}
+
+// DOM Ready
+
+jQuery(document).ready(function($) {
+  // Start out with only active showing
+  reloadall();
 });
