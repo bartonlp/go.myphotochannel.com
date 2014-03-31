@@ -12,7 +12,7 @@ function getTable(callback) {
     dataType: 'html',
     data: { name: 'gettable' },
     success: function(data) {
-           console.log(data);
+           //console.log(data);
            $("#startup-table").html(data);
            if(showclosed === false) {
              if($(".status:contains('closed')").parent().hide().length) {
@@ -39,17 +39,17 @@ function positionClearlog() {
   
   $("[href*='emailphoto.log']").siblings(".size").load("index.php",
     {page: 'filesize', file: '/emailphoto.log'}, function(data) {
-    console.log("emailphoto.log", data);
+    //console.log("emailphoto.log", data);
     $("[href*='/resize.log']").siblings(".size").load("index.php",
       {page: 'filesize', file: '/resize.log'}, function(data) {
-      console.log("resize.log", data);
+      //console.log("resize.log", data);
       var x = $(".clearlog");
       var y = $(x[0]).position().left;
       $(x[1]).css({position: 'absolute', left: y+"px"});
       
       $("[href*='/database.log']").siblings(".size").load("index.php",
         {page: 'filesize', file: '/database.log'}, function(data) {
-        console.log("database.log", data);  
+        //console.log("database.log", data);  
         var x = $(".clearlog"); // there are three elements
         var y = $(x[0]).position().left;
         $(x[2]).css({position:'absolute', left: y+"px"});
@@ -89,21 +89,21 @@ jQuery(document).ready(function($) {
   // When a site starts
   
   slideshow.bind('startup', function(data) {
-    console.log('startup', data);
+    //console.log('startup', data);
     getTable();
   });
 
   // When a site updates, this happens every slowCall time.
   
   slideshow.bind('startup-update', function(data) {
-    console.log('startup-update', data);
+    //console.log('startup-update', data);
     getTable();
   });
 
   // When a site shuts down.
   
   slideshow.bind('unload', function(data) {
-    console.log('unload', data);
+    //console.log('unload', data);
     getTable()
   });
 
@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
       url: "index.php",
       data: {page: 'getlink', linkversion: $type },
       success: function(data) {
-             console.log(data);
+             //console.log(data);
              $("#linkversion").html(data);
            },
            error: function(err) {
@@ -156,7 +156,7 @@ jQuery(document).ready(function($) {
       url: 'index.php',
       data: {page: 'clearlog', logfile: file},
       success: function(data) {
-             console.log(data);
+             //console.log(data);
              $("body").append("<div id='posted'>Posted</div>");
              setTimeout(function() { $("#posted").remove(); }, 2000);
 

@@ -1,8 +1,5 @@
 #! /usr/bin/php6 -q
 <?php
-   // Gather Photos Emailed to the Server by Customers
-   // This is a CLI program run by CRON every minute.
-   
 // Also force our TOPFILE
 define('TOPFILE', "/homepages/45/d454707514/htdocs/siteautoload.php");
 // Now this looks like all the other files.

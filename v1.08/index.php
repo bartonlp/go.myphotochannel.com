@@ -189,6 +189,12 @@ A CLI run from CRON. Processes photos emailed by
 customers every minute.</li>
 <li><i>siteautoload.php</i> {$lm('siteautoload.php', "$path")}. Finds '.sitemap.php' and autoloads classes.</li>
 <li><i>.sitemap.php</i> {$lm('.sitemap.php', "/")}. Configuration file for site.</li>
+
+<li><a target="_blank" href="/v1.08/slideshow/photoloto.php">Photo Lotto (photoloto.php)</a>
+ {$lm('photoloto.php', "/currentVersion/slideshow")}. CLI or Web program. The CLI is
+run from a CRON job.</li>
+<li><a target="_blank" href="currentVersion/showlottowinners.php">Show Lotto Winners</a>
+ {$lm('showlottowinners.php', "/currentVersion")}.</li>
 </ul>
 
 <h3>Ads Programs (not in production use)</h3>
@@ -638,10 +644,8 @@ $currlink
 <li><a target="_blank" href="/workingVersion/slideshow/slideshow.php">SlideShow</a>
 <span class='superextra'>*</span> {$lm($slideshowAr, '/workingVersion/slideshow')}
 </li>
-<li><a target=_blank" href="/v1.09/slideshow/playbingo.php">Play Bingo</a>
+<li><a target="_blank" href="/v1.09/slideshow/playbingo.php">Play Bingo</a>
  {$lm('playbingo.php', "/workingVersion/slideshow")}</li>
-<li><i>Photo Lotto (photoloto.php)</i>
- {$lm('photoloto.php', "/workingVersion/slideshow")}. A CLI run from CRON.</li>
 </ul>
 </div>
 
