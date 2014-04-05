@@ -23,7 +23,45 @@ if(file_exists(TOPFILE)) {
 $s->bannerFile = SITE_INCLUDES."/myphotochannelbanner.i.php";
 $S = new Tom($s);
 
-$h->title = "PhotoLotto Redeemption";
+$h->title = "PhotoLotto Redemption";
+$h->extra = <<<EOF
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#winnerphoto {
+  width: 500px;
+}
+table {
+  margin-left: 12px;
+}
+#table1 td:first-child {
+  width: 100px;
+}
+@media (max-width: 500px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+  #myphotochannelheader img {
+    max-width: 80%;
+  }
+  #winnerphoto {
+    max-width: 480px;
+    width: 100%;
+  }
+  table {
+    margin-left: 3px;
+  }
+  #table1 td:first-child {
+    50px;
+  }
+}
+</style>
+EOF;
 
 // Submit form
 
@@ -66,7 +104,7 @@ $h->banner = "<h1>PhotoLotto Winner Redeemption</h1>";
 
 list($top, $footer) = $S->getPageTopBottom($h);
 
-// Render Alread Won Page
+// Render Already Won Page
 
 if($redeemtime) {
   echo <<<EOF
@@ -100,34 +138,10 @@ list($loc) = $S->fetchrow('num');
 
 // Render Winner Page
 
-echo <<<EOF
-$top
-<style>
-table {
-  margin-left: 12px;
-}
-td:first-child {
-  width: 100px;
-}
-</style>
-<table>
-<tr><td><li>ID:</li></td><td>$id</td></tr>
-<tr><td><li>Name:</li></td><td>$name</td></tr>
-<tr><td><li>Email:</li></td><td>$email</td></tr>
-<tr><td><li>Prize:</li></td><td>$prize</td><tr>
-<tr><td><li>Expires:</li></td><td>$expires.</td></tr>
-</table>
-<table>
-<tr><td><li>Winning Photo:</li><br>
-<img width="400" src="/$loc" alt="/$loc"/>
-</td></tr>
-</table>
-<hr>
-EOF;
-
 if($today > $expires) {
   // Already Expired
   echo <<<EOF
+$top
 <h3>I am sorry but your prize has expired on $expires</h3>
 <p>Please play again and remember you must present your redemtion email no later than the
 experation date on the email.</p>
@@ -138,13 +152,32 @@ EOF;
   // Your are a winner
 
   echo <<<EOF
+$top
+<h2>Your Prize is: $prize</h2>
 <form method='post'>
 Enter employee ID or Name: <input type='text' name='employeeId'/><br>
 <input type='hidden' name='id' value='$winnerId'/>
 <input type='submit' name='submit' value='Submit'/>
 </form>
 <hr>
-$footer
 EOF;
 }
+
+  echo <<<EOF
+<table id="table1">
+<tr><td><li>ID:</li></td><td>$id</td></tr>
+<tr><td><li>Name:</li></td><td>$name</td></tr>
+<tr><td><li>Email:</li></td><td>$email</td></tr>
+<tr><td><li>Prize:</li></td><td>$prize</td><tr>
+<tr><td><li>Expires:</li></td><td>$expires.</td></tr>
+</table>
+<table id="table2">
+<tr><td><li>Winning Photo:</li><br>
+<img id="winnerphoto" src="/$loc" alt="/$loc"/>
+</td></tr>
+</table>
+<hr>
+$footer
+EOF;
+
 ?>
