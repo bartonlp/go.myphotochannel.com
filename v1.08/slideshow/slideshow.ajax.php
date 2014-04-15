@@ -80,7 +80,8 @@ $S->siteId = $S->sites['siteId'];
 // everything.
 
 if($S->sites['playbingo']) {
-  $S->query("select freq, intervals, drawnumber, whenWin from playbingo where siteId='{$S->sites['siteId']}'");
+  $S->query("select freq, intervals, drawnumber, whenWin ".
+            "from playbingo where siteId='{$S->sites['siteId']}'");
   list($S->sites['bingoFreq'], $S->sites['bingoInterval'],
        $S->sites['drawnumber'], $S->sites['bingoWhenWin']) = $S->fetchrow('num');
 }

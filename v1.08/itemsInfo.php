@@ -134,7 +134,7 @@ if($_GET['debug'] && $_GET['debug'] == $S->superuser) {
   $sql = "select count(*) from items where status='active'";
   $S->query($sql);
   list($cnt) = $S->fetchrow('num');
-
+// BLP 2014-04-14 -- 
   $sql = "select siteId, allowAds, allowVideo, playbingo, playLotto, perRecent, open, close from sites";
   $rows = $S->queryfetch($sql);
   $n = count($rows);
@@ -142,6 +142,7 @@ if($_GET['debug'] && $_GET['debug'] == $S->superuser) {
   $sql = "select count(*) from items where status='active' && siteId='$siteId'";
   $S->query($sql);
   list($cnt) = $S->fetchrow('num');
+// BLP 2014-04-14 --   
   $sql = "select siteId, allowAds, allowVideo, playbingo, playLotto, perRecent, open, close ".
          "from sites where siteId='$siteId'";
   $rows = $S->queryfetch($sql);
@@ -243,7 +244,7 @@ EOF;
     }
     $playbingo .= "</table>\n";
   }
-
+// BLP 2014-04-14 -- 
   $sql = "select data, expires, game, period, canPlay from playlotto where siteId='$siteId'";
   if($S->query($sql)) {
     $playlotto = <<<EOF

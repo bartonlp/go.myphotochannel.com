@@ -69,7 +69,8 @@ jQuery(document).on("pagebeforeshow", "#approvephotos-page", function(e, data) {
               emails.push({ext: ext, email: email});
             }
               
-            sql = "update items set status='active', showTime=now() where itemId='"+id+"' and siteId='"+siteId+"'";
+            sql = "update items set status='active', showTime=now() " +
+                  "where itemId='"+id+"' and siteId='"+siteId+"'";
           }
 
           // Send the sql to the Ajax program

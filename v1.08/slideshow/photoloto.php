@@ -1,5 +1,10 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-04-14 -- fix playlotto. This is in two tables, the appinfo and sites tables. It was
+// originally in the sites table but I moved playbingo and playlotto from the sites table to the
+// appinfo table but HAVE NOT yet removed them form the sites table. In cpanel.games I set these
+// values in the appinfo table but here I was reading playlotto from the sites table.
+// I have also fixed createNewSite.php to initialize the playbingo and playlotto tables.
 // BLP 2014-02-28 --
 // BLP 2014-02-25 -- $debug=true; This disables blacklist and outputs additional info to stdout
 // Play Lotto Game
@@ -71,7 +76,7 @@ function putit($msg) {
 }
 
 // Debug disables blacklist and outputs additional info to stdout.
-#$debug = true;
+$debug = true;
 
 if($debug) {
   putit("*********************");
@@ -83,8 +88,10 @@ if($debug) {
 
 $sites = array();
 
-$S->query("select s.siteId, data, expires, game, period, canPlay from sites as s left join playlotto as p ".
-          "on s.siteId=p.siteId where playLotto='yes'");
+$S->query("select s.siteId, data, expires, game, period, canPlay from sites as s ".
+          "left join playlotto as p on s.siteId=p.siteId ".
+          "left join appinfo as a on s.siteId=a.siteId ".
+          "where a.playLotto='yes'");
 
 while(list($site, $lottoData, $lottoExpires, $game, $period, $canPlay) = $S->fetchrow('num')) {
   array_push($sites, array('siteId'=>$site, 'lottoData'=>$lottoData,
@@ -233,8 +240,10 @@ foreach($sites as $site) {
   
   // Log info in the lottowinners table.
 
+  $mysqlprize = $S->escape($prize); // BLP 2014-04-14 -- add escape
+  
   $S->query("insert into lottowinners (siteId, name, email, itemId, prize, expires, winTime) ".
-            "values('$siteId', '$name', '$email', '$itemId', '$prize', '$expireDate', now())");
+            "values('$siteId', '$name', '$email', '$itemId', '$mysqlprize', '$expireDate', now())");
 
   $lottowinnerId = $S->getLastInsertId();
   

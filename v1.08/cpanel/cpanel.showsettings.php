@@ -135,7 +135,47 @@ echo <<<EOF
   </ul>
 	</div><!-- /content -->
     <div data-role="panel" id="showsettings-help" data-theme="b">
-    <p>Help goes here</p>
+    <ul>
+      <li>Life of Feature (minutes): A photo is classified as a <b>Feature</b> and shown at the beginning
+        of every <i>Show</i> segment for this number of minutes after it is uploaded.</li>
+      <li>When Photo Aged (days): The number of days before today that the photo is considered
+        <i>Recent</i> and therefore has a higher priority in the photo selection process.</li>
+      <li>Program Duration (images): The slide show is broken into two major segments: <i>Show</i>
+        and <i>Commercial Break</i>. This field determins how many photos will be displayed during
+        the <i>Show</i> segment before the <i>Commercial Break</i> occurs.</li>
+      <li>Max Features Per Show (images): The Maximum number of <b>Feature</b> photos that will be
+        shown during the <i>Show</i> segment. For example if the <b>Program Duration</b> is set to
+        20 and <b>Max Feature Per Show</b> is set to 10 and you have 50 new (<b>Feature</b> photos,
+        Then during the <i>Show</i> segment 10 <b>Feature</b> photos would be shown and then
+        10 non-feature photos, then the <b>Commercial Break</b> and then the next 10 <b>Feature</b>
+        photos etc.</li>
+      <li>Server Callback (images): The number of photos to display before the server is contacted
+        to get new photos.</li>
+      <li>Server Fast Callback (images): The number of photos to display before the server is
+        contacted to check on <b>Feature</b> photos and new announcements. This value is only valid
+        if the 'Pusher' logic is not active.</li>
+      <li>Allow Ads: If yes then 'Ads' are allowed during the <b>Commercial Break</b>.</li>
+      <li>Allow Video: If yes then 'Videos' are allowed during the <b>Commercial Break</b>.</li>
+      <li>Photo History: yes or no<br>
+        If yes then when someone submits a new photo other photos that the person has submited
+        are also made <b>Feature</b> photos.<br>
+        When yes is selected then four additional fields are displayed</li>
+      <ul>
+        <li>Type: The additional photos are selected a) at random b) chronologically</li>
+        <li>Limit: The maximum number of additional photos to select</li>
+        <li>More Recent (days): The number of days before now that the image was uploaded. That is
+          Image can be no older than N days before now.</li>
+        <li>Less Recent (days): The number of days before now that the image was uploaded. That is
+          the image must be N days before now.</li>
+     </ul>
+        So <b>Type</b>: 'Random', <b>Limit</b>: '3', <b>More Recent</b> '10',
+        <b>Less Recent</b>: '1' means:<br>
+        We select at most three photos at random from a pool consisten of photos that were uploaded
+        more recently than 10 days ago and yet less recently than one day ago.<br>
+        That is the image must be between 'More Recent' and 'Less Recent' days ago.
+   </ul>
+   <p>Once you have made all of your selection press <b>Submit</b> to post your changes. The screen
+     will blink <span style="color: green">GREEN</span> indicating that the post has happened.</p>
   </div>
 
 	<div data-role="footer">

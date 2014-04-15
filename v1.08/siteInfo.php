@@ -63,7 +63,7 @@ jQuery(document).ready(function($) {
 EOF;
 
 list($top, $footer) = $S->getPageTopBottom($h);
-
+// BLP 2014-04-14 -- 
 $changed = "/(allowAds)|(allowVideo)|(playbingo)|(playLotto)|(featureExt)|(perRecent)/";
 
 $S->query("select * from sites");

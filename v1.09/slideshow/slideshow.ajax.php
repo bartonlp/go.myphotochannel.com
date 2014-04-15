@@ -351,7 +351,8 @@ function getInfo($S) {
   }
 
   // Get the appinfo data
-
+  // NOTE: featureExt is currently only used by cpanal.approve. See the help for that page.
+  
   $sql = "select lifeOfFeature, whenPhotoAged, ".
          "callbackTime, frequentCallbackTime, progDuration, featuresPer, ".
          "allowAds, allowVideo, playbingo, playLotto, featureExt ".
@@ -387,7 +388,7 @@ function getInfo($S) {
                    'allowVideo'=>$allowVideo,
                    'playbingo'=>$playbingo,
                    'playLotto'=>$playLotto,
-                   'featureExt'=>$featureExt
+                   'featureExt'=>$featureExt // currently only used by cpanal.approve
                   );
   
   $sql = "select category, duration, transition, effect from categories where siteId='$S->siteId'";

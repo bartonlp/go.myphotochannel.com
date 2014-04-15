@@ -605,3 +605,16 @@ BLP 2014-02-28 --
 Facebook login for Felixs
 User:  facebook@felixsrestaurant.com
 Pass:  Felix6335
+
+BLP 2014-04-14 -- 
+  Fixed playbingo and playlotto, and sites and appinfo tables. We had the playbingo and playlotto 
+  field in both the sites and appinfo table. Originally I have the two fields in the sites table
+  but later moved them into the appinfo table (I think that is where they belong). I didn't however
+  remove them for the sites table at that time. The cpanel.games sets these fields in the appinfo
+  table (as it should) BUT the photoloto.php was looking at the sites table to see if photo lotto 
+  should play. I fixed this in photoloto.php.
+  Also the playbingo and playlotto tables were not being initialized by the createNewSite.php program
+  which could cause a problem if the appinfo.playlotto field was incorrectly set and there was NO
+  entry in the playlotto table for the site. I fixed that also.
+
+  cpanel.ajax.php: added $S->escape() where I thought it might be needed.

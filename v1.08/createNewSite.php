@@ -91,6 +91,12 @@ if($_POST['page'] == "createsite") {
   //cout("$sql");
   $S->query($sql);
 
+  // Add to playbingo and playlotto
+  $sql = "insert ignore into `playbingo` (siteId) values('$siteid')";
+  $S->query($sql);
+  $sql = "insert ignore into `playlotto` (siteId) values('$siteid')";
+  $S->query($sql);
+  
   $siteid = stripslashes($siteid);
   $name = stripslashes($fname) . " " .stripslashes($lname);
   echo <<<EOF

@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-04-14 -- $S->escape() add on update and insert of text.
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
   include(TOPFILE);
@@ -131,7 +132,7 @@ if($_GET['page'] == 'unload') {
 // **********************
 
 if($_POST['page'] == 'saveTextAnnounce') {
-  $text = $_POST['text'];
+  $text = $S->escape($_POST['text']); // BLP 2014-04-14 -- add escape
   $siteId = $_POST['siteId'];
 
   $sql = "insert into items (siteId, category, creatorName, description, status, type, location) ".
@@ -148,7 +149,7 @@ if($_POST['page'] == 'saveTextAnnounce') {
 // **************************
 
 if($_POST['page'] == 'saveTextFileAnnounce') {
-  $text = $_POST['text'];
+  $text = $S->escape($_POST['text']);
   $siteId = $_POST['siteId'];
 
   $sql = "insert into items (siteId, category, creatorName, description, status, type) ".
@@ -219,8 +220,6 @@ if($_POST['page'] == 'doSql') {
   if($sql == '') {
     echo "NO SQL"; exit();
   }
-
-  //echo $sql;
 
   $n = $S->query($sql);
   if(strpos($sql, 'select') !== false) {
@@ -350,6 +349,8 @@ if($_POST['page'] == 'itemsUpdate') {
   // siteId is passed in in $_POST
 
   $touch = ($touch == 'yes') ? $touch = ", showTime=now()" : $touch = '';
+
+  $desc = $S->escape($desc); // BLP 2014-04-14 -- add escape
   
   $sql = "update items set category='$cat', status='$status', description='$desc', ".
          "duration='$dur'$touch where itemId='$id'";
