@@ -1,4 +1,10 @@
 <?php
+// BLP 2014-04-25 -- This program takes a csv file and create database entries for the Cardinals
+// baseball team schedule. The csv file can be downloaded from
+// http://stlouis.cardinals.mlb.com/schedule/downloadable.jsp?c_id=stl&year=2014 . Just change the
+// year to get the current information. Or you can go to
+// http://mlb.mlb.com/search/?query=csv+scheule&c_id=mlb to get other teams and schedules.
+
 /*
 CREATE TABLE `sportsschedule` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

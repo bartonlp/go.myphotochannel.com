@@ -76,7 +76,7 @@ function putit($msg) {
 }
 
 // Debug disables blacklist and outputs additional info to stdout.
-$debug = true;
+#$debug = true;
 
 if($debug) {
   putit("*********************");
@@ -236,7 +236,7 @@ foreach($sites as $site) {
 
   $date = date("F j, Y", strtotime($date)); // Photo date
 
-  if($debug) putit("name: $name, email: $email, date: $date, itemId: $itemId");
+  putit("name: $name, email: $email, date: $date, itemId: $itemId");
   
   // Log info in the lottowinners table.
 
@@ -261,7 +261,7 @@ foreach($sites as $site) {
 You too can win the PhotoLoto,
 all you have to do is send in a photo.
 Use your phone and take a picture.
-Then send it to
+Then send it to 
 felixs@myphotochannel.com.
 It is that simple.
 EOF;

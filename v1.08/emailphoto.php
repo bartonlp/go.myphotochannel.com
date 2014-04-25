@@ -1,5 +1,12 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-01-28 -- removed temp echo
+// BLP 2014-01-21 -- temp echo each invocation for debugging.
+// BLP 2014-01-15 -- Added more error logic to retry database connection that gets lost.
+// BLP 2014-01-10 -- New approach. Just add photo to data base rename it and move it to content.
+// Then later go back and resize any of the unprocessed photos. I'll add a field to the items table
+// to indicate if the image is resized or not.
+// BLP 2014-01-09 -- Rework to use curl to send resize part to Apache   
 // Gather Photos Emailed to the Server by Customers
 // This is a CLI program run by CRON every minute.
 
@@ -12,6 +19,7 @@ if($str > 1) {
   echo "emailphoto.php already running. Done\n";
   exit();
 }
+$starttime = time();
 
 // Also force our TOPFILE
 define('TOPFILE', "/homepages/45/d454707514/htdocs/siteautoload.php");
@@ -63,6 +71,7 @@ $result = $S->getResult(); // get result because we do further query commands in
 // For each site
 
 //echo "SITE_ROOT: ".SITE_ROOT."\n";
+$totalphotos = 0;
 
 while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num')) {
   // escape siteId and save it in $S for functions and $siteId for main flow.
@@ -148,7 +157,8 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
 
         // $v is a numeric array of numeric arrays with [0]=part, [1]=filename
         date_default_timezone_set("America/Denver");
-        echo  date("Y-m-d H:i T") . ", $version, Nmsgs: " . ($check->Nmsgs) . ", Parts: " . count($v) . ", " . "\n";
+        echo  date("Y-m-d H:i T") . ", $version, Nmsgs: " . ($check->Nmsgs) .
+            ", Parts: " . count($v) . ", " . "\n";
 
         $msgBody = rtrim(get_part($mbox, $i, "TEXT/PLAIN"));
 
@@ -165,47 +175,34 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
             
           $part = imap_fetchbody($mbox, $i, $f[0]);
           
-          $image = base64_decode($part);
-
-          $newfile = SITE_ROOT ."/newphotos/{$siteId}-{$f[1]}";
-
-          $S->desc = $newfile;
-
-          // Does the file exist in the newphotos directory? If it does then for some ERROR reason
-          // we were not able to finish the last invocation of this program which should have
-          // removed the file.
+          $S->image = base64_decode($part);
+          $S->ext = strtolower(pathinfo($f[1], PATHINFO_EXTENSION));
           
-          if(file_exists($newfile) === false) {
-            // No error so process the new photo
-            // Write it to the newphotos directory and then process it via fixupNewPhotos()
-            
-            file_put_contents($newfile, $image);
+          $S = fixupNewPhotos($S);
 
+          if($S === false) {
+            echo "fixupNewPhotos FAILED: trying one more time.";
+            unset($S);
+            $S = new Database($GLOBALS['dbinfo']);
+
+            $S->siteId = $siteId;
+            $S->subject = $header->subject;
+            $S->from = $S->escape(escapeltgt($from));
+            $S->image = base64_decode($part);
+            $S->ext = strtolower(pathinfo($f[1], PATHINFO_EXTENSION));
+            
             $S = fixupNewPhotos($S);
-
             if($S === false) {
-              echo "fixupNewPhotos Error: \$S is false\n";
-              continue; // see if we can continue to the next foreach.
+              echo "fixupNewPhotos FAILED AGAIN: Exiting!";
+              exit();
             }
-
-            echo "$newfile -> $S->newfile\n";
-            
-            ++$photonum;
-          } else {
-            list($width, $height) = getimagesize($newfile);
-            echo "ERROR file exists: $newfile exists: h=$height, w=$width\n";
-            echo "unlink($newfile)\ndelete mbox $i\nimap_colose with expunge\nExiting\n";
-            unlink($newfile);
-            imap_delete($mbox, $i);
-            imap_close($mbox, CL_EXPUNGE); // remove any deleted messages
-            unset($image, $part, $from, $subject, $msgBody);
-            exit();
           }
 
-          unlink($newfile);
+          ++$photonum;
+          ++$totalphotos;
+          
           unset($image, $part, $from, $subject, $msgBody);
         }
-
         // Mark the email for deletion
 
         imap_delete($mbox, $i);
@@ -282,17 +279,23 @@ EOF;
 
 date_default_timezone_set("America/Denver");
 $d = date("Y-m-d H:i T");
-if(preg_match("/:00 /", $d)) {
-  echo "$d, Mark $version\n--------------------------\n";
+$time = time() - $starttime;
+
+if($totalphotos) {
+  echo "$d ALL DONE: Processed $totalphotos photos.\n".
+       "Elapsed time $time sec. Version $version\n==========================\n";  
+} elseif(preg_match("/:00 /", $d)) {
+  echo "$d, Mark $version\n==========================\n";
 }
+
+// BLP 2014-01-21 -- Output every invocation for debugging.
+//echo "$d Debug\n************************\n";
 
 exit();
 
 // HELPER FUNCTION
-// Resize the photo, move it to the 'content' directory and make the entry in the items table.
 
 function fixupNewPhotos($S) {
-  $filename = "$S->desc";
   // Put $S->siteId into $siteId so if we have to re new Database() we don't lose siteId!
   $siteId = $S->siteId;
   
@@ -309,8 +312,6 @@ function fixupNewPhotos($S) {
     $n = $S->query($sql);
   } catch(Exception $e) {
     unset($S);
-    unset($GLOBALS['S']);
-    
     $S = new Database($GLOBALS['dbinfo']);
     $S->siteId = $siteId;
     echo "RETRY: $sql\n";
@@ -319,156 +320,49 @@ function fixupNewPhotos($S) {
       $n = $S->query($sql); // try same sql again
     } catch(Exception $e) {
       echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
-      exit();
+      return false;
     }
   }
-
+  
   if(!$n) {
-    echo "\nERROR: select max failed\n";
-    return;
+    echo "Error: ".$e->getCode()."\n";
+    exit();
   }
   
   list($newid) = $S->fetchrow('num');
   ++$newid;
 
-  // regardless of what type the original image was (gif, png or jpeg) we always output a jpg
-  // image. This prevents animated gif's which could contain inappropriate material that might be
-  // hard to detect.
-
-  if($GLOBALS['debug']) echo "before resizeImage\n";
-  
-  if(resizeImage($filename, SITE_ROOT ."/content/$newid.jpg") === false) {
-    echo "resizeImage returned false\n";
-    return false;
-  }
-
-  if($GLOBALS['debug']) echo "after resizeImage\n";
-  
   try {
-    $sql = "insert into items (siteId, itemId, category, showTime, creatorName, description, status, location) ".
-           "values('$siteId', '$newid', '$cat', now(), '$S->from', '$newid.jpg', 'new', 'content/$newid.jpg')";
+    $sql = "insert into items (siteId, itemId, category, showTime, ".
+           "creatorName, description, status, location, resized) ".
+           "values('$siteId', '$newid', '$cat', now(), ".
+           "'$S->from', '$newid.jpg', 'new', 'content/$newid.$S->ext', 'no')";
 
     $S->query($sql);
   } catch(Exception $e) {
-    // I think this will cause the file to be processed on the next minute because it has not
-    // been deleted from the email queue.
-
     unset($S);
-    unset($GLOBALS['S']);
-    
     $S = new Database($GLOBALS['dbinfo']);
     $S->siteId = $siteId;
+    echo "RETRY: $sql\n";
+
     try {
-      $S->query($sql); // try same sql again
+      $n = $S->query($sql); // try same sql again
     } catch(Exception $e) {
-      echo "Tried retry after unser and new Database but still got error. Error: ".$e->getCode()."\n";
-      unlink($filename);
+      echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
       return false;
     }
   }
 
-  $S->msg .= "$newid.jpg\n";
-  $S->newfile = "$newid.jpg";
+  $S->msg .= "$newid.$S->ext\n";
+  $newfile = "$newid.$S->ext";
+
+  // Now just put this fullsized image in the content directory.
+  // We will resize it later.
+
+  echo "Filename: ".SITE_ROOT ."/content/$newfile\n";
+  file_put_contents(SITE_ROOT ."/content/$newfile", $S->image);
 
   return $S;
-}
-
-// resize the image file
-// @param string, $filename: path+filename of source
-// @param string, $destfile: path+filename of destination
-// @return bool, true if OK false if failure.
-
-function resizeImage($filename, $destfile) {
-  // get an image for the original source file: jpeg, gif, png
-
-  if($GLOBALS['debug']) echo "start resizeImage\n";
-  
-  $source = open_image($filename); 
-
-  if($GLOBALS['debug']) echo "after open_image\n";
-  
-  if($source === false) {
-    echo "source FALSE\n";
-    return false;
-  }
-
-  // The original width and height of the image
-  // returns an array 0=width, 1=height, 2=IMAGETYPE_XXX, 3=string 'height="yyy" width="xxx"',
-  // mime=the-mime-type like 'image/jpg' etc.
-  
-  list($width, $height) = getimagesize($filename);
-  $beforeSize = $width * $height;
-  if($GLOBALS['debug']) echo "size: $beforeSize\n";
-  
-  // Check to see how big the image is. If it is more than 1/2 meg then scale it down.
-  
-  if(($width * $height) > 500000) {
-    $w = 600/($height/$width);
-    $h = $w*$height/$width;
-
-    // create a new image to use for scaling
-    
-    $thumb = imagecreatetruecolor($w, $h);
-
-    if($GLOBALS['debug']) echo "after imagecreatetruecolor\n";
-    
-    // Resize
-
-    imagecopyresampled($thumb, $source, 0, 0, 0, 0, $w, $h, $width, $height);
-
-    // regardless of what type the original image was (gif, png or jpeg) we always output a jpg
-    // image. This prevents animated gif's which could contain inappropriate material that might be
-    // hard to detect.
-
-    if($GLOBALS['debug']) echo "before imagejpeg thumb\n";
-        
-    imagejpeg($thumb, $destfile);
-
-    imagedestroy($thumb);
-    imagedestroy($source);
-  } else {
-    if($GLOBALS['debug']) echo "before imagespeg source\n";
-    
-    imagejpeg($source, $destfile);
-    imagedestroy($source);
-  }
-
-  list($width, $height) = getimagesize($destfile);
-  $afterSize = $width * $height;
-  echo "size before: $beforeSize, size after: $afterSize\n";
-  
-  if($GLOBALS['debug']) echo "end of resizeimage\n";
-  
-  return true;
-}
-
-// Helper for resizeImage();
-
-function open_image($file) {
-  //detect type and process accordinally
-
-  if($GLOBALS['debug']) echo "start open_image: $file\n";
-  
-  $size = getimagesize($file);
-
-  if($GLOBALS['debug']) echo "after getimagesize {$size['mime']}\n";
-  
-  switch($size["mime"]){
-    case "image/jpeg":
-      $im = imagecreatefromjpeg($file); //jpeg file
-      break;
-    case "image/gif":
-      $im = imagecreatefromgif($file); //gif file
-      break;
-    case "image/png":
-      $im = imagecreatefrompng($file); //png file
-      break;
-    default:
-      $im = false;
-      break;
-  }
-  if($GLOBALS['debug']) echo "end open_image: $im\n";
-  return $im;
 }
 
 // Send text message to phone, at carrier

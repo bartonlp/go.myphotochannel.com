@@ -39,22 +39,26 @@ function positionClearlog() {
   
   $("[href*='emailphoto.log']").siblings(".size").load("index.php",
     {page: 'filesize', file: '/emailphoto.log'}, function(data) {
-    //console.log("emailphoto.log", data);
-    $("[href*='/resize.log']").siblings(".size").load("index.php",
-      {page: 'filesize', file: '/resize.log'}, function(data) {
-      //console.log("resize.log", data);
-      var x = $(".clearlog");
-      var y = $(x[0]).position().left;
-      $(x[1]).css({position: 'absolute', left: y+"px"});
-      
-      $("[href*='/database.log']").siblings(".size").load("index.php",
-        {page: 'filesize', file: '/database.log'}, function(data) {
-        //console.log("database.log", data);  
-        var x = $(".clearlog"); // there are three elements
-        var y = $(x[0]).position().left;
-        $(x[2]).css({position:'absolute', left: y+"px"});
+      $("[href*='/resize.log']").siblings(".size").load("index.php",
+        {page: 'filesize', file: '/resize.log'}, function(data) {
+          var x = $(".clearlog");
+          var y = $(x[0]).position().left;
+          $(x[1]).css({position: 'absolute', left: y+"px"});
+
+          $("[href*='/photolotto.log']").siblings(".size").load("index.php",
+            {page: 'filesize', file: '/photolotto.log'}, function(data) {
+            var x = $(".clearlog");
+            var y = $(x[0]).position().left;
+            $(x[1]).css({position: 'absolute', left: y+"px"});
+                
+            $("[href*='/database.log']").siblings(".size").load("index.php",
+              {page: 'filesize', file: '/database.log'}, function(data) {
+                var x = $(".clearlog"); // there are three elements
+                var y = $(x[0]).position().left;
+                $(x[2]).css({position:'absolute', left: y+"px"});
+            });
+          });
       });
-    });
   });
   // Every five minutes update
   positionTimeout = setTimeout(positionClearlog, 30000); 

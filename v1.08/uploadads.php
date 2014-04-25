@@ -66,7 +66,7 @@ if($_POST['page'] == 'upload') {
 $nopagetop = true;   
 include("cpanel/cpanel.top.php");
 
-if(!$superuser) {
+if(!$S->superuser) {
   echo "<h1>Sorry Only for Super Users</h1>";
   exit();
 }

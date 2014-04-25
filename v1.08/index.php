@@ -616,6 +616,11 @@ you have certified.</p>
 <span class='size'></span>
 <button class="clearlog" data-logname="/resize.log">Clear Log</button>
 </li>
+<!-- BLP 2014-04-17 -- add photolotto.log -->
+<li><a class='showlog' target="_blank" href="/photolotto.log">Photo Lotto Log</a>
+<span class='size'></span>
+<button class="clearlog" data-logname="/photolotto.log">Clear Log</button>
+</li>
 <li><a class='showlog' target="_blank" href="/database.log">Error Log</a>
 <span class='size'></span>
 <button class="clearlog" data-logname="/database.log">Clear Log</button></li>

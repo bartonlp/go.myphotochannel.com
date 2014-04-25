@@ -60,7 +60,7 @@ $tbl
 </div>
 <img id="cardinalsimg" src="/images/mlb.png"/>
 EOF;
-file_put_contents("adscontent/mlb.html", $file);
+file_put_contents(DOC_ROOT ."/adscontent/mlb.html", $file);
 echo <<<EOF
 mlb.html created\n
 EOF;
