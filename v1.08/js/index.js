@@ -31,43 +31,30 @@ function getTable(callback) {
 // BLP 2014-01-10 -- resize.log
 // Every 5 minutes load the log files via Ajax and reposition the 'Clear Log' buttons.
 
+var maxx =0;
+
 function positionClearlog() {
   // class clearlog does not exist if this is not superuser.
   
   if($(".clearlog").length == 0)
     return;
-  
-  $("[href*='emailphoto.log']").siblings(".size").load("index.php",
-    {page: 'filesize', file: '/emailphoto.log'}, function(data) {
-      $("[href*='/resize.log']").siblings(".size").load("index.php",
-        {page: 'filesize', file: '/resize.log'}, function(data) {
-          var x = $(".clearlog");
-          var y = $(x[0]).position().left;
-          $(x[1]).css({position: 'absolute', left: y+"px"});
 
-          $("[href*='/photolotto.log']").siblings(".size").load("index.php",
-            {page: 'filesize', file: '/photolotto.log'}, function(data) {
-            var x = $(".clearlog");
-            var y = $(x[0]).position().left;
-            $(x[1]).css({position: 'absolute', left: y+"px"});
-                
-            $("[href*='/database.log']").siblings(".size").load("index.php",
-              {page: 'filesize', file: '/database.log'}, function(data) {
-                var x = $(".clearlog"); // there are three elements
-                var y = $(x[0]).position().left;
-                $(x[2]).css({position:'absolute', left: y+"px"});
-            });
-          });
-      });
+  $("#logfiles div:first-child").each(function(i, v) {
+    // Get the logfile name
+    var logname = $("a", v).attr("href");
+    $(".size", v).load("index.php", { page: 'filesize', file: logname });
   });
+  
   // Every five minutes update
-  positionTimeout = setTimeout(positionClearlog, 30000); 
+  positionTimeout = setTimeout(positionClearlog, 3000); 
 }
 
 // READY
 
 jQuery(document).ready(function($) {
   // Get the startup table and hide any closed sites.
+
+  $("#logfiles li span").after("<span class='rightside'>");
   
   getTable();
 
@@ -155,7 +142,11 @@ jQuery(document).ready(function($) {
   // and then put up a 'posted' message for 2 seconds.
 
   $(".clearlog").on("click", function(e) {
+    // Clear any pending timeout before calling positionClearlog
+    clearTimeout(positionTimeout);
+    positionTimeout = null;
     var file = $(this).attr("data-logname");
+
     $.ajax({
       url: 'index.php',
       data: {page: 'clearlog', logfile: file},
@@ -163,19 +154,7 @@ jQuery(document).ready(function($) {
              //console.log(data);
              $("body").append("<div id='posted'>Posted</div>");
              setTimeout(function() { $("#posted").remove(); }, 2000);
-
-             clearTimeout(positionTimeout); // Clear any pending timeout before calling positionClearlog
-             positionTimeout = null;
-             
-             if(file != 'database.log') {
-               $("[href*='emailphoto.log']").siblings(".size").load("index.php",
-                 {page: 'filesize', file: file},
-                 positionClearlog());
-             } else {
-               $("[href*='database.log']").siblings(".size").load("index.php",
-                 {page: 'filesize', file: file},
-                 positionClearlog());
-             }
+             positionClearlog();
            },
            error: function(err) {
              console.log(err);

@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-04-27 -- escape $name in case there is a '
 // BLP 2014-04-14 -- fix playlotto. This is in two tables, the appinfo and sites tables. It was
 // originally in the sites table but I moved playbingo and playlotto from the sites table to the
 // appinfo table but HAVE NOT yet removed them form the sites table. In cpanel.games I set these
@@ -241,9 +242,10 @@ foreach($sites as $site) {
   // Log info in the lottowinners table.
 
   $mysqlprize = $S->escape($prize); // BLP 2014-04-14 -- add escape
+  $xname = $S->escape($name);
   
   $S->query("insert into lottowinners (siteId, name, email, itemId, prize, expires, winTime) ".
-            "values('$siteId', '$name', '$email', '$itemId', '$mysqlprize', '$expireDate', now())");
+            "values('$siteId', '$xname', '$email', '$itemId', '$mysqlprize', '$expireDate', now())");
 
   $lottowinnerId = $S->getLastInsertId();
   

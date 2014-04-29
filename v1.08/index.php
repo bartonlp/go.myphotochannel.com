@@ -1,3 +1,4 @@
+
 <?php
 // BLP 2014-03-25 -- added last day photos and total photos to table#sitesinfo
 // index for tomsproject
@@ -101,8 +102,8 @@ function getversion($path) {
 
 // List of file for slideshow and cpanel. Used all over.
 
-$slideshowRealName = realpath(DOC_ROOT ."currentVersion/slideshow");
-$cpanelRealName = realpath(DOC_ROOT ."currentVersion/cpanel");
+$slideshowRealName = realpath(DOC_ROOT ."/currentVersion/slideshow");
+$cpanelRealName = realpath(DOC_ROOT ."/currentVersion/cpanel");
 
 $slideshowAr = array("slideshow.php", "slideshow.ajax.php", "js/slideshow.js");
 $cpanelAr = array("cpanel.*php", "cpanel.ajax.php", "js/cpanel.*.js");
@@ -335,6 +336,7 @@ if($_POST['page'] == "verify") {
     $select = "<select name='siteinfo'>\n";
     
     while(list($userId, $siteId) = $S->fetchrow($result, 'num')) {
+      // if the id starts with SU- (superuser) id then skip it.
       if(substr($siteId, 0, 3) == "SU-") {
         continue;
       }
@@ -345,6 +347,7 @@ if($_POST['page'] == "verify") {
 
     $h->banner = "<h1>Select Site</h1>";
     list($top, $footer) = $S->getPageTopBottom($h);
+    // $select has the <select id="siteinfo" options for the multiple sites the user is in.
     echo <<<EOF
 $top
 <p>You are associated with more than one site. Please select the site you wish to use.</p>
@@ -360,12 +363,12 @@ EOF;
   }
 
   // Only one site with this user
-
+/*
   if($userId != $_COOKIE['userId']) {
     // The userId cookie is not set so set it and loop back
     $S->setIdCookie($userId, 'userId');
   }
-
+*/
   goto UserHomePage;
   exit();
 }
@@ -375,23 +378,18 @@ EOF;
 
 if($_POST['page'] == "verify2") {
   list($userId, $siteId) = explode(",", $_POST['siteinfo']);
-
+/*
   if($userId != $_COOKIE['userId']) {
     // The userId cookie is not set so set it and loop back
     $S->setIdCookie($userId, 'userId');
   }
-
+*/
   goto UserHomePage;
   exit();
 }
 
-// URL GET arguments
-
-// If usercheck=true is on URL then do a user check
-
-if($_GET['usercheck'] == 'true') {
+if($_GET['dousercheck']) {
   goto DoUserCheck;
-  exit();
 }
 
 // Superuser COOKIE or query debug= or DoUserCheck.
@@ -467,12 +465,11 @@ if($superuser = $_GET['debug']) {
 } else {
   // Check 'user' email and password for access to user home page
 
-DoUserCheck:
+  DoUserCheck:
 
-  if($_GET['usercheck']) {
-    $h->banner = "<h1>Restricted Page</h1>";
-    list($top, $footer) = $S->getPageTopBottom($h);
-    echo <<<EOF
+  $h->banner = "<h1>Restricted Page</h1>";
+  list($top, $footer) = $S->getPageTopBottom($h);
+  echo <<<EOF
 $top
 <p>Myphotochannel users please enter you email address and password:</p>
 <form method="post">
@@ -485,15 +482,7 @@ $top
 </form>
 $footer
 EOF;
-    exit();
-  }
-  echo "Restricted Page";
-  exit();
-}
-
-if(empty($_GET) && !$superuser) {
-  echo "Restricted";
-  exit();
+exit();
 }
 
 // ******************************************************************
@@ -532,11 +521,13 @@ $r = $S->getResult();
 
 $sites = <<<EOF
 <p>There are now $n sites:</p>
+
 <style>
 #sitesinfo th {
   padding: 3px;
 }
 </style>
+
 <table id="sitesinfo" border="1">
 <thead>
 <tr><th>Site Id</th><th>Upload Email Address</th><th>Site Code</th>
@@ -581,50 +572,121 @@ alt='slideshow'>SlideShow ($currentVersion)</a></h2>
 <table border="1">
 $curSlideshowTimes
 </table>
+
 <p class='notes'>All <i>Last Modified</i> times are $tz.<br>
 Files modified during the last three days have the date in <span style="color: red">RED</span>.<br>
-<a target="_blank" href="/change.log">Change Log<a> started Oct. 4, 2013.
+<a target="_blank" href="/change.log">Change Log</a> started Oct. 4, 2013.
 </p>
 
 <p>The first time you run the <i>slideshow</i> you will need to enter the 'SiteCode' from the
 table below. Copy and past the code into the form.
 </p>
-<p>The email upload program (<i>emailphoto.php</i>) is a CLI CRON job running with an interval of one minute.</p>
+<p>The email upload program (<i>emailphoto.php</i>) is a CLI CRON job running with an interval
+ of one minute.
+</p>
 <p>Use the email address below to send photo to a site.</p>
 $sites
 <p>To run any site use the <b>Site Code</b> from the above table.
 You will need to clear your cookies for <b>go.myphotochannel.com</b> and then run the slide show.
-You should be prompted for your <b>Site Code</b>.</p>
+You should be prompted for your <b>Site Code</b>.
+</p>
 <p>To clear your cookie go to the <i>Settings</i> in Chrome. Page down to the
-bottom where it will say <i>Show Advanced Settings</i>, click on that. Then under <i>Privacy</i> select
+bottom where it will say <i>Show Advanced Settings</i>, click on that.
+Then under <i>Privacy</i> select
 <i>Contents Settings</i> and then <i>All cookies and site data</i>, type in
 <b>go.myphotochannel.com</b> and click on
 the cookies <b>SiteId</b>, <b>SiteCode</b> and remove each one.
-That's it. Now start the slideshow.</p>
+That's it. Now start the slideshow.
+</p>
 <p>To run the following in debug mode as 'super user' enter your secret code below. If you do
 not have a secret code you can still run the slide show in debug mode for the site for which
 you have certified.</p>
 
-<h3>Log Files</h3>
-<ul>
-<li><a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
+<style>
+#logfiles {
+  display: table;
+  margin-left: 20px;
+}
+.row  {
+  display: table-row;
+  line-height: 0px;
+}
+.left, .right {
+  display: table-cell;
+  padding-left: 10px;
+}
+#logfilesh3 {
+  margin-bottom: 0px;
+}
+</style>
+
+<h3 id="logfilesh3">Log Files</h3>
+
+<div id="logfiles">
+<div class="row">
+<div class="left"><a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
+<span class='size'></span></div>
+<div class="right"><button class="clearlog" data-logname="/emailphoto.log">Clear Log</button></div>
+</div>
+
+<div class="row">
+<div class="left"><a class='showlog' target="_blank" href="/resize.log">Resize Log</a>
+<span class='size'></span></div>
+<div class="right"><button class="clearlog" data-logname="/resize.log">Clear Log</button></div>
+</div>
+
+<div class="row">
+<div class="left"><a class='showlog' target="_blank" href="/photolotto.log">Photo Lotto Log</a>
+<span class='size'></span></div>
+<div class="right"><button class="clearlog" data-logname="/photolotto.log">Clear Log</button></div>
+</div>
+
+<div class="row">
+<div class="left"><a class='showlog' target="_blank" href="/database.log">Error Log</a>
+<span class='size'></span></div>
+<div class="right"><button class="clearlog" data-logname="/database.log">Clear Log</button></div>
+</div>
+</div>
+
+<!--
+<table id="logfiles">
+<tr>
+<td>
+<a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
 <span class='size'></span>
+</td>
+<td>
 <button class="clearlog" data-logname="/emailphoto.log">Clear Log</button>
-</li>
-<!-- BLP 2014-01-10 -- add resize.log -->
-<li><a class='showlog' target="_blank" href="/resize.log">Resize Log</a>
+</td>
+</tr>
+<td>
+<a class='showlog' target="_blank" href="/resize.log">Resize Log</a>
 <span class='size'></span>
+</td>
+<td>
 <button class="clearlog" data-logname="/resize.log">Clear Log</button>
-</li>
-<!-- BLP 2014-04-17 -- add photolotto.log -->
-<li><a class='showlog' target="_blank" href="/photolotto.log">Photo Lotto Log</a>
+</td>
+</tr>
+<tr>
+<td>
+<a class='showlog' target="_blank" href="/photolotto.log">Photo Lotto Log</a>
 <span class='size'></span>
+</td>
+<td>
 <button class="clearlog" data-logname="/photolotto.log">Clear Log</button>
-</li>
-<li><a class='showlog' target="_blank" href="/database.log">Error Log</a>
+</td>
+</tr>
+<tr>
+<td>
+<a class='showlog' target="_blank" href="/database.log">Error Log</a>
 <span class='size'></span>
-<button class="clearlog" data-logname="/database.log">Clear Log</button></li>
-</ul>
+</td>
+<td>
+<button class="clearlog" data-logname="/database.log">Clear Log</button>
+</td>
+</tr>
+</table>
+-->
 
 <h3>Super user code: <input id="superuser" value='$superuser'>
  Cache control <input id="cache" type="checkbox" checked/> <span style="font-size: 12px">
@@ -806,15 +868,6 @@ Files modified during the last three days have the date in <span style="color: r
 <p>The email upload program (<i>emailphoto.php</i>) is a CLI CRON job running
 with an interval of one minute.<br>
 Use the email address <i>$emailUsername</i> to send photo to a site.</p>
-
-<h3>Log Files</h3>
-<ul>
-<li><a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
-<span class='size'></span>
-</li>
-<li><a class='showlog' target="_blank" href="/database.log">Error Log</a>
-<span class='size'></span>
-</ul>
 
 <h3>Current Programs</h3>
 <div id="normaluser">
