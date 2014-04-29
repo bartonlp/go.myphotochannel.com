@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-04-29 -- made the table font size bigger and moved the margins a little
 // appinfo table information
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
@@ -23,15 +24,16 @@ EOF;
 
 $h->link =<<<EOF
 <style>
+/* BLP 2014-04-29 -- font-size from 6 to 16, width from 95 to 120, margin-left from 100 to 120 */
 #appinfo {
-
+  font-size: 16px;
 }
 #appinfo tr {
   border: 1px solid black;
 }
 #appinfo th:first-of-type, #appinfo td:first-of-type {
   position: absolute;
-  width: 95px;
+  width: 120px;
   left: 11px;
   top: auto;
 }
@@ -41,7 +43,7 @@ $h->link =<<<EOF
 }
 #tbldiv {
   overflow-x:scroll;  
-  margin-left:100px;
+  margin-left:120px;
   overflow-y:visible;
 }
 #bigdiv {

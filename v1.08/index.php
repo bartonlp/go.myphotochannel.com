@@ -575,7 +575,8 @@ $curSlideshowTimes
 
 <p class='notes'>All <i>Last Modified</i> times are $tz.<br>
 Files modified during the last three days have the date in <span style="color: red">RED</span>.<br>
-<a target="_blank" href="/change.log">Change Log</a> started Oct. 4, 2013.
+<a target="_blank" href="/change.log">Change Log</a> started Oct. 4, 2013.<br>
+<a target="_blank" href="/currentVersion/gitInfo.php">Git Info</a> Run various 'git' commands
 </p>
 
 <p>The first time you run the <i>slideshow</i> you will need to enter the 'SiteCode' from the
