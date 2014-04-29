@@ -25,9 +25,10 @@ echo <<<EOF
 $top
 <ul>
 <li><a href="gitInfo.php?page=status">'git status'</a></li>
-<li><a href="gitInfo.php?page=log">'git log'</a></li>
-<li><a href="gitInfo.php?page=diff -w">'git diff -w'</a></li>
-<li><a href="gitInfo.php?page=diff -w HEAD">'git diff -w HEAD'</a></li>
+<li><a href="gitInfo.php?page=log --abbrev-commit">'git log'</a></li>
+<li><a href="gitInfo.php?page=diff -w">'git diff -w'</a> diff between uncommited and HEAD</li>
+<li><a href="gitInfo.php?page=diff -w HEAD^">'git diff -w HEAD^'</a>
+diff between HEAD and previous HEAD</li>
 </ul>
 <hr>
 $footer
