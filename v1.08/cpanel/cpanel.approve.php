@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-04-30 -- if image file does not exist delete record.
 // BLP 2014-04-25 -- Add resize logic here instead of doing it via a cron.
 
 include("cpanel.top.php");
@@ -15,10 +16,12 @@ function getversion($path) {
 }
 
 $version = getversion(getcwd());
+
 date_default_timezone_set("America/Denver");
 file_put_contents($S->resizelog,  "==========================\n".
                   "cpanel.approve: Resize: version $version\n".
-                  date("Y-m-d H:i T" . "\n"),
+                  date("Y-m-d H:i T" . "\n") .
+                  "$S->siteId\n",
                   FILE_APPEND);
 
 $starttime = time();
@@ -44,9 +47,9 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   if(!file_exists($location)) {
     // If we can't find the photo mark the database item as inactive and press on.
     file_put_contents($S->resizelog,
-                      "ERROR: file $location does not exist, marking inactive.\n",
+                      "ERROR: file $location does not exist, DELETE record.\n",
                       FILE_APPEND);
-    $S->query("update items set status='inactive' where itemId=$itemId");
+    $S->query("delete from items where itemId=$itemId");
     continue;
   }
 
@@ -54,9 +57,9 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   
   if(resizeImage($location, $destfile, $S) === false) {
     // ERROR
-    file_put_contents($S->resizelog, "ResizeImage Error: $location<br>", FILE_APPEND);
-    // If we got an error mark the item inactive and press on.
-    $S->query("update items set status='inactive' where itemId=$itemId");
+    file_put_contents($S->resizelog, "ResizeImage Error SKIP: $location\n", FILE_APPEND);
+    // BLP 2014-04-30 -- just skip for now
+    //$S->query("update items set status='inactive' where itemId=$itemId");
     continue;
   }
 
@@ -95,7 +98,7 @@ function resizeImage($filename, $destfile, $S) {
   $source = open_image($filename); 
 
   if($source === false) {
-    file_put_contents($S->resizelog, "ERROR: open_image($filename) FALSE\n",
+    file_put_contents($S->resizelog, "ERROR: open_image($filename)\n",
                       FILE_APPEND);
     return false;
   }

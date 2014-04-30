@@ -39,14 +39,14 @@ function positionClearlog() {
   if($(".clearlog").length == 0)
     return;
 
-  $("#logfiles div:first-child").each(function(i, v) {
+  $("#logfiles .row div:first-child").each(function(i, v) {
     // Get the logfile name
-    var logname = $("a", v).attr("href");
+    var logname = $("a", v).attr("data-logname");
     $(".size", v).load("index.php", { page: 'filesize', file: logname });
   });
   
   // Every five minutes update
-  positionTimeout = setTimeout(positionClearlog, 3000); 
+  positionTimeout = setTimeout(positionClearlog, 30000); 
 }
 
 // READY
@@ -129,10 +129,15 @@ jQuery(document).ready(function($) {
 
   $("#links").on("click", "a", function(e) {
     var s = $("#superuser").val();
-    if(!s) s = 'true';
+    if(!s) {
+      s = 'true';
+    }
     var cache = '';
     if($("#cache").prop("checked")) {
-      cache = "&cache=true";
+      // BLP 2014-04-30 -- make cache be random!
+      var d = new Date();
+      cache = "&cache=" + d.getTime();
+      // BLP 2014-04-30 -- cache = "&cache=true";
     }
     window.open($(this).attr("href")+"?debug="+s+cache);
     return false;

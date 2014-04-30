@@ -45,8 +45,9 @@ $starttime = time();
 
 try {
   // BLP 2014-01-21 -- add status='active'
-  $S->query("select itemId, location from items where resized='no' ".
-            "and status='active' and type='image'");
+  $S->query("select itemId, location, siteId from items where resized='no' ".
+            "and type='image'");
+  
 } catch(Exception $e) {
   unset($S);
   $S = new Database($GLOBALS['dbinfo']);
@@ -63,7 +64,7 @@ $r = $S->getResult();
 
 $itemCnt = 0;
 
-while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
+while(list($itemId, $location, $siteId) = $S->fetchrow($r, 'num')) {
   $ar = pathinfo($location);
   // Build the destination file name. Make sure it is a 'jpg' regardless of what the original was.
   
@@ -74,8 +75,8 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   
   if(!file_exists($location)) {
     // BLP 2014-01-21 -- If we can't find the photo mark the database item as inactive and press on.
-    echo "ERROR: file $location does not exist, marking inactive.\n";
-    $S->query("update items set status='inactive' where itemId=$itemId");
+    echo "ERROR ($siteId): file $location does not exist, DELETE.\n";
+    $S->query("delete from items where itemId=$itemId");
     continue;
   }
 
@@ -83,7 +84,7 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   
   if(resizeImage($location, $destfile) === false) {
     // ERROR
-    echo "ResizeImage Error: $location\n";
+    echo "ResizeImage Error ($siteId): $location\n";
     // BLP 2014-01-21 -- If we got an error mark the item inactive and press on.
     $S->query("update items set status='inactive' where itemId=$itemId");
     continue;
@@ -107,7 +108,7 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
     }
   }
 
-  echo "Image $itemId $location Resized\n";
+  echo "Image $siteId, $itemId, $location Resized\n";
   ++$itemCnt;
 }
 
@@ -116,7 +117,7 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
 if($itemCnt) {
   $time = time() - $starttime;
 
-  echo date("Y-m-d H:i T") . "-- processed $itemCnt photoe in $time sec. DONE\n--------------------------\n";
+  echo date("Y-m-d H:i T") . "-- processed $itemCnt photos in $time sec. DONE\n--------------------------\n";
 }
 
 exit();

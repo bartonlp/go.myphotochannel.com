@@ -168,8 +168,8 @@ This is the full screen PC version not the iPhone version.</li>
 {$lm('appInfo.php', "$path")}</li>
 <li><a target="_blank" href="$path/webstats.php">Web Stats</a>
 <span class='super'>*</span>  {$lm('webstats.php', "$path")}</li>
-<li><a target="_blank" href="$path/itemsTableMaint.php">Check Items Table for Integrity</a> 
-<span class='super'>*</span>  {$lm('itemsTableMaint.php', "$path")}</li>
+<li><a target="_blank" href="$path/itemsTableMaint2.php">Check Items Table for Integrity</a> 
+<span class='super'>*</span>  {$lm('itemsTableMaint2.php', "$path")}</li>
 <li><a target="_blank" href="$path/uploadsforweek.php">Who Emailed Photos This Week</a>
  {$lm('uploadsforweek.php', "$path")}</li>
 <li><a target="_blank" href="$path/whoapproved.php">Who Approved Photos</a>
@@ -625,69 +625,33 @@ you have certified.</p>
 
 <div id="logfiles">
 <div class="row">
-<div class="left"><a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
+<div class="left"><a class='showlog' target="_blank" data-logname="/emailphoto.log"
+href="/emailphoto.log">Email Upload Log</a>
 <span class='size'></span></div>
 <div class="right"><button class="clearlog" data-logname="/emailphoto.log">Clear Log</button></div>
 </div>
 
 <div class="row">
-<div class="left"><a class='showlog' target="_blank" href="/resize.log">Resize Log</a>
+<div class="left"><a class='showlog' target="_blank" data-logname="/resize.log"
+href="/resize.log">Resize Log</a>
 <span class='size'></span></div>
 <div class="right"><button class="clearlog" data-logname="/resize.log">Clear Log</button></div>
 </div>
 
 <div class="row">
-<div class="left"><a class='showlog' target="_blank" href="/photolotto.log">Photo Lotto Log</a>
+<div class="left"><a class='showlog' target="_blank" data-logname="/photolotto.log"
+href="/photolotto.log">Photo Lotto Log</a>
 <span class='size'></span></div>
 <div class="right"><button class="clearlog" data-logname="/photolotto.log">Clear Log</button></div>
 </div>
 
 <div class="row">
-<div class="left"><a class='showlog' target="_blank" href="/database.log">Error Log</a>
+<div class="left"><a class='showlog' target="_blank" data-logname="/database.log"
+href="/database.log">Error Log</a>
 <span class='size'></span></div>
 <div class="right"><button class="clearlog" data-logname="/database.log">Clear Log</button></div>
 </div>
 </div>
-
-<!--
-<table id="logfiles">
-<tr>
-<td>
-<a class='showlog' target="_blank" href="/emailphoto.log">Email Upload Log</a>
-<span class='size'></span>
-</td>
-<td>
-<button class="clearlog" data-logname="/emailphoto.log">Clear Log</button>
-</td>
-</tr>
-<td>
-<a class='showlog' target="_blank" href="/resize.log">Resize Log</a>
-<span class='size'></span>
-</td>
-<td>
-<button class="clearlog" data-logname="/resize.log">Clear Log</button>
-</td>
-</tr>
-<tr>
-<td>
-<a class='showlog' target="_blank" href="/photolotto.log">Photo Lotto Log</a>
-<span class='size'></span>
-</td>
-<td>
-<button class="clearlog" data-logname="/photolotto.log">Clear Log</button>
-</td>
-</tr>
-<tr>
-<td>
-<a class='showlog' target="_blank" href="/database.log">Error Log</a>
-<span class='size'></span>
-</td>
-<td>
-<button class="clearlog" data-logname="/database.log">Clear Log</button>
-</td>
-</tr>
-</table>
--->
 
 <h3>Super user code: <input id="superuser" value='$superuser'>
  Cache control <input id="cache" type="checkbox" checked/> <span style="font-size: 12px">
