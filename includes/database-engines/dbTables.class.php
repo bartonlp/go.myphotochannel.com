@@ -1,9 +1,5 @@
 <?php
-/*define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
-if(file_exists(TOPFILE)) {
-  include(TOPFILE);
-} else throw new Exception(TOPFILE . "not found");
-*/
+// BLP 2014-05-01 -- "$10 off" needs quotemeta($v) below
 // Make database tables given either a SiteClass or Database class object.
 
 class dbTables {
@@ -241,9 +237,11 @@ class dbTables {
       }
 
       // Replace the key in the $desc with the value.
-      
+
       foreach($row as $k=>$v) {
+        $v = quotemeta($v); // BLP 2014-05-01 -- Solve the "$10 off" problem.
         $desc = preg_replace("/{$sdelimlft}{$k}{$sdelimrit}/", "{$rdelimlft}{$v}{$rdelimrit}", $desc);
+        $desc = stripslashes($desc); // the quotemeta() will put a \ in front of . \ + * ? [ ^ ] ( $ )
       }
 
       // callback2 can modify the $desc after the fields have been replaced
@@ -297,7 +295,7 @@ class dbTables {
     if($tbl === false) {
       return false;
     }
-    
+
     extract($tbl);
 
     $ftr = $extra['footer'] ? "<tfoot>\n{$extra['footer']}\n</tfoot>\n" : null;
