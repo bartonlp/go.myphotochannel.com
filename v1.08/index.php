@@ -1,4 +1,3 @@
-
 <?php
 // BLP 2014-03-25 -- added last day photos and total photos to table#sitesinfo
 // index for tomsproject

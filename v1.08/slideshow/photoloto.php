@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-05-05 -- make 'name has no email' a debug statement. Add datetime to title line.
 // BLP 2014-04-27 -- escape $name in case there is a '
 // BLP 2014-04-14 -- fix playlotto. This is in two tables, the appinfo and sites tables. It was
 // originally in the sites table but I moved playbingo and playlotto from the sites table to the
@@ -111,8 +112,9 @@ foreach($sites as $site) {
   $period = $site['period']; // Period to look for photos in 'items' table
   $canPlay = $site['canPlay']; // When winner can play again. Blacklist
 
-  putit("\nSiteId: $siteId");
-  
+  // BLP 2014-05-05 -- Add datetime
+  putit("================================\n" . date("Y-m-d H:i T") ." SiteId: $siteId");
+
   if($cli === true) {
     // update game
     $S->query("update playlotto set game='$game' where siteId='$siteId'");
@@ -181,7 +183,7 @@ foreach($sites as $site) {
     // email address then continue to next photo.
     
     if(strpos($name, '@') === false) {
-      putit("$name: Name has No Email Address");
+      if($debug) putit("$name: Name has No Email Address"); // BLP 2014-05-05 -- make debug only
       continue; // no email address
     }
 
