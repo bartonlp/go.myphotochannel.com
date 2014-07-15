@@ -15,9 +15,9 @@
 
 // Look to see if we are already running
 
-$str = exec("ps |grep 'emailphoto.php'|wc -l");
+$str = exec("ps |grep 'emailphoto.ifttt.php'|wc -l");
 if($str > 1) {
-  echo "emailphoto.php already running. Done\n";
+  echo "emailphoto.ifttt.php already running. Done\n";
   exit();
 }
 $starttime = time();
@@ -53,7 +53,7 @@ $secret = '86714601dfa6e13a87f7';
 $pusher = new Pusher($key, $secret, $app_id);
 
 $sql = "select siteId, emailServer, emailUsername, emailPassword, emailPort ".
-       "from sites where status='active'";
+       "from sites where siteId='Site-Demo'"; // status='active'";
 try {
   $S->query($sql);
 } catch(Exception $e) {
@@ -209,15 +209,68 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
 
         imap_delete($mbox, $i);
       } else {
-        $msgBody = rtrim(get_part($mbox, $i, "TEXT/PLAIN"));
-        if(!empty($msgBody)) {
-          $msgBody .= "\n";
-        }
-        echo "NO IMAGE: from: $header->fromaddress, subject: $header->subject\n$msgBody--------------------------\n";
-        unset($msgBody);
+        $from = $header->fromaddress;
+
+        // Check if this is an IFTTT photo
         
-        imap_delete($mbox, $i);
-        continue;
+        if($from == "IFTTT Action <action@ifttt.com>") {
+          date_default_timezone_set("America/Denver");
+          echo date("Y-m-d H:i T") . ", $from". "\n--------------------------\n";
+
+          $S->subject = $header->subject;
+          $S->from = $S->escape(escapeltgt($from));
+
+          // This is a photo from IFTTT
+          // Get the text/html part and then get the '<img src="http://ift.tt/... ' item
+
+          $msgBody = rtrim(get_part($mbox, $i, "TEXT/HTML"));
+
+          if(preg_match('~<img src="(http://ift.tt/.*?)"~', $msgBody, $m)) {
+            echo "IFTTT Link: $m[1]\n";
+            $filename = $m[1];
+            $S->image = file_get_contents($filename);
+            $S->ext = 'jpg';
+            $S = fixupNewPhotos($S);
+            if($S === false) {
+              echo "fixupNewPhotos FAILED: trying one more time.";
+              unset($S);
+              $S = new Database($GLOBALS['dbinfo']);
+
+              $S->siteId = $siteId;
+              $S->subject = $header->subject;
+              $S->from = $S->escape(escapeltgt($from));
+              $S->image = base64_decode($part);
+              $S->ext = strtolower(pathinfo($f[1], PATHINFO_EXTENSION));
+
+              $S = fixupNewPhotos($S);
+              if($S === false) {
+                echo "fixupNewPhotos FAILED AGAIN: Exiting!";
+                exit();
+              }
+            }
+            ++$photonum;
+            ++$totalphotos;
+          } else {
+            echo "Did not find photo in IFTTT email\n";
+          }
+
+          unset($image, $part, $from, $subject, $msgBody);
+          // Mark the email for deletion
+
+          imap_delete($mbox, $i);
+        } else {
+          // NO IMAGE
+          
+          $msgBody = rtrim(get_part($mbox, $i, "TEXT/PLAIN"));
+          if(!empty($msgBody)) {
+            $msgBody .= "\n";
+          }
+          echo "NO IMAGE: from: $header->fromaddress, subject: $header->subject\n$msgBody--------------------------\n";
+          unset($msgBody);
+        
+          imap_delete($mbox, $i);
+          continue;
+        }
       }
     }
 

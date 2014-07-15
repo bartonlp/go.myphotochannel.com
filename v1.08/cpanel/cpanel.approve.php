@@ -1,4 +1,6 @@
 <?php
+// BLP 2014-06-03 -- If we get an open_image error set the staus to inactive. Also change the
+// select to only look at status='new'.
 // BLP 2014-04-30 -- if image file does not exist delete record.
 // BLP 2014-04-25 -- Add resize logic here instead of doing it via a cron.
 
@@ -27,9 +29,10 @@ file_put_contents($S->resizelog,  "==========================\n".
 $starttime = time();
 
 // Check if there are any file that need to be resized for this site
+// BLP 2014-06-03 -- add status='new' so we only look for unaproved photos (new)
 
 $S->query("select itemId, location from items where resized='no' ".
-          "and type='image' and siteId='$S->siteId'");
+          "and type='image' and siteId='$S->siteId' and status='new'");
 
 $r = $S->getResult(); // save because we do other database action within the loop
 
@@ -58,8 +61,10 @@ while(list($itemId, $location) = $S->fetchrow($r, 'num')) {
   if(resizeImage($location, $destfile, $S) === false) {
     // ERROR
     file_put_contents($S->resizelog, "ResizeImage Error SKIP: $location\n", FILE_APPEND);
-    // BLP 2014-04-30 -- just skip for now
-    //$S->query("update items set status='inactive' where itemId=$itemId");
+    // BLP 2014-06-03 -- mark ResizeImage error as inactive which will keep us from running into
+    // these problem photos every time we do an approve pass. In most cases these are photos that
+    // have a form of xxxxx. with no jpg etc. They for some reason did not get processed correctly.
+    $S->query("update items set status='inactive' where itemId=$itemId");
     continue;
   }
 

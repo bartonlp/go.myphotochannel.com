@@ -78,7 +78,7 @@ while($row = $S->fetchrow('assoc')) {
 <tr>
 EOF;
     foreach(array_keys($row) as $v) {
-      if(preg_match($changed, $v, $m)) {
+      if(preg_match($changed, $v)) {
         $hdr .= "<th style='color: red'>$v</th>";
       } else {
         $hdr .= "<th>$v</th>";

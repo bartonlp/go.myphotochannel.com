@@ -1,5 +1,8 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-06-08 -- NO photolotto with photos with creatorName==IFTTT Action
+// &lt;action@ifttt.com&gt; ALSO add category=image to select for items.
+// ALSO add s.status=active to select sites.
 // BLP 2014-05-05 -- make 'name has no email' a debug statement. Add datetime to title line.
 // BLP 2014-04-27 -- escape $name in case there is a '
 // BLP 2014-04-14 -- fix playlotto. This is in two tables, the appinfo and sites tables. It was
@@ -7,7 +10,6 @@
 // appinfo table but HAVE NOT yet removed them form the sites table. In cpanel.games I set these
 // values in the appinfo table but here I was reading playlotto from the sites table.
 // I have also fixed createNewSite.php to initialize the playbingo and playlotto tables.
-// BLP 2014-02-28 --
 // BLP 2014-02-25 -- $debug=true; This disables blacklist and outputs additional info to stdout
 // Play Lotto Game
 // Can run as CLI or web program
@@ -78,7 +80,7 @@ function putit($msg) {
 }
 
 // Debug disables blacklist and outputs additional info to stdout.
-#$debug = true;
+//$debug = true;
 
 if($debug) {
   putit("*********************");
@@ -90,10 +92,12 @@ if($debug) {
 
 $sites = array();
 
+// BLP 2014-06-08 -- add s.status='active' to select sites.
+
 $S->query("select s.siteId, data, expires, game, period, canPlay from sites as s ".
           "left join playlotto as p on s.siteId=p.siteId ".
           "left join appinfo as a on s.siteId=a.siteId ".
-          "where a.playLotto='yes'");
+          "where s.status='active' and a.playLotto='yes'");
 
 while(list($site, $lottoData, $lottoExpires, $game, $period, $canPlay) = $S->fetchrow('num')) {
   array_push($sites, array('siteId'=>$site, 'lottoData'=>$lottoData,
@@ -158,9 +162,10 @@ foreach($sites as $site) {
   array_pop($blacklist); // pop off the endoffile
 
   // We colect images only from the last 'period' days.
+  // BLP 2014-06-08 -- add category=image
   
   $sql = "select itemId, creatorName, location, creationTime from items ".
-         "where siteId='$siteId' and status='active' ".
+         "where siteId='$siteId' and status='active' and type='image' ".
          "and creationTime > date_sub(now(), interval $period day)";
 
   if(!$S->query($sql)) {
@@ -179,8 +184,18 @@ foreach($sites as $site) {
       continue;
     }
 
+    // BLP 2014-06-08 -- The new IFTTT entries should not be eligable.
+
+    if(strpos($name, 'IFTTT') !== false) {
+      //if($debug) putit("SKIP: $name");
+      putit("SKIP: $name, $itemId, $loc");
+      continue;
+    }
+    
     // The name field in the 'items' table can (should) have an email address. If there isn't an
     // email address then continue to next photo.
+    // BLP 2014-06-08 -- Entries like Admin, Upload, saveImageAnnounce which are form other methods
+    // of uploading photos do not have email addresses.
     
     if(strpos($name, '@') === false) {
       if($debug) putit("$name: Name has No Email Address"); // BLP 2014-05-05 -- make debug only
@@ -189,7 +204,9 @@ foreach($sites as $site) {
 
     $e = $name; // By default set email address equal name.
 
-    // Now take the name apart to get the email address. We are looking for <email@host.ext> format
+    // Look to see if the creatorName had both a name and an email address like:
+    // Barton Phillips &lt;bartonphillips@gmail.com&gt;
+    // Take the name apart to get the email address. We are looking for <email@host.ext> format
     // after the user's name at the start.
     
     if(preg_match('/^(.*?)\s*&lt;(.*?)&gt;/', $name, $m)) {
@@ -203,6 +220,7 @@ foreach($sites as $site) {
       }
       $e = $m[2]; // email is second captured piece
     } else {
+      // The creatorName did not have a name push an email so $e has the email address
       $name = ''; // we preset $e=$name above.
     }
 

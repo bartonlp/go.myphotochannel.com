@@ -618,3 +618,6 @@ BLP 2014-04-14 --
   entry in the playlotto table for the site. I fixed that also.
 
   cpanel.ajax.php: added $S->escape() where I thought it might be needed.
+
+BLP 2014-07-15 -- 
+  Added Total, Redeemed and % Redeemed to showlottowinners.php

@@ -1,3 +1,4 @@
+// BLP 2014-06-01 -- Add anamation features
 // JavaScript to Implement the Slide Show
 // Use strict during development.
 "use strict"
@@ -8,8 +9,8 @@
 var g = {}; // Global Name Space. All global variable are in this space.
 
 (function(x) {
-  x.COPYRIGHT = "&copy; 2013 myphotochannel";
-  x.VERSION = lastMod; // 1.08
+  x.COPYRIGHT = "&copy; 2014 myphotochannel";
+  x.VERSION = lastMod; 
   x.DEBUG = false; // If invokation has ?degug=nnnn. See below after variable declarations
   x.CONTENTPREFIX = "../"; // Where is the content directory from the slideshow.php file's location
   x.unit = unit;
@@ -231,7 +232,7 @@ $(window).resize(function(e) {
   g.winWidth = window.innerWidth - g.vidWidthExtra;
 
   var csshw = "img, .htmlitem {\n" +
-              "height: " +(window.innerHeight - g.heightExtra)+"px;\n"+
+              //"height: " +(window.innerHeight - g.heightExtra)+"px;\n"+
               "max-width: " +(window.innerWidth - g.widthExtra)+ "px;\n" +
               "}\n";
 
@@ -246,7 +247,7 @@ $(window).resize(function(e) {
 
 function dissolve(callback) {
   var r = (g.image.width / g.image.height)|0;
-  if((g.winHeight * r) > g.winWidth) {
+/*  if((g.winHeight * r) > g.winWidth) {
     var w = (g.winWidth/r)|0;
     var t = ((g.winHeight / 2) - (w/2))|0;
     $(g.image).css({'position': 'absolute', 'left': 10,
@@ -259,7 +260,7 @@ function dissolve(callback) {
     left = parseInt(left - (g.item.width() / 2));
     g.item.css({ position: 'absolute', top: 0, left: left });
   }
-
+*/
   // For the dissolve we do fadeOut at the same time we do fadeIn.
 
   g.lastItem.fadeOut(fade, function() {
@@ -358,6 +359,42 @@ function doEffect(callback) {
       fade(callback); // note: 'item' and 'lastItem' are globals
       break;
   }
+}
+
+function doAnimate(callback) {
+  var r = (g.image.width / g.image.height)|0;
+  if((g.winHeight * r) > g.winWidth) {
+    var w = (g.winWidth/r)|0;
+    var t = ((g.winHeight / 2) - (w/2))|0;
+    $(g.image).css({'position': 'absolute', 'left': 10,
+                   'height': w, 'width': g.winWidth,
+                   'top': t});
+  }
+
+  g.lastItem.fadeOut(g.image.mpcTrans, function() {
+    //remove old item object from the div, the one we just faded out.
+
+    g.lastItem.remove(); // remove after fade out done.
+
+    // This item will be lastItem next time around and it will be faded
+    // out.
+
+    g.lastItem = g.item;
+
+    var w;
+    if(g.inx.counter % 2) {
+      g.item.css('width', '100%');
+      w = "70%";
+    } else {
+      w = "100%";
+    }
+
+    g.item.fadeIn(g.image.mcpTrans, function() {
+      g.item.animate({height: 629}, 5000, function() {
+        return callback();
+      });
+    });
+  });
 }
 
 // Stop/Start the slideshow.
@@ -864,9 +901,16 @@ function slideshow() {
 
   // Determin if this is a dissolve or a fade
 
+  doAnimate(function() { return slideshow(); });
+  /*
   doEffect(function() {
-    g.timeoutid = setTimeout(slideshow, g.image.mpcDur);
+    g.item.animate({ width: "100%" }, 5000, function() {
+      return slideshow();
+    });
+    
+    //g.timeoutid = setTimeout(slideshow, g.image.mpcDur);
   });
+  */
 }
 
 // Initial start up of slideshow.
@@ -1784,7 +1828,7 @@ jQuery(document).ready(function($) {
 
   var csshw = "<style id='csshw'>\n"+
               "img, .htmlitem {\n"+
-              "height: "+(window.innerHeight - g.heightExtra)+"px;\n" +
+              //"height: "+(window.innerHeight - g.heightExtra)+"px;\n" +
               "max-width: "+(window.innerWidth - g.widthExtra)+ "px;\n"+
               "}\n" +
               "</style>";
