@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-07-16 -- New way of doing the videos
 // Control panel for videos
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
@@ -103,6 +104,28 @@ $h->link =<<<EOF
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
 <style>
+.adssubmit, .itemssubmit {
+  margin-left: 20px;
+}
+
+#show-video, #show-youtube {
+  position: fixed;
+  top: 10px;
+  left: 200px;
+  z-index: 100;
+  display: none;
+  background-color: white;
+  border: 1px solid black;
+}
+#show-video p, #show-youtube p {
+  margin-left: 30px;
+}
+#show-video video {
+  width: 800px;
+}
+#show-youtube iframe {
+  width: 800px;
+}
 #posted {
   position: fixed;
   top: 100px;
@@ -115,6 +138,7 @@ $h->link =<<<EOF
   border-radius: 15px;
   -webkit-border-radius: 15px;
 }
+
 .viddiv {
   border: 1px solid black;
 }
@@ -145,7 +169,7 @@ width: 100%;
 display: block;
 }
 
-or for iframs:
+or for iframes:
 
 iframe:-webkit-full-screen {
 margin: 0px;
@@ -197,7 +221,7 @@ EOF;
 // JavaScript stuff
 $h->extra = <<<EOF
 <!-- include jQuery library -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <!-- jQuery UI library -->
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <!-- Our JavaScript stuff -->
@@ -218,11 +242,9 @@ Select <select id="selectstatus">
 
 <h1>Videos in 'ads' Table</h1>
 <div id='ads'><!-- from makepage(..,'ads') --></div>
-<button id="adssubmit">Submit Ads Changes</button>
 <hr>
 <h1>Videos in 'items' Table</h1>
 <div id='items'><!-- from makepage(..,'items') --></div>
-<button id="itemssubmit">Submit Items Changes</button>
 <hr>
 $footer
 EOF;
@@ -269,13 +291,13 @@ $items_ads
 <li class="dur" data-value="{$row['duration']}"/>
 <li class="skip" data-value="{$row['skip']}"/>
 <li>Loc: {$row['location']}</li>
+<li>
+<button class='divid' data-src="/{$row['location']}" data-type="video/$ext" data-mode="youtube">
+Show {$row['description']}
+</button>
+</li>
 </ul>
-<div>
-<iframe id="video-{$row['itemId']}" title="YouTube video player" width="800" height="600"
-webkitAllowFullScreen mozallowfullscreen allowFullScreen 
-src="http://www.youtube.com/embed/{$row['location']}?controls=1">
-</iframe>
-</div>
+<button class="{$class}submit">Submit</button>
 </div>
 
 EOF;
@@ -323,16 +345,18 @@ $items_ads
 <li>Type: {$row['type']}</li>
 <li class="status" data-item="$statusval">Status: $select
 </li>
-<li class="reporteddur"></li>
 <li class="dur" data-value="{$row['duration']}"/>
 <li class="skip" data-value="{$row['skip']}"/>
 <li>Loc: {$row['location']}</li>
 <li>$ctype</li>
 <li>$clen</li>
+<li>
+<button class='divid' data-src="/{$row['location']}" data-type="video/$ext" data-mode="html5">
+Show {$row['description']}
+</button>
+</li>
 </ul>
-<video id="video-{$row['itemId']}" controls='1' src="/{$row['location']}?$nocache" type="video/$ext">
-Your browser does not support HTML5 video.
-</video>
+<button class="{$class}submit">Submit</button>
 </div>
 
 EOF;

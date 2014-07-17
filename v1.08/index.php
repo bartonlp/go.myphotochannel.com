@@ -1,4 +1,7 @@
 <?php
+// BLP 2014-07-17 -- Comment out the cutting edge stuff for now and
+// only show 'active' sites and
+// add 'Photos last week' to site stuff.
 // BLP 2014-03-25 -- added last day photos and total photos to table#sitesinfo
 // index for tomsproject
 // BLP 2014-01-10 -- Add resize.log by the other two logs
@@ -513,13 +516,14 @@ list($top, $footer) = $S->getPageTopBottom($h);
 
 // Create the sites table with all the siteId, sitCode, emailUsername, and #photos today, total
 // photos.
+// BLP 2014-07-17 --  add "where status='active'"
 
-$sql = "select siteId, emailUsername, siteCode from sites";
+$sql = "select siteId, emailUsername, siteCode from sites where status='active'";
 $n = $S->query($sql);
 $r = $S->getResult();
 
 $sites = <<<EOF
-<p>There are now $n sites:</p>
+<p>There are now $n sites with a status of 'active':</p>
 
 <style>
 #sitesinfo th {
@@ -530,20 +534,28 @@ $sites = <<<EOF
 <table id="sitesinfo" border="1">
 <thead>
 <tr><th>Site Id</th><th>Upload Email Address</th><th>Site Code</th>
-<th>Photos<br>Last Day</th><th>Total Photos</th></tr>
+<th>Photos<br>Last Day</th><th>Photos<br>Last Week</th><th>Total Photos</th></tr>
 </thead>
 <tbody>
 
 EOF;
 
-while(list($siteId, $email, $siteCode) = $S->fetchrow($r, 'num')) {
-  $sql = "select itemId from items where siteId='$siteId' ".
-         "and creationTime > date_sub(now(), interval 1 day) and status='active'";
+// BLP 2014-07-17 -- add select last week and add 'Photos<br>Last Week' above to thead
+// Note: count(exp) counts the NON-null items BUT the expression in the if() returns 0 or 1 (false
+// or true) therefore the if() to turn the expression results into 1 or null. Seems a but too hard
+// but that's the way it works.
 
-  $n = number_format($S->query($sql));
-  $sql = "select itemId from items where siteId='$siteId' and status='active'";
-  $tot = number_format($S->query($sql));
-  $sites .= "<tr><td>$siteId</td><td>$email</td><td>$siteCode</td><td>$n</td><td>$tot</td></tr>\n";
+while(list($siteId, $email, $siteCode) = $S->fetchrow($r, 'num')) {
+  $sql = "select count(*), ".
+         "count(if(creationTime > date_sub(now(), interval 1 day), 1, null)), ".
+         "count(if(creationTime > date_sub(now(), interval 1 week), 1, null)) ".
+         "from items where siteId='$siteId' ".
+         "and status='active'";
+  $S->query($sql);
+  list($tot, $d, $w) = $S->fetchrow('num');
+
+  $sites .= "<tr><td>$siteId</td><td>$email</td><td>$siteCode</td>".
+            "<td>$d</td><td>$w</td><td>$tot</td></tr>\n";
 }
 $sites .= "</tbody>\n</table>\n";
 
@@ -666,7 +678,7 @@ which makes debugging very difficult.</p>
 <div id="linkversion">
 $currlink
 </div> <!-- End #linkversion -->
-
+<!-- BLP 2014-07-17 -- Remove cutting edge stuff for now
 <div id="cuttingedge">
 <div id="cutting-slideshow">
 <h3>SlideShow Cutting Edge Development ($workingVersion)</h3>
@@ -745,6 +757,7 @@ less the extension which is 'php' or 'js':</p>
  {$lm($cpanelAr, '/workingVersion/cpanel')} Working</li>
 </ul>
 </div>
+-->
 </div>
 <div>
 <h3>This is version $currentVersion with the siteCode added to the URL</h3>

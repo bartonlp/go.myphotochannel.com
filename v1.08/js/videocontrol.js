@@ -1,4 +1,5 @@
 // For videocontrol.php
+// BLP 2014-07-16 -- New way of doing videos and submit.
 
 var ajaxfile = "videocontrol.php";
 
@@ -31,19 +32,11 @@ function reloadall() {
 }
 
 function doall() {
-  // Show select changed
+  // Setup so the current selectstatus is shown.
 
-  $("#selectstatus").change(function() {
-    var status = $(this).val();
-    $(".status").closest('div').show();
-    $(".status").not("[data-item='"+status+"']").closest('div').hide();
-  });
-
-  $("video").on('loadedmetadata', function(e) {
-    console.log(this.duration);
-    var x = $(".reporteddur", $(this).parent());
-    x.text("Reported Dur: "+Math.ceil(this.duration)*1000);
-  });
+  var status = $("#selectstatus").val();
+  $(".status").closest('div').show();
+  $(".status").not("[data-item='"+status+"']").closest('div').hide();
 
   $(".dur").each(function(i, v) {
     var val =  $(this).attr("data-value");
@@ -94,86 +87,112 @@ function doall() {
   $(".skipslider").each(function(i, v) {
     $(this).slider("option", "value", $(this).attr("data-value"));
   });
-
-  $("#adssubmit").on('click', function(e) {
-      // For each viddiv get the dur and skip for the itemId
-
-    $(".ads").each(function(i, v) {
-      console.log("ads each:", i, v);
-
-      var id = $(v).attr("id"),
-      dur = $(".dur input", v).val(),
-      desc = $(".desc input", v).val(),
-      skip = $(".skip input", v).val(),
-      status = $("select", v).val(),
-      sql = "update ads set duration='"+dur+"', skip='"+skip+"', status='"+status+
-            "', description='"+desc+"' where itemId='"+id+"'";
-
-      console.log("sql:", sql);
-
-      $.ajax({
-        url: ajaxfile,
-        data: { page: "doSql", sql: sql },
-        type: "get",
-        dataType: "json",
-        async: false, // dont understand why but if not here then ajax does not fire.
-        success: function(data) {
-               console.log("success:", data);
-             }, error: function(err) {
-               console.log("error:", err);
-             }
-      });
-    });
-
-    $("body").append("<div id='posted'>Posted</div>");
-
-    setTimeout(function() { $("#posted").remove(); }, 2000);
-    reloadall();
-    return false;
-  });
-
-  $("#itemssubmit").on('click', function(e) {
-      // For each viddiv get the dur and skip for the itemId
-
-    $(".items").each(function(i, v) {
-      console.log("items each:", i, v);
-
-      var id = $(v).attr("id"),
-      dur = $(".dur input", v).val(),
-      desc = $(".desc input", v).val(),
-      skip = $(".skip input", v).val(),
-      status = $("select", v).val(),
-      sql = "update items set duration='"+dur+"', skip='"+skip+"', status='"+status+
-            "', description='"+desc+"' where itemId='"+id+"'";
-
-      console.log("sql:", sql);
-
-      $.ajax({
-        url: ajaxfile,
-        data: { page: "doSql", sql: sql },
-        type: "get",
-        dataType: "json",
-        async: false, // don't understand why but if not here then ajax does not fire.
-        success: function(data) {
-               console.log("success: ", data);
-             }, error: function(err) {
-               console.log("error:", err);
-             }
-      });
-    });
-
-    $("body").append("<div id='posted'>Posted</div>");
-
-    setTimeout(function() { $("#posted").remove(); }, 2000);
-
-    reloadall();
-    return false;
-  });
 }
 
 // DOM Ready
 
 jQuery(document).ready(function($) {
+  $('body').append("<div id='show-youtube'>"+
+                   "<iframe title='YouTube video player' width='700' height='500' "+
+                   "webkitAllowFullScreen mozallowfullscreen allowFullScreen> "+
+                   "</iframe><p></p></div>");
+
+  $("body").append("<div id='show-video'>"+
+                   "<video>"+
+                   "Your browser does not support HTML5 video.</video>"+
+                   "<p></p></div>");
+
+  $("body").on('click', ".itemssubmit, .adssubmit", function(e) {
+      // For each viddiv get the dur and skip for the itemId
+
+    $("body").append("<div id='posted'>Posting</div>");
+
+    var p = $(this).parent(); // This is the div that the button lives in
+    var id = p.attr("id"),
+    dur = $(".dur input", p).val(),
+    desc = $(".desc input", p).val(),
+    skip = $(".skip input", p).val(),
+    status = $("select", p).val();
+
+    if(this.className == "itemssubmit") {
+      sql = "update items ";
+    } else {
+      sql = "update ads "
+    }      
+    sql += "set duration='"+dur+"', skip='"+skip+"', status='"+status+
+           "', description='"+desc+"' where itemId='"+id+"'";
+    
+    console.log("sql:", sql);
+
+    $.ajax({
+      url: ajaxfile,
+      data: { page: "doSql", sql: sql },
+      type: "get",
+      dataType: "json",
+      async: false, // Do this sync so the Posting message stays up and nothing else can be done.
+      success: function(data) {
+             console.log("success: ", data);
+           }, error: function(err) {
+             console.log("error:", err);
+           }
+    });
+
+    // Because the Ajax above is sync not async the POSTing stays up
+    // until we are all done
+
+    $("#posted").remove();
+
+    reloadall();
+    return false;
+  });
+
+  // A show button has been pressed. Make the video item
+
+  $("body").on("click", ".divid", function(e) {
+    var t = $(this);
+    var src = t.attr('data-src');
+    var type = t.attr('data-type');
+    var mode = t.attr('data-mode');
+    if(mode == 'html5') {
+      $("#show-video video").attr({ type: type, src: src });
+      $("#show-video").show();
+    } else {
+      $("#show-youtube iframe").attr({ src: "http://www.youtube.com/embed/" + src + "?controls=1" });
+      $("#show-youtube p").text("Close");
+      $("#show-youtube").show();
+    }
+  });
+  
+  // Set up the onchange event handler
+
+  $("#selectstatus").change(function() {
+    var status = $(this).val();
+    $(".status").closest('div').show();
+    $(".status").not("[data-item='"+status+"']").closest('div').hide();
+  });
+
   // Start out with only active showing
+
   reloadall();
+
+  $("video").on('loadedmetadata', function(e) {
+    console.log(this.duration);
+    var x = $('p', $(this).parent());
+    x.text("Reported Durration: "+Math.ceil(this.duration)*1000+" ms");
+  });
+
+  $("video").on('canplay', function(e) {
+    this.play();
+  });
+  
+  $("video").on('ended', function(e) {
+    $("#show-video").hide();
+    $("#show-video p").text('');
+  });
+
+  $("#show-video, #show-youtube").on('click', function(e) {
+    $(this).hide();
+    $("#show-video p").text('');
+  });
+
 });

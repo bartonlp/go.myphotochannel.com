@@ -621,3 +621,9 @@ BLP 2014-04-14 --
 
 BLP 2014-07-15 -- 
   Added Total, Redeemed and % Redeemed to showlottowinners.php
+
+BLP 2014-07-17 -- 
+  v1.08/index.php
+    removed the cutting edge stuff via commenting.
+    only show 'active' sites in the site display near top of page.
+
