@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-07-20 -- Fix error in hasimage() where parameters is not an array.
 // BLP 2014/05/26 -- add status to sites table and only look at sites with status == active
 // BLP 2014-01-28 -- removed temp echo
 // BLP 2014-01-21 -- temp echo each invocation for debugging.
@@ -401,8 +402,14 @@ function hasImage($stream, $msg_number, $structure=false) {
   }
   if($structure) {
     if($structure->type == 5) {
+      //var_dump($structure->parameters);
+      // BLP 2014-07-20 -- added to fix recent error where parameters is for some reason not an
+      // array?
+      if(is_object($structure->parameters)) {
+        echo "type 5 parameters is NOT an ARRAY\n";
+        return false;
+      }
       $x = $structure->parameters[0];
-      //var_dump($structure);
       //var_dump($x);
       return $x->value;
     } elseif(($structure->type == 3) && ($structure->subtype == "OCTET-STREAM")) {
