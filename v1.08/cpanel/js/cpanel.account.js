@@ -1,4 +1,7 @@
 // Account
+// BLP 2014-07-29 -- Add blink green to show something has happened
+// BLP 2014-07-29 -- see cpanel.account.php and cpanel.top.php for
+// session logic that resets superuser if user does a ctrl-R.
 
 jQuery(document).on("pagebeforeshow", "#account", function(e, data) {
   var userStatus;
@@ -118,6 +121,12 @@ jQuery(document).on("pagebeforeshow", "#account", function(e, data) {
     }
     sql += " where id='"+$("#userselect").val()+"'";
     console.log("sql",sql);
+
+    // BLP 2014-07-29 -- Add blink green to show something has happened
+    var bc = $("li").css("background-color");
+    $("li").css({backgroundColor: 'green'});
+    setTimeout(function() {$("li").css({backgroundColor: bc});}, 2000);
+    
     doSql(sql, function(data) {
       console.log("accountOK", data);
     });

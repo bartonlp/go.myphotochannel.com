@@ -1,5 +1,9 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-07-23 -- Added logic for allowIFTTT flag from appinfo table.
+// BLP 2014-07-22 -- move $from above hasImage()
+// BLP 2014-07-20 -- logic for ifttt
+// BLP 2014-07-20 -- Fix error in hasimage() where parameters is not an array.
 // BLP 2014/05/26 -- add status to sites table and only look at sites with status == active
 // BLP 2014-01-28 -- removed temp echo
 // BLP 2014-01-21 -- temp echo each invocation for debugging.
@@ -53,7 +57,8 @@ $secret = '86714601dfa6e13a87f7';
 $pusher = new Pusher($key, $secret, $app_id);
 
 $sql = "select siteId, emailServer, emailUsername, emailPassword, emailPort ".
-       "from sites where siteId='Site-Demo'"; // status='active'";
+       "from sites where status='active'";
+
 try {
   $S->query($sql);
 } catch(Exception $e) {
@@ -148,9 +153,10 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
       // hasImage() returns false if no image in the message.
       // If image or images are found hasImage() returns an array with part and filename for each
       // image found.
+      
+      $from = $header->fromaddress;
 
       if(($v = hasImage($mbox, $i))) {
-        $from = $header->fromaddress;
         if(preg_match("/\?utf-8\?B\?(.*?)\?=/", $from, $m)) {
           $from = base64_decode($m[1]);
         }
@@ -209,11 +215,29 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
 
         imap_delete($mbox, $i);
       } else {
-        $from = $header->fromaddress;
-
-        // Check if this is an IFTTT photo
+        // BLP 2014-07-23 -- get new allowIFTTT flag from appinfo table
+        $sql = "select allowIFTTT from appinfo where siteId='$siteId'";
+        try {
+          $S->query($sql);
+        } catch(Exception $e) {
+          unset($S);
+          $S = new Database($GLOBALS['dbinfo']);
+          $S->siteId = $siteId;
+          echo "RETRY: $sql\n";
+          try {
+            $S->query($sql); // try same sql again
+          } catch(Exception $e) {
+            echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
+            exit();
+          }
+        }
         
-        if($from == "IFTTT Action <action@ifttt.com>") {
+        list($allowIFTTT) = $S->fetchrow('num');
+        
+        // Check if this is an IFTTT photo
+        // BLP 2014-07-20 --
+        
+        if($from == "IFTTT Action <action@ifttt.com>" && $allowIFTTT == 'yes') {
           date_default_timezone_set("America/Denver");
           echo date("Y-m-d H:i T") . ", $from". "\n--------------------------\n";
 
@@ -224,9 +248,9 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
           // Get the text/html part and then get the '<img src="http://ift.tt/... ' item
 
           $msgBody = rtrim(get_part($mbox, $i, "TEXT/HTML"));
-
-          if(preg_match('~<img src="(http://ift.tt/.*?)"~', $msgBody, $m)) {
-            echo "IFTTT Link: $m[1]\n";
+//file_put_contents("ifttt.log", $msgBody);
+          if(preg_match('~img src="(http://ift.tt/.*?)"~', $msgBody, $m)) {
+            echo "IFTTT ift type Link: $m[1]\n";
             $filename = $m[1];
             $S->image = file_get_contents($filename);
             $S->ext = 'jpg';
@@ -250,10 +274,54 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
             }
             ++$photonum;
             ++$totalphotos;
+          } elseif(preg_match('~iframe src="(http://ift.tt/.*?)"~', $msgBody, $m)) {
+            echo "IFTTT iframe type Link: $m[1]\n";
+            $url = $m[1];
+
+            echo "URL: $url\n";
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36");
+            $page = curl_exec($ch);
+
+            //echo "PAGE: $page\n";
+            
+            if(preg_match('~display_src":"(.*?)"~', $page, $m)) {
+              $filename = stripslashes($m[1]);
+              echo "found display_src: $filename\n";
+              
+              $S->image = file_get_contents($filename);
+              $S->ext = 'jpg';
+              $S = fixupNewPhotos($S);
+              if($S === false) {
+                echo "fixupNewPhotos FAILED: trying one more time.";
+                unset($S);
+                $S = new Database($GLOBALS['dbinfo']);
+
+                $S->siteId = $siteId;
+                $S->subject = $header->subject;
+                $S->from = $S->escape(escapeltgt($from));
+                $S->image = base64_decode($part);
+                $S->ext = strtolower(pathinfo($f[1], PATHINFO_EXTENSION));
+
+                $S = fixupNewPhotos($S);
+                if($S === false) {
+                  echo "fixupNewPhotos FAILED AGAIN: Exiting!";
+                  exit();
+                }
+              }
+              ++$photonum;
+              ++$totalphotos;
+            } else {
+              echo "Did not find display_src in IFTTT email\n";
+            }
           } else {
             echo "Did not find photo in IFTTT email\n";
           }
-
+          
           unset($image, $part, $from, $subject, $msgBody);
           // Mark the email for deletion
 
@@ -455,7 +523,13 @@ function hasImage($stream, $msg_number, $structure=false) {
   if($structure) {
     if($structure->type == 5) {
       $x = $structure->parameters[0];
-      //var_dump($structure);
+      //var_dump($structure->parameters);
+      // BLP 2014-07-20 -- added to fix recent error where parameters is for some reason not an
+      // array?
+      if(is_object($structure->parameters)) {
+        echo "type 5 parameters is NOT an ARRAY\n";
+        return false;
+      }
       //var_dump($x);
       return $x->value;
     } elseif(($structure->type == 3) && ($structure->subtype == "OCTET-STREAM")) {

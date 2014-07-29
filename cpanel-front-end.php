@@ -11,8 +11,13 @@ $s->bannerFile = SITE_INCLUDES."/myphotochannelbanner.i.php";
 $S = new Tom($s);
 
 if($_POST['page'] == "post") {
-  $sql = "select siteId from users where email='{$_POST['email']}' ".
-         "and password='{$_POST['password']}' and siteId='{$_POST['siteid']}'";
+  $siteid = $S->escape($_POST['siteid']);
+  $password = $S->escape($_POST['password']);
+  $email = $S->escape($_POST['email']);
+  
+  $sql = "select siteId from users where email='$email' ".
+         "and password='$password' and siteId='$siteid'";
+
   if(!$S->query($sql)) {
     $h->title = "bad signin";
     $h->banner = "<h1>Signin Not Valid</h1>";
@@ -23,8 +28,8 @@ $footer
 EOF;
     exit();
   }
-  list($siteId) = $S->fetchrow('num');
-  header("Location: http://go.myphotochannel.com/cpanel/cpanel.php?siteId=$siteId");
+
+  header("Location: http://go.myphotochannel.com/cpanel/cpanel.php?siteId=$siteid");
   exit();
 }
 

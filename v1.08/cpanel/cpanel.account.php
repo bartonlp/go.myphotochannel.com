@@ -1,7 +1,19 @@
 <?php
+// BLP 2014-07-29 -- refresh superuser from $_SESSION['superuser'] in case user has done a ctrl-R
+// to refresh this page in which case superuser is not valid.
+
 include("cpanel.top.php");
 
+// BLP 2014-07-29 -- Set $S->superuser from the session incase user has done a ctrl-R. Then reset
+// the Javascript superuser variable.
+
+$S->superuser = $_SESSION['superuser'];
+
 echo <<<EOF
+<script>
+superuser = $S->superuser;
+</script>
+
 <div id="account" data-role="page" data-add-back-btn="true" data-theme="a">
 	<div data-role="header">
 		<h1>Account Maintenance<span></span></h1>

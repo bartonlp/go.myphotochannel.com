@@ -1,4 +1,5 @@
 // Show Settings
+// BLP 2014-07-23 -- add allowIFTTT
 
 jQuery(document).on("pagebeforeshow", "#showsettings", function(e, data) {
   // Get slider value and update database
@@ -28,6 +29,9 @@ jQuery(document).on("pagebeforeshow", "#showsettings", function(e, data) {
     setlist += "allowAds=" + ($("#allowads1").prop("checked") ? "'yes'," : "'no',");
     setlist += "allowVideo=" + ($("#allowvid1").prop("checked") ? "'yes'," : "'no',");
 
+    // BLP 2014-07-23 -- allowIFTTT
+    setlist += "allowIFTTT=" + ($("#allowifttt1").prop("checked") ? "'yes'," : "'no',");
+    
     fieldcontain.each(function(i, v) {
       var slider = $(v),
       name = slider.attr("name"),
@@ -96,7 +100,8 @@ jQuery(document).on("pagebeforeshow", "#showsettings", function(e, data) {
   
   $("#featureExtYes").hide();
   
-  doSql("select allowAds, allowVideo, featureExt from appinfo where siteId='"+siteId+"'", function(data) {
+  doSql("select allowAds, allowVideo, allowIFTTT, featureExt from appinfo "+
+        "where siteId='"+siteId+"'", function(data) {
     if(data.num) {
       var sites = data.rows[0];
       console.log(sites);

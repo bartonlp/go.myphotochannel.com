@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-07-24 -- do not process info@myphotochannel.com
 // BLP 2014-06-08 -- NO photolotto with photos with creatorName==IFTTT Action
 // &lt;action@ifttt.com&gt; ALSO add category=image to select for items.
 // ALSO add s.status=active to select sites.
@@ -160,7 +161,9 @@ foreach($sites as $site) {
   while(list($blacklist[]) = $S->fetchrow('num'));
   
   array_pop($blacklist); // pop off the endoffile
-
+  // BLP 2014-07-24 -- push on the info@myphotochannel.com
+  array_push($blacklist, "info@myphotochannel.com");
+  
   // We colect images only from the last 'period' days.
   // BLP 2014-06-08 -- add category=image
   

@@ -1,4 +1,6 @@
 <?php
+// BLP 2014-07-23 -- Add allow IFTTT
+
 include("cpanel.top.php");
 echo <<<EOF
 <!-- Show Settings -->
@@ -75,6 +77,17 @@ echo <<<EOF
     <label for="allowvid1">yes</label>
      <input type="radio" name="allowVideo" class="allows" id="allowvid2" value="no" />
     <label for="allowvid2">no</label>
+    </fieldset>
+    </div>
+    </li>
+    <li>
+    <div data-role="fieldcontain">
+    <fieldset data-role="controlgroup" data-type="horizontal">
+    <legend>Allow IFTTT</legend>
+    <input type="radio" name="allowIFTTT" class="allows" id="allowifttt1" value="yes" />
+    <label for="allowifttt1">yes</label>
+    <input type="radio" name="allowIFTTT" class="allows" id="allowifttt2" value="no" />
+    <label for="allowifttt2">no</label>
     </fieldset>
     </div>
     </li>
@@ -156,6 +169,8 @@ echo <<<EOF
         if the 'Pusher' logic is not active.</li>
       <li>Allow Ads: If yes then 'Ads' are allowed during the <b>Commercial Break</b>.</li>
       <li>Allow Video: If yes then 'Videos' are allowed during the <b>Commercial Break</b>.</li>
+      <li>Allow IFTTT: If yes then the emailphoto.php program will process photos sent by the
+          IFTTT system from social media sites like <b>Instegram, Facebook etc</b>.</li>
       <li>Photo History: yes or no<br>
         If yes then when someone submits a new photo other photos that the person has submited
         are also made <b>Feature</b> photos.<br>

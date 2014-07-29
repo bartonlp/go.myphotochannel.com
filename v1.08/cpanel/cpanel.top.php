@@ -1,4 +1,6 @@
 <?php
+// BLP 2014-07-29 -- add $_SESSION['superuser'] see below.
+
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
 if(file_exists(TOPFILE)) {
   include(TOPFILE);
@@ -56,6 +58,15 @@ switch(strtoupper($_SERVER['REQUEST_METHOD'])) {
 
 // By the time we get here the required variables like $S->siteId, $S->userId, etc. should be set by
 // one of the functions in the above switch.
+
+// BLP 2014-07-29 -- 
+// We will use the session to keep track of superuser for files like cpanel.account.php/js that use
+// superuser to verify access. This is only a problem when the user does a ctrl-R to refresh the
+// page (which should not happen often but I did it and got an error).
+
+if(!$_SESSION['superuser']) {
+  $_SESSION['superuser'] = $S->superuser;
+}
 
 $siteId = $S->siteId; // All of the cpanel.xxx.php files use $siteId appended to return names.
 

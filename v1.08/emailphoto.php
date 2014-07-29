@@ -81,6 +81,8 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
   // We need $siteId so if we have to re new Database() we don't lose $S->siteId!
   $S->siteId = $siteId = $S->escape($siteId);
 
+  //echo "{$S->siteId}\n";
+  
   // Do the items table check
 
   try {
