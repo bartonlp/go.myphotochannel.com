@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-08-15 -- make ifttt skip debug only  
 // BLP 2014-07-24 -- do not process info@myphotochannel.com
 // BLP 2014-06-08 -- NO photolotto with photos with creatorName==IFTTT Action
 // &lt;action@ifttt.com&gt; ALSO add category=image to select for items.
@@ -190,8 +191,7 @@ foreach($sites as $site) {
     // BLP 2014-06-08 -- The new IFTTT entries should not be eligable.
 
     if(strpos($name, 'IFTTT') !== false) {
-      //if($debug) putit("SKIP: $name");
-      putit("SKIP: $name, $itemId, $loc");
+      if($debug) putit("SKIP: $name, $itemId, $loc");
       continue;
     }
     

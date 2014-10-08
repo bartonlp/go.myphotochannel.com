@@ -449,6 +449,10 @@ function getAds($S) {
     
     while(list($itemId, $desc, $dur, $loc, $time, $type, $trans, $effect, $skip) =
       $S->fetchrow($result, 'num')) {
+
+      // Individual Ad ItemId's can be blacklisted from a site. This lets the bar owner select ads
+      // that can NOT be displayed at his bar!
+      
       $sql = "select * from blacklist where siteId='$S->siteId' and itemId='$itemId'";
       if($S->query($sql)) {
         // Item is blacklisted by this site so skip it

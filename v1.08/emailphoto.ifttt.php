@@ -1,5 +1,13 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2014-10-06 -- add a blacklist to not allow certain email addresses.
+/*
+ CREATE TABLE `emailblacklist` (
+  `email` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+*/  
+// BLP 2014-08-15 -- ifttt output from and subject
 // BLP 2014-07-23 -- Added logic for allowIFTTT flag from appinfo table.
 // BLP 2014-07-22 -- move $from above hasImage()
 // BLP 2014-07-20 -- logic for ifttt
@@ -16,6 +24,7 @@
 // This is a CLI program run by CRON every minute.
 
 #$debug = true;
+$debug = false;
 
 // Look to see if we are already running
 
@@ -156,15 +165,39 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
       
       $from = $header->fromaddress;
 
+      // BLP 2014-10-06 -- check emailblacklist table for this frim address
+
+      date_default_timezone_set("America/Denver");
+
+      // BLP 2014-10-06 -- take $from appart and get the email address.
+      // from can have: 1) just text with no email
+      // 2) just an email address like aaa@b.c
+      // 3) a name followed by <aaa@b.c>
+      // So look for www@www.www form.
+      
+      if(preg_match('~(\w+@\w+\.\w+)~', $from, $m)) {
+        $email = $m[1];
+        $sql = "select * from emailblacklist where email='$email'";
+        
+        if($S->query($sql)) {
+          echo date("Y-m-d H:i T") . ", $from in emailblacklist. Skip\n";
+          imap_delete($mbox, $i); // Mark for deletion.
+          continue;
+        }
+      } else {
+        echo "********* NO Email Address Found: $from\n";
+      }
+      
+      $S->from = $S->escape(escapeltgt($from));
+      $S->subject = $header->subject;
+      
       if(($v = hasImage($mbox, $i))) {
         if(preg_match("/\?utf-8\?B\?(.*?)\?=/", $from, $m)) {
           $from = base64_decode($m[1]);
         }
-        $S->subject = $header->subject;
-        $S->from = $S->escape(escapeltgt($from));
-
+      
         // $v is a numeric array of numeric arrays with [0]=part, [1]=filename
-        date_default_timezone_set("America/Denver");
+
         echo  date("Y-m-d H:i T") . ", $version, Nmsgs: " . ($check->Nmsgs) .
             ", Parts: " . count($v) . ", " . "\n";
 
@@ -239,16 +272,13 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
         
         if($from == "IFTTT Action <action@ifttt.com>" && $allowIFTTT == 'yes') {
           date_default_timezone_set("America/Denver");
-          echo date("Y-m-d H:i T") . ", $from". "\n--------------------------\n";
-
-          $S->subject = $header->subject;
-          $S->from = $S->escape(escapeltgt($from));
+          echo date("Y-m-d H:i T") . ", from:$from, subject: $S->subject\n+++++++++++++++++++++++++\n";
 
           // This is a photo from IFTTT
           // Get the text/html part and then get the '<img src="http://ift.tt/... ' item
 
           $msgBody = rtrim(get_part($mbox, $i, "TEXT/HTML"));
-//file_put_contents("ifttt.log", $msgBody);
+
           if(preg_match('~img src="(http://ift.tt/.*?)"~', $msgBody, $m)) {
             echo "IFTTT ift type Link: $m[1]\n";
             $filename = $m[1];

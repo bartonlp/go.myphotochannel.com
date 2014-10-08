@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-09-16 -- fix error on big files
 // BLP 2014-06-03 -- If we get an open_image error set the staus to inactive. Also change the
 // select to only look at status='new'.
 // BLP 2014-04-30 -- if image file does not exist delete record.
@@ -97,17 +98,32 @@ if($itemCnt) {
 function resizeImage($filename, $destfile, $S) {
   // get an image for the original source file: jpeg, gif, png
 
-  file_put_contents($S->resizelog, "Destination file name: " . basename($destfile) . "\n",
-                    FILE_APPEND);
+  // BLP 2014-09-16 -- get file size
+  $filesize = filesize($filename);
+  $toobig = '';
   
-  $source = open_image($filename); 
-
-  if($source === false) {
-    file_put_contents($S->resizelog, "ERROR: open_image($filename)\n",
-                      FILE_APPEND);
-    return false;
+  if($filesize > 2000000) {
+    $toobig = " TOO BIG NOT RESIZED";
   }
+  file_put_contents($S->resizelog, "Destination file name: " . basename($destfile) .
+                    ", filesize: $filesize{$toobig}\n",
+                    FILE_APPEND);
 
+  if(!$toobig) {
+    $source = open_image($filename); 
+
+    if($source === false) {
+      file_put_contents($S->resizelog, "ERROR: open_image($filename)\n",
+                        FILE_APPEND);
+      return false;
+    }
+  } else {
+    // BLP 2014-09-16 -- if toobig then just return without resizing
+    // NOTE if the toobig file is something other than a jpg the items table will have the wrong
+    // extension. I should fix this at some point!!
+    return true;
+  }
+  
   // The original width and height of the image
   // returns an array 0=width, 1=height, 2=IMAGETYPE_XXX, 3=string 'height="yyy" width="xxx"',
   // mime=the-mime-type like 'image/jpg' etc.
