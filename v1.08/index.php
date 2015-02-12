@@ -504,6 +504,20 @@ $h->banner = <<<EOF
 EOF;
 
 $h->extra =<<<EOF
+<link rel="stylesheet" type="text/css"
+href="http://fonts.googleapis.com/css?family=Lora&subset=latin">
+<style>
+body {
+  font-family: 'Lora', serif;
+}
+ul {
+  line-height: 150%;
+}
+#logfiles {
+  line-height: 150%;
+}
+</style>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://js.pusher.com/2.1/pusher.min.js"></script>
 <script>
@@ -621,7 +635,7 @@ you have certified.</p>
 }
 .row  {
   display: table-row;
-  line-height: 0px;
+  /*line-height: 0px;*/
 }
 .left, .right {
   display: table-cell;

@@ -552,14 +552,16 @@ function hasImage($stream, $msg_number, $structure=false) {
   }
   if($structure) {
     if($structure->type == 5) {
-      $x = $structure->parameters[0];
-      //var_dump($structure->parameters);
-      // BLP 2014-07-20 -- added to fix recent error where parameters is for some reason not an
-      // array?
+      // BLP 2014-07-20 -- added to fix recent error where parameters is for some
+      // reason not an array?
       if(is_object($structure->parameters)) {
         echo "type 5 parameters is NOT an ARRAY\n";
+        var_dump($structure->parameters);
+
         return false;
       }
+      $x = $structure->parameters[0];
+
       //var_dump($x);
       return $x->value;
     } elseif(($structure->type == 3) && ($structure->subtype == "OCTET-STREAM")) {

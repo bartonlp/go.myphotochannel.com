@@ -1,6 +1,6 @@
 <?php
 // Main Slide Show Page
-
+// BLP 2014-11-01 -- <select options for startup only status='active'
 // For debugging app slideshow.php?cache=true to allow caching. The default adds the time stamp to
 // prevent caching
 
@@ -127,8 +127,9 @@ if($_GET['debug']) {
       $unit = $_GET['debug']; // set unit to the super user number.
 
       list($name) = $S->fetchrow('num');
-        
-      $sql = "select siteId, siteCode from sites";
+
+      // BLP 2014-11-01 -- 
+      $sql = "select siteId, siteCode from sites where status='active'";
       $S->query($sql);
 
       $opt = '';

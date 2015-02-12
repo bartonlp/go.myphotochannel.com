@@ -1,4 +1,5 @@
 <?php
+// BLP 2014-11-01 -- select only active sites
 // BLP 2014-07-29 -- add $_SESSION['superuser'] see below.
 
 define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
@@ -146,8 +147,9 @@ function debug($S, $d, $noselect) {
       // We do not select a site.
 
       list($name) = $S->fetchrow('num');
-        
-      $sql = "select siteId from sites";
+
+      // BLP 2014-11-01 -- 
+      $sql = "select siteId from sites where status='active'";
       $S->query($sql);
       $opt = '';
 
