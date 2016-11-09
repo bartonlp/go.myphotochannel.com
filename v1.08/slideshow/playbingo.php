@@ -319,4 +319,3 @@ $options
 <hr>
 $footer
 EOF;
-?>

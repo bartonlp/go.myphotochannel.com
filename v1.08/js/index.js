@@ -100,11 +100,11 @@ jQuery(document).ready(function($) {
 
   // Add the select for old/current/working version of linkversion
 
-  $("#linkversion").before("<select id='versiontype'>"+
-                           "<option value='current'>Current Version</option>"+
-                           "<option value='working'>Working Version</option>"+
-                           "<option value='old'>Old Version</option>"+
-                           "</select>");
+//  $("#linkversion").before("<select id='versiontype'>"+
+//                           "<option value='current'>Current Version</option>"+
+//                           "<option value='working'>Working Version</option>"+
+//                           "<option value='old'>Old Version</option>"+
+//                           "</select>");
 
   // When the select changes get the new linkversion
   

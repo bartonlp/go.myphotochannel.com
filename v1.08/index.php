@@ -1,4 +1,5 @@
 <?php
+// BLP 2016-01-19 -- removed version changing logic
 // BLP 2014-07-17 -- Comment out the cutting edge stuff for now and
 // only show 'active' sites and
 // add 'Photos last week' to site stuff.
@@ -110,9 +111,9 @@ $cpanelRealName = realpath(DOC_ROOT ."/currentVersion/cpanel");
 $slideshowAr = array("slideshow.php", "slideshow.ajax.php", "js/slideshow.js");
 $cpanelAr = array("cpanel.*php", "cpanel.ajax.php", "js/cpanel.*.js");
 
-$oldVersion = getversion("/oldVersion");
+//$oldVersion = getversion("/oldVersion");
 $currentVersion = getversion("/currentVersion");
-$workingVersion = getversion("/workingVersion");
+//$workingVersion = getversion("/workingVersion");
 
 $curSlideshowTimes = "";
 
@@ -125,18 +126,18 @@ function getlinkversion($type) {
   global $lm, $slideshowAr, $cpanelAr;
   
   switch($type) {
-    case "working":
-      $name = "working";
-      $path = "/workingVersion";
-      break;
-    case "old":
-      $name = "old";
-      $path = "/oldVersion";
-      if(!file_exists("/oldVersion/index.php")) {
-        echo "No oldVersion of files";
-        exit();
-      }
-      break;
+//    case "working":
+//      $name = "working";
+//      $path = "/workingVersion";
+//      break;
+//    case "old":
+//      $name = "old";
+//      $path = "/oldVersion";
+//      if(!file_exists("/oldVersion/index.php")) {
+//        echo "No oldVersion of files";
+//        exit();
+//      }
+//      break;
     case "current":
     default:
       $name = "current";
@@ -556,7 +557,7 @@ EOF;
 
 // BLP 2014-07-17 -- add select last week and add 'Photos<br>Last Week' above to thead
 // Note: count(exp) counts the NON-null items BUT the expression in the if() returns 0 or 1 (false
-// or true) therefore the if() to turn the expression results into 1 or null. Seems a but too hard
+// or true) therefore the if() to turn the expression results into 1 or null. Seems a bit too hard
 // but that's the way it works.
 
 while(list($siteId, $email, $siteCode) = $S->fetchrow($r, 'num')) {

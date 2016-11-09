@@ -396,4 +396,3 @@ EOF;
     putit($climsg);
   }
 }
-?>

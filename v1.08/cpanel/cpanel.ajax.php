@@ -795,5 +795,3 @@ function open_image($file) {
   }
   return array($im, $type);
 }  
-
-?>

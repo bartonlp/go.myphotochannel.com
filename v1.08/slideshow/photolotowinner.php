@@ -37,4 +37,3 @@ header('Content-Type: image/png');
 imagepng($im);
 imagepng($im, DOC_ROOT ."/content/lottowinner$siteId.png");
 imagedestroy($im);
-?>

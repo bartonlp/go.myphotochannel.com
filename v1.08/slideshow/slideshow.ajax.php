@@ -642,4 +642,3 @@ function unload($S) {
   $S->query("update startup set status='closed' where id='$S->startupId'");
   exit();
 }
-?>

@@ -308,5 +308,3 @@ function lastMod($ar, $path=null) {
   date_default_timezone_set('US/Central');
   return date("M j, H:i:s", max($times));
 }
-  
-?>

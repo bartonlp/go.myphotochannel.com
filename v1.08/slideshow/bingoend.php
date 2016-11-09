@@ -24,4 +24,3 @@ if($loc) {
 header('Content-Type: image/png');
 imagepng($im);
 imagedestroy($im);
-?>

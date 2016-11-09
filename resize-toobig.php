@@ -24,7 +24,12 @@ $S->query("select itemId, type from items where location='content/$filename'");
 list($itemId, $type) = $S->fetchrow('num');
 
 if($type != 'image') {
-  //echo "$filename is not an IMAGE\n";
+  if(is_null($type)) {
+    echo "not found in database\n";
+    unlink("content/$filename");
+    exit();
+  }
+  echo "$filename is not an IMAGE\n";
   exit();
 }
 $size = number_format(filesize($fname));

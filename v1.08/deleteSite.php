@@ -148,4 +148,3 @@ really want to delete the site!</span>
 $footer
 EOF;
 
-?>

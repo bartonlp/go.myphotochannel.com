@@ -16,4 +16,4 @@ imagettftext($im, 30, 90, 50, 450, $white, $font, "Bingo Game #$game\n$text");
 header('Content-Type: image/png');
 imagepng($im);
 imagedestroy($im);
-?>
+

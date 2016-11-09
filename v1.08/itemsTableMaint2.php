@@ -86,7 +86,7 @@ while(list($id, $loc, $siteId) = $S->fetchrow("num")) {
   $items[$loc] = $id; // BLP 2014-04-30 -- 
   
   if(!file_exists($loc)) {
-  // Image file does not exists
+    // Image file does not exists
     $list .= "<li id='$id'>itemId=$id, siteId=$siteId: ".
              "<input type='checkbox' name='ids[]' checked value='$id'>$loc</li>\n";
   }

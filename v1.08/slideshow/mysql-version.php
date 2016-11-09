@@ -12,4 +12,3 @@ printf("Server version: %s\n", $mysqli->server_info);
 
 /* close connection */
 $mysqli->close();
-?>
