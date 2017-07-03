@@ -480,4 +480,3 @@ function get_part($stream, $msg_number, $mime_type, $structure = false, $part_nu
   return false;
 }
 
-?>
