@@ -4,21 +4,19 @@
 // We will run "find . -size +1000k -exec resize.php '{};'"
 // $1 is filename (argv[0]);
 
-define('TOPFILE', "/homepages/45/d454707514/htdocs/siteautoload.php");
-// Now this looks like all the other files.
-if(file_exists(TOPFILE)) {
-  include(TOPFILE);
-} else {
-  echo "Can't find siteautoload.php";
-  exit();
+if(!getenv("SITELOADNAME")) {
+  putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
 }
+$_site = require_once(getenv("SITELOADNAME"));
+ErrorClass::setDevelopment(true);
+ErrorClass::setNoEmailErrs(true);
 
 $fname = $_SERVER['argv'][1];
 //echo "Filename: $fname \n";
 
 $filename = basename($fname);
 
-$S = new Database($dbinfo);
+$S = new Database($_site);
 
 $S->query("select itemId, type from items where location='content/$filename'");
 list($itemId, $type) = $S->fetchrow('num');

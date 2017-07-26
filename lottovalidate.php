@@ -15,13 +15,13 @@ CREATE TABLE `lottowinners` (
 ) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci
 */
 
-define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
-if(file_exists(TOPFILE)) {
-  include(TOPFILE);
-} else throw new Exception(TOPFILE . " not found");
-
-$s->bannerFile = SITE_INCLUDES."/myphotochannelbanner.i.php";
-$S = new Tom($s);
+if(!getenv("SITELOADNAME")) {
+  putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
+}
+$_site = require_once(getenv("SITELOADNAME"));
+ErrorClass::setDevelopment(true);
+ErrorClass::setNoEmailErrs(true);
+$S = new $_site->className($_site);
 
 $h->title = "PhotoLotto Redemption";
 $h->extra = <<<EOF
@@ -179,5 +179,3 @@ EOF;
 <hr>
 $footer
 EOF;
-
-?>

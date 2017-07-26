@@ -2,13 +2,13 @@
 // www.myphotochannel.com has a link to the control panel that link comes HERE so we can let the
 // user sign in.
 
-define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
-if(file_exists(TOPFILE)) {
-  include(TOPFILE);
-} else throw new Exception(TOPFILE . "not found");
-
-$s->bannerFile = SITE_INCLUDES."/myphotochannelbanner.i.php";
-$S = new Tom($s);
+if(!getenv("SITELOADNAME")) {
+  putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
+}
+$_site = require_once(getenv("SITELOADNAME"));
+ErrorClass::setDevelopment(true);
+ErrorClass::setNoEmailErrs(true);
+$S = new $_site->className($_site);
 
 if($_POST['page'] == "post") {
   $siteid = $S->escape($_POST['siteid']);
@@ -29,7 +29,7 @@ EOF;
     exit();
   }
 
-  header("Location: http://go.myphotochannel.com/cpanel/cpanel.php?siteId=$siteid");
+  header("Location: http://go.myphotochannel.com/currentVersion/cpanel/cpanel.php?siteId=$siteid");
   exit();
 }
 
