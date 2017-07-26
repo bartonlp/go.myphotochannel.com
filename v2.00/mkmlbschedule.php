@@ -1,0 +1,60 @@
+#! /usr/bin/php6 -q
+<?php
+// Gather Photos Emailed to the Server by Customers
+// This is a CLI program run by CRON every minute.
+// Also force our TOPFILE
+if(!getenv("SITELOADNAME")) {
+  putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
+}
+$_site = require_once(getenv("SITELOADNAME"));
+define(DOC_ROOT, $_site->path);
+ErrorClass::setDevelopment(true);
+ErrorClass::setNoEmailErrs(true);
+
+$S = new Database($_site);
+
+$sql = "select concat(date,' ', time), subject, location from sportsschedule ".
+       "where date > curdate() limit 3";
+
+$S->query($sql);
+$tbl = '';
+while(list($date, $subject, $location) = $S->fetchrow('num')) {
+  $date = date("l F j", strtotime($date));
+  $tbl .= "<li>$date, $subject $location</li>\n";
+}
+
+$file = <<<EOF
+<style>
+#cardinalsschedule {
+  position: relative;
+  font-size: 45px;
+  color: black;
+  text-align: left;
+  z-index: 100;
+  font-weight: bold;
+  list-style-type: none;
+}
+#cardinalsschedule li {
+  margin-top: 40px;
+}
+#cardinalsimg {
+  width: 100%;
+}
+#cardinalstbl {
+  position: absolute;
+  left: 70px;
+  top : 200px;
+  width: 1200px;
+}
+</style>
+<div id="cardinalstbl">
+<ul id="cardinalsschedule">
+$tbl
+</ul>
+</div>
+<img id="cardinalsimg" src="/images/mlb.png"/>
+EOF;
+file_put_contents(DOC_ROOT ."/adscontent/mlb.html", $file);
+echo <<<EOF
+mlb.html created\n
+EOF;

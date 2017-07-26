@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twig/twig": "^1",
+        "altorouter/altorouter": "^1"
+    }
+}

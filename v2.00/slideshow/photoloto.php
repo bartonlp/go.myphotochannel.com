@@ -59,6 +59,7 @@ CREATE TABLE `lottowinners` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci
 */
+
 if(!$_SERVER['DOCUMENT_ROOT']) {
   $cli = true;
 }
@@ -67,6 +68,7 @@ if(!getenv("SITELOADNAME")) {
   putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
 }
 $_site = require_once(getenv("SITELOADNAME"));
+define(DOC_ROOT, $_site->path);
 ErrorClass::setDevelopment(true);
 ErrorClass::setNoEmailErrs(true);
 

@@ -1,0 +1,54 @@
+/* CSS for index.php */
+
+.clearlog {
+  background-color: red;
+  color: white;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+/*.clearlog:nth-child(2) {
+  position: absolute;
+}*/
+#cuttingedge {
+  width: 100%;
+  background-color: pink;
+  color: black;
+  padding: 8px;
+  margin-left: -8px;
+  border-bottom: 2px groove black;
+  border-top: 2px groove black;
+}
+td {
+  padding: 5px;
+}
+.super {
+  color: red;
+}
+.superextra {
+  color: green;
+}
+#posted {
+  position: fixed;
+  top: 100px;
+  left: 200px;
+  border: 1px solid black;
+  background-color: green;
+  color: white;
+  padding: 40px;
+  z-index: 10;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+.notes {
+  color: gray;
+}
+code {
+  color: #525252;
+  background-color: white;
+  padding: 5px;
+  font-style: normal;
+}
+#startup-table td, #startup-table th {
+  padding: 5px;
+}
+

@@ -1,0 +1,11 @@
+{
+    "require": {
+        "bartonlp/site-class": "^2.0",
+        "kint-php/kint": "^2.1"
+    },
+    "autoload": {
+      "classmap": [
+        "v2.00/includes"
+      ]
+    }
+}

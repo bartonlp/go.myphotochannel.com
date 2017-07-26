@@ -1,0 +1,64 @@
+# Triggers for items table
+# new photos from emailphoto.php all are inserted as status 'new'
+# Photos are approved via the control panel and changed to status 'active'
+# Announcements are submited and inserted as status 'active'.
+# Therefore all inserts with 'active' and all updates with 'active' should trigger.
+
+# appinfo, categories, sites and segments should trigger on any update.
+
+drop table if exists modified;
+
+drop trigger if exists items_change;
+drop trigger if exists items_insert;
+drop trigger if exists appinfo_change;
+drop trigger if exists categories_change;
+drop trigger if exists segments_change;
+drop trigger if exists sites_change;
+
+create table modified (
+  siteId varchar(50),
+  xchange int(11),
+  primary key(siteId)
+) engine=MyISAM charset=utf8;
+
+insert into modified (xchange, siteId) values(0, 'Felixs');
+insert into modified (xchange, siteId) values(0,'DBSportsbar');
+insert into modified (xchange, siteId) values(0, 'josh');
+insert into modified (xchange, siteId) values(0, 'Libby');
+insert into modified (xchange, siteId) values(0, 'Site-Demo');
+
+delimiter |
+
+create trigger items_change before update on items for each row
+begin
+  if new.status = 'active' then
+    update modified set xchange=1 where siteId=new.siteId;
+  end if;
+  if old.category = 'announce' and old.status = 'active' and new.status != 'active' then
+    update modified set xchange=1 where siteId=new.siteId;
+  end if;
+end;
+
+create trigger items_insert before insert on items for each row
+begin
+  if new.status = 'active' then
+    update modified set xchange=1 where siteId=new.siteId;
+  end if;
+end;
+
+|
+
+delimiter ;
+create trigger appinfo_change before update on appinfo for each row
+  update modified set xchange=1 where siteId=new.siteId;
+
+create trigger categories_change before update on categories for each row
+  update modified set xchange=1 where siteId=new.siteId;
+
+create trigger segments_change before update on segments for each row
+  update modified set xchange=1 where siteId=new.siteId;
+
+create trigger sites_change before update on sites for each row
+  update modified set xchange=1 where siteId=new.siteId;
+
+
