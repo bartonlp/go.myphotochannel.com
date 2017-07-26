@@ -180,7 +180,7 @@ jQuery(document).ready(function($) {
   
   $(".demodebug a").click(function() {
     var d = new Date().getTime();
-    window.open($(this).attr("href")+d);
+    window.open($(this).attr("href")+"?unit="+d);
     return false;
   });
   

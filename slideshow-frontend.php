@@ -1,13 +1,12 @@
 <?php
 // Slideshow front end asks for siteCode and user information
-
-define('TOPFILE', $_SERVER['DOCUMENT_ROOT'] . "/siteautoload.php");
-if(file_exists(TOPFILE)) {
-  include(TOPFILE);
-} else throw new Exception(TOPFILE . "not found");
-
-$s->bannerFile = SITE_INCLUDES."/myphotochannelbanner.i.php";
-$S = new Tom($s);
+if(!getenv("SITELOADNAME")) {
+  putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
+}
+$_site = require_once(getenv("SITELOADNAME"));
+ErrorClass::setDevelopment(true);
+ErrorClass::setNoEmailErrs(true);
+$S = new $_site->className($_site);
 
 if($_POST['page'] == "post") {
   $siteCode = $_POST['sitecode'];
@@ -19,7 +18,7 @@ if($_POST['page'] == "post") {
     $sql = "select siteId from users where email='{$_POST['email']}' ".
            "and password='{$_POST['password']}' and siteId='$siteId'";
     if($S->query($sql)) {
-      header("Location: http://go.myphotochannel.com/slideshow/slideshow.php?siteCode=$siteCode");
+      header("Location: http://go.myphotochannel.com/currentVersion/slideshow/slideshow.php?siteCode=$siteCode");
     }
   }
   $h->title = "bad signin";
@@ -50,4 +49,3 @@ $top
 <hr>
 $footer
 EOF;
-?>
