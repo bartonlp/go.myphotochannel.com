@@ -25,24 +25,26 @@ There are several symlinks:
 * cpanel -> current version of cpanel
 * currentVersion -> points to the current version directory
 
-The current directory is v1.08 -- current version
+The current directory is v2.00 -- current version
 
 Repository: git@github.com:bartonlp/myphotochannel.git
 GitHub: https://github.com/bartonlp/myphotochannel
 
-The 'slideshow' symlink points to the current stable production code directory.
+The 'currentVersion' symlink points to the 'v2.00' directory.
+
+The 'slideshow' symlink points to the current stable production code, 'v2.00' directory.
 
 The same goes for 'cpanel' symlink. The actual code is in a directory that looks like:
-  v1.08/cpanel/.
+  v2.00/cpanel/.
 
-The 'siteautoload.php' file in the 'root' finds the appropriate '.sitemap.php' file and provides the
-class autoload feature.
+The 'v2.00' code uses the new 'SiteClass' which is at $HOME/vendor/bartonlp/site-class. 
+The 'mysitemap.json' replaces the the old '.sitemap.php' and the new $HOME/vendor/bartonlp/site-class/includes/siteload.php 
+replaces the old 'siteautoload.php'.
 
 The php class files are in the 'includes' directory in the 'root' and possibly in subdirectories.
-The root 'includes' directory has a subdirectory 'database-engines' which has the database classes.
 
-Every night the database is extracted and zipped into the 'backup' directory.
+Every night the database is extracted and zipped into the 'other' directory.
 
 Every night all of the code is mirrored onto my home computer at www.bartonphillips.dyndns.org into
-a directory called 'backup' and that directory is tar backed up to '/extra/myphotochannel-backup'
+a directory called '/extra/myphotochannel' and that directory is tar backed up to '/extra/myphotochannel-backup'
 once a week.  The mirror is done with rsync so only new or changed files are actually moved.
