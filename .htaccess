@@ -1,4 +1,5 @@
-# Point to the vendor in bartonphillips.org not at the root.
+# SetEnv does NOT WORK ON 1and1 so this has no effect. It does work on bartonphillips.org so
+# when this is pull(ed) from github it will be set right for that domain.
 SetEnv SITELOADNAME /var/www/bartonphillips.org/vendor/bartonlp/site-class/includes/siteload.php
 
 AddType video/ogg .ogv .ogg
