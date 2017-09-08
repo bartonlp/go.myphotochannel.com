@@ -4,11 +4,11 @@
 
 include("cpanel.top.php");
 echo <<<EOF
-<div id="expungephotos" data-add-back-btn="true" data-role="page" data-theme="a">
+<div id="expungephotos" data-role="page" data-theme="a">
 	<div data-role="header">
     <a data-rel="panel" href="#expunge-help" data-inline="true" data-mini="true">Help</a>
 		<h1>Expunge Photos<span></span></h1>
-		<a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+		<a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 	<div data-role="content" id="expungecontent">
      <!--

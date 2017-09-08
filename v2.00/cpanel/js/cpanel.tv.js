@@ -110,4 +110,11 @@ jQuery(document).on("pagebeforeshow", "#texttotv", function(e, data) {
     });
     return false;
   });
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
+  });
 });

@@ -141,6 +141,9 @@ with debug info in upper left</a>
 <li><a target="_blank" href="currentVersion/cpanel/PC-cpanel.php">PC-cpanel</a>
 <span class='superextra'>*</span> {$lm(array("PC-cpanel.php","js/PC-cpanel.js"),"currentVersion/cpanel")}.
 This is the full screen PC version not the iPhone version.</li>
+<li><a target="_blank" href="currentVersion/cpanel/PC-delete.php">PC-delete</a>
+<span class='superextra'>*</span> {$lm(array("PC-delete.php"),"currentVersion/cpanel")}.
+This is the a PC version not an iPhone version.</li>
 <li><a target="_blank" href="currentVersion/uploadphotos.php">Upload Photos From Client</a>
 <span class='superextra'>*</span> 
 {$lm(array("uploadphotos.php","js/uploadphotos.js"), "currentVersion")}</li>
@@ -556,6 +559,7 @@ $curSlideshowTimes
 <p class='notes'>All <i>Last Modified</i> times are $tz.<br>
 Files modified during the last three days have the date in <span style="color: red">RED</span>.<br>
 <a target="_blank" href="change.log">Change Log</a> started Oct. 4, 2013.<br>
+<a target="_blank" href="currentVersion/gitinfo.php">Git Info</a>
 </p>
 
 <p>The first time you run the <i>slideshow</i> you will need to enter the 'SiteCode' from the

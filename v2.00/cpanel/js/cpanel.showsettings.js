@@ -135,4 +135,11 @@ jQuery(document).on("pagebeforeshow", "#showsettings", function(e, data) {
     } else console.log("num:", data.num);
   });
 
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
+  });
 });

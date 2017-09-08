@@ -65,4 +65,12 @@ jQuery(document).on("pagebeforeshow", "#lotto", function(e, data) {
       $("#lottocontent").trigger("create");
     }
   });
+
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
+  });
 });

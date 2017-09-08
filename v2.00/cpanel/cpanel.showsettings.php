@@ -4,13 +4,13 @@
 include("cpanel.top.php");
 echo <<<EOF
 <!-- Show Settings -->
-<div id="showsettings" data-role="page" data-add-back-btn="true" data-theme="a">
+<div id="showsettings" data-role="page" data-theme="a">
 	<div data-role="header">
     <a data-role="button" href="#showsettings-help" data-inline="true" data-mini="true">Help</a>
 
 		<h1>Show Settings<span></span></h1>
 
-		<a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+		<a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 
   <div data-role="content" id="showsettingscontent">	

@@ -1,0 +1,2 @@
+find . -regextype posix-egrep -type f -iregex '.+\.php' -print0 | xargs -r0 grep -i "ini_set" |less
+

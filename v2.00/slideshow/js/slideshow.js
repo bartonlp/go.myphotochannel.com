@@ -86,6 +86,8 @@ var g = {}; // Global Name Space. All global variable are in this space.
 
 // New trivia
   x.playtrivia = 'no';
+  x.triviaAnswer = new Array();
+  x.triviaAnswer[-1] = 'Please Wait for next Question';
 // End trivia
   
   x.segIndex = 0; // goes from 0 to 4 (cs1...cs5)
@@ -213,13 +215,24 @@ function getTrivia() {
             var ar = new Array(item.correct_answer, item.incorrect_answers[0],
                                item.incorrect_answers[1], item.incorrect_answers[2]);
             ar.sort();
-            g.images.trivia[i] = "<script>setTimeout(function() {$('#answer').html('Answer: "+
-                                 item.correct_answer+"<br>')}, "+g.sites.triviaatime*1000+");</script>"+
-                                 item.question+"<br>"+
-                                 ar[0]+"<br>"+
-                                 ar[1]+"<br>"+
-                                 ar[2]+"<br>"+
-                                 ar[3]+"<br><div id='answer'></div>";
+            var answerLetter;
+            for(var j=0; j < ar.length; ++j) {
+              if(ar[j] == item.correct_answer) {
+                answerLetter = j+0 + 'A'.charCodeAt(0);
+              }
+            }
+            answerLetter = String.fromCharCode(answerLetter);
+            
+            g.images.trivia[i] = item.question+"<br>"+
+                                 "A. "+ar[0]+"<br>"+
+                                 "B. "+ar[1]+"<br>"+
+                                 "C. "+ar[2]+"<br>"+
+                                 "D. "+ar[3]+"<br><br>"+
+                                 "<div id='answer'>Previous Question and Answer:<br>"+
+                                 g.triviaAnswer[i-1]+
+                                 "</div>";
+            
+            g.triviaAnswer[i] = item.question + "<br>" + answerLetter + ". " + item.correct_answer;
           }
         }, "json");
     // BLP 2017-07-08 -- end add
@@ -686,7 +699,6 @@ function slideshow() {
 
   switch(g.image.mpcType) {
     case 'trivia':
-      // console.log("TRIVIA", trivia);
       // NOTE: The first containing <div> is required because it is
       // g.item and g.lastItem and is the element that is 'removed' by
       // the doEffects logic ($($("#show").children()[1]);).

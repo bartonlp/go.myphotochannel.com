@@ -7,7 +7,7 @@ echo <<<EOF
 	<div data-role="header">
     <a data-role="button" href="#lotto-help" data-inline="true" data-mini="true">Help</a>
 		<h1>Lotto Control<span></span></h1>
-    <a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+    <a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 	<div data-role="content" id="lottocontent">	
     <ul data-role="listview" data-inset="true">

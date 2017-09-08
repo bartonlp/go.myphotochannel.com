@@ -7,7 +7,7 @@ echo <<<EOF
 	<div data-role="header">
     <a data-role="button" href="#games-help" data-inline="true" data-mini="true">Help</a>
 		<h1>Game Control<span></span></h1>
-    <a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+    <a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 	<div data-role="content" id="gamescontent">	
     <ul data-role="listview" data-inset="true">
@@ -69,12 +69,8 @@ echo <<<EOF
     <input type="range" id="trivianum" value="10" min="1" max="100" data-highlight='true'/>
     </div>
     <div data-role="fieldcontain">
-    <label for="triviaqtime">Question Only Duration:</label>
+    <label for="triviaqtime">Question Duration:</label>
     <input type="range" id="triviaqtime" value="10" min="1" max="30" data-highlight='true'/>
-    </div>
-    <div data-role="fieldcontain">
-    <label for="triviaatime">Time Till Answer:</label>
-    <input type="range" id="triviaatime" value="5" min="1" max="30" data-highlight='true'/>
     </div>
     <div data-role="fieldcontain">
     <label for="triviacat">Category</label>

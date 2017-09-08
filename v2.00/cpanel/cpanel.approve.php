@@ -4,7 +4,6 @@
 // select to only look at status='new'.
 // BLP 2014-04-30 -- if image file does not exist delete record.
 // BLP 2014-04-25 -- Add resize logic here instead of doing it via a cron.
-
 include("cpanel.top.php");
 
 // The first thing we do when someone runs this program is check to see if any files for this site
@@ -13,14 +12,14 @@ define(DOC_ROOT, $_site->path);
 $S->resizelog = DOC_ROOT . "/resize.log";
 
 function getversion($path) {
-  $name = realpath("$path");
+  $name = realpath(DOC_ROOT ."$path");
   $version = preg_replace('/^.*?(v\d+\.\d+).*$/', "$1", $name);
   return $version;
 }
 
-$version = getversion(getcwd());
+$version = getversion("/currentVersion");
 
-date_default_timezone_set("America/Denver");
+date_default_timezone_set("America/New_York");
 file_put_contents($S->resizelog,  "==========================\n".
                   "cpanel.approve: Resize: version $version\n".
                   date("Y-m-d H:i T" . "\n") .

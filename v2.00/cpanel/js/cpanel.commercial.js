@@ -53,4 +53,12 @@ jQuery(document).on("pagebeforeshow", "#commbreak", function(e, data) {
   });
 
   $("select").trigger("change");
+
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
+  });
 });

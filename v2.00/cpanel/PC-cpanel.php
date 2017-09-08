@@ -8,11 +8,10 @@ include("PC-cpanel.top.php");
 // **********************
 
 echo <<<EOF
-<div id="PCadminpanel" data-role="page" data-add-back-btn="true" data-theme="e">
+<div id="PCadminpanel" data-role="page" data-theme="e">
 	<div data-role="header">
     <a data-role="button" href="#admin-help" data-inline="true" data-mini="true">Help</a>
 		<h1>Items Table<span></span></h1>
-		<a href="cpanel.php" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 
   <div data-role="content" id="adminpanelcontent">	

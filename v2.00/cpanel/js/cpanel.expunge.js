@@ -77,5 +77,12 @@ jQuery(document).on("pagebeforeshow", "#expungephotos", function(e, data) {
     $("#expungephotoshere").html("<table border='1'>"+tbl+"</table>");
     $("#expungephotoshere").trigger("create");
   });
-      
+
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
+  });
 });

@@ -10,7 +10,14 @@ if($cmd = $_GET['page']) {
   exit();
 }
 
+if(!getenv("SITELOADNAME")) {
+  putenv("SITELOADNAME=/kunden/homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/siteload.php");
+}
 $_site = require_once(getenv("SITELOADNAME"));
+define(DOC_ROOT, $_site->path);
+ErrorClass::setDevelopment(true);
+ErrorClass::setNoEmailErrs(true);
+
 $S = new $_site->className($_site);
 
 $h->title = "GIT Info";
