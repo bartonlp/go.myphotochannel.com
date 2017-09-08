@@ -1,0 +1,18 @@
+# Point to the vendor in bartonphillips.org not at the root.
+SetEnv SITELOADNAME /var/www/bartonphillips.org/vendor/bartonlp/site-class/includes/siteload.php
+
+AddType video/ogg .ogv .ogg
+AddType video/mp4 .mp4
+AddType video/webm .webm
+
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^playbingo.php currentVersion/slideshow/playbingo.php [L]
+# photoloto.php is usually run via CRON but we have the option of running it as a web program.
+RewriteRule ^photoloto.php currentVersion/slideshow/photoloto.php [L]
+# redirect index requests to currentVersion
+RewriteRule ^$ currentVersion/index.php [L]
+RewriteRule ^index.php currentVersion/index.php [L]
+RewriteRule ^js/(.*)$ currentVersion/js/$1 [L]
+RewriteRule ^css/(.*)$ currentVersion/css/$1 [L]
