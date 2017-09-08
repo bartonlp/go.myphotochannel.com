@@ -3,8 +3,7 @@ $noselect = true;
 include("adsCpanel.top.php");
 
 echo <<<EOF
-<div id="adsadminpanel" data-role="page" data-add-back-btn="true" data-theme="e">
-
+<div id="adsadminpanel" data-role="page" data-theme="e">
 <div id="prevnexthelp" class="ui-btn-left"> 
   <div data-role="controlgroup" data-type='horizontal' data-mini="true">
     <button id="prev100">Prev 100</button>
@@ -16,7 +15,6 @@ echo <<<EOF
 
 <div data-role="header">
   <h1>Admin Ads Photos<span></span></h1>
-	<a href="cpanel.php" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home"></a>
 </div><!-- /header -->
 
 <div data-role="panel" id="ads-photoadmin-help-panel" data-theme="b" data-position="right"

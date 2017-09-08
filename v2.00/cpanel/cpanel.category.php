@@ -2,12 +2,12 @@
 echo <<<EOF
 <!-- Category Duration -->
 
-<div id="category" data-role="page" data-add-back-btn="true" data-theme="a">
+<div id="category" data-role="page" data-theme="a">
 	<div data-role="header">
     <a data-role="button" href="#category-help" data-inline="true" data-mini="true">Help</a>
 
 		<h1>Category Settings<span></span></h1>
-		<a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+		<a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 
   <div data-role="content" id="categorycontent">

@@ -21,4 +21,12 @@ jQuery(document).on("pagebeforeshow", "#newuser", function(e, data) {
       $.mobile.changePage("cpanel.php?siteId="+siteId);
     });
   });
+
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
+  });
 });

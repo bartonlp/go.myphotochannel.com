@@ -28,12 +28,13 @@ ErrorClass::setNoEmailErrs(true);
 
 if($_GET['page'] == 'mkdb') {
   $S = new Database($_site);
-  
+
   $filename = $_GET['filename'];
   
-  $fd = fopen($filename, 'r');
+  $fd = fopen("currentVersion/$filename", 'r');
   $cnt = 0;
   fgetcsv($fd);
+  
   while(($data = fgetcsv($fd)) !== false) {
     $date = date("Y-m-d", strtotime($data[0]));
     $time = date("H:i", strtotime($data[1]));
@@ -43,6 +44,7 @@ if($_GET['page'] == 'mkdb') {
            "'$data[3]', '$data[4]')";
     //echo "$sql<br>";
     $S->query($sql);
+    
     ++$cnt;
   }
   echo "Inserted $cnt records<br>";

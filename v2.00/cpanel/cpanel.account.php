@@ -14,11 +14,11 @@ echo <<<EOF
 superuser = $S->superuser;
 </script>
 
-<div id="account" data-role="page" data-add-back-btn="true" data-theme="a">
+<div id="account" data-role="page" data-theme="a">
 	<div data-role="header">
 		<h1>Account Maintenance<span></span></h1>
     <a data-rel="panel" href="#account-help" data-inline="true" data-mini="true">Help</a>
-		<a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+		<a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 	</div><!-- /header -->
 	<div data-role="content" id="accountcontent">
     <label for="catselect">Select User</label>

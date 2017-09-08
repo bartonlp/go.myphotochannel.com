@@ -32,8 +32,8 @@ the database and creates an new image using the template image at ~/images/mlb.p
 area in the center. That image is placed in the ~/adscontent directory as mlb.png.
 
 Using the Control Panel (cpanel.php) go to the 'Show Settings' and set the 'Allow Ads' button to
-'yes' and post the change. Then use the 'Ads Cpanel' (adsadmin.php) and make sure the mlb.png photo
-is 'active'. It should be because the I brute forced it into the 'ads' table using mysql. There
+'yes' and post the change. Then use the 'Ads Cpanel' (adsCpanel.admin.php) and make sure the mlb.png 
+photo is 'active'. It should be because the I brute forced it into the 'ads' table using mysql. There
 should probably be a better way of adding this image to the 'ads' table but for now there isn't.
 
 Once the allowAds flag is set in the appinfo table and the ~/adscontent/mlb.png is set active in the

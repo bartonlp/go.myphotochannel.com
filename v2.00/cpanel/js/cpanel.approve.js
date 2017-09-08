@@ -135,7 +135,7 @@ jQuery(document).on("pagebeforeshow", "#approvephotos-page", function(e, data) {
   
   $("#approvephotoshere").load(ajaxfile,
                                { page: 'approvephotos', siteId: siteId },
-                               function(data) { console.log(data); });
+                               function(data) { console.log("approvephotos OK"); });
 
   // Rotate photo
 
@@ -161,5 +161,13 @@ jQuery(document).on("pagebeforeshow", "#approvephotos-page", function(e, data) {
              });
            }
     });
+  });
+
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
   });
 });

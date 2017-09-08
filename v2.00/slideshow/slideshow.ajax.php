@@ -383,12 +383,11 @@ function getInfo($S) {
   }
 
   if($playtrivia) {
-    $S->query("select trivianum, triviaqtime, triviaatime, triviacat, triviafontsize, triviafontstyle ".
+    $S->query("select trivianum, triviaqtime, triviacat, triviafontsize, triviafontstyle ".
               "from playtrivia where siteId='{$S->sites['siteId']}'");
 
     list($S->sites['trivianum'],
          $S->sites['triviaqtime'],
-         $S->sites['triviaatime'],
          $S->sites['triviacat'],
          $S->sites['triviafontsize'],
          $S->sites['triviafontstyle']) = $S->fetchrow('num');

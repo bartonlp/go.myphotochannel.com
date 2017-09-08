@@ -30,16 +30,16 @@ if(!getenv("SITELOADNAME")) {
 $_site = require_once(getenv("SITELOADNAME"));
 ErrorClass::setDevelopment(true);
 ErrorClass::setNoEmailErrs(true);
-
+define(DOC_ROOT, $_site->path);
 $S = new Database($_site);
 
 function getversion($path) {
-  $name = realpath("$path");
+  $name = realpath(DOC_ROOT ."$path");
   $version = preg_replace('/^.*?(v\d+\.\d+).*$/', "$1", $name);
   return $version;
 }
 
-$version = getversion(getcwd());
+$version = getversion("/currentVersion");
 
 $app_id = '52258';
 $key = '2aa0c68479472ef92d2a';
@@ -52,7 +52,7 @@ try {
   $S->query($sql);
 } catch(Exception $e) {
   unset($S);
-  $S = new Database($GLOBALS['dbinfo']);
+  $S = new Database($_site);
   echo "RETRY: $sql\n";
   try {
     $S->query($sql); // try same sql again
@@ -66,7 +66,6 @@ $result = $S->getResult(); // get result because we do further query commands in
 
 // For each site
 
-//echo "SITE_ROOT: ".SITE_ROOT."\n";
 $totalphotos = 0;
 
 while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num')) {
@@ -83,7 +82,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
     $n = $S->query($sql);
   } catch(Exception $e) {
     unset($S);
-    $S = new Database($GLOBALS['dbinfo']);
+    $S = new Database($_site);
     $S->siteId = $siteId;
     echo "RETRY: $sql\n";
 
@@ -102,7 +101,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
       $S->query($sql);
     } catch(Exception $e) {
       unset($S);
-      $S = new Database($GLOBALS['dbinfo']);
+      $S = new Database($_site);
       $S->siteId = $siteId;
       echo "RETRY: $sql\n";
 
@@ -118,7 +117,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
     // categories, segments or sites has changed.
 
     $pusher->trigger("slideshow", "fastcall", array('siteId'=>$siteId));
-    date_default_timezone_set("America/Denver");
+    date_default_timezone_set("America/New_York");
     echo date("Y-m-d H:i T") . ", FastCall for $siteId: ". "\n--------------------------\n";
   }
   
@@ -154,7 +153,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
         $S->from = $S->escape(escapeltgt($from));
 
         // $v is a numeric array of numeric arrays with [0]=part, [1]=filename
-        date_default_timezone_set("America/Denver");
+        date_default_timezone_set("America/New_York");
         echo  date("Y-m-d H:i T") . ", $version, Nmsgs: " . ($check->Nmsgs) .
             ", Parts: " . count($v) . ", " . "\n";
 
@@ -181,7 +180,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
           if($S === false) {
             echo "fixupNewPhotos FAILED: trying one more time.";
             unset($S);
-            $S = new Database($GLOBALS['dbinfo']);
+            $S = new Database($_site);
 
             $S->siteId = $siteId;
             $S->subject = $header->subject;
@@ -233,7 +232,7 @@ EOF;
         $n = $S->query($sql);
       } catch(Exception $e) {
         unset($S);
-        $S = new Database($GLOBALS['dbinfo']);
+        $S = new Database($_site);
         $S->siteId = $siteId;
         echo "RETRY: users\n";
 
@@ -275,7 +274,7 @@ EOF;
   imap_close($mbox, CL_EXPUNGE); // remove any deleted messages
 }
 
-date_default_timezone_set("America/Denver");
+date_default_timezone_set("America/New_York");
 $d = date("Y-m-d H:i T");
 $time = time() - $starttime;
 
@@ -310,7 +309,7 @@ function fixupNewPhotos($S) {
     $n = $S->query($sql);
   } catch(Exception $e) {
     unset($S);
-    $S = new Database($GLOBALS['dbinfo']);
+    $S = new Database($GLOBALS['_site']);
     $S->siteId = $siteId;
     echo "RETRY: $sql\n";
 
@@ -339,7 +338,7 @@ function fixupNewPhotos($S) {
     $S->query($sql);
   } catch(Exception $e) {
     unset($S);
-    $S = new Database($GLOBALS['dbinfo']);
+    $S = new Database($GLOBALS['_site']);
     $S->siteId = $siteId;
     echo "RETRY: $sql\n";
 
@@ -357,8 +356,8 @@ function fixupNewPhotos($S) {
   // Now just put this fullsized image in the content directory.
   // We will resize it later.
 
-  echo "Filename: ".SITE_ROOT ."/content/$newfile\n";
-  file_put_contents(SITE_ROOT ."/content/$newfile", $S->image);
+  echo "Filename: ".DOC_ROOT ."/content/$newfile\n";
+  file_put_contents(DOC_ROOT ."/content/$newfile", $S->image);
 
   return $S;
 }

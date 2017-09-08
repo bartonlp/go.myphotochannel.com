@@ -41,16 +41,16 @@ if(!getenv("SITELOADNAME")) {
 $_site = require_once(getenv("SITELOADNAME"));
 ErrorClass::setDevelopment(true);
 ErrorClass::setNoEmailErrs(true);
-
+define(DOC_ROOT, $_site->path);
 $S = new Database($_site);
 
 function getversion($path) {
-  $name = realpath("$path");
+  $name = realpath(DOC_ROOT."$path");
   $version = preg_replace('/^.*?(v\d+\.\d+).*$/', "$1", $name);
   return $version;
 }
 
-$version = getversion(getcwd());
+$version = getversion("/currentVersion");
 
 $app_id = '52258';
 $key = '2aa0c68479472ef92d2a';
@@ -127,7 +127,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
     // categories, segments or sites has changed.
 
     $pusher->trigger("slideshow", "fastcall", array('siteId'=>$siteId));
-    date_default_timezone_set("America/Denver");
+    date_default_timezone_set("America/New_York");
     echo date("Y-m-d H:i T") . ", FastCall for $siteId: ". "\n--------------------------\n";
   }
   
@@ -158,7 +158,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
 
       // BLP 2014-10-06 -- check emailblacklist table for this frim address
 
-      date_default_timezone_set("America/Denver");
+      date_default_timezone_set("America/New_York");
 
       // BLP 2014-10-06 -- take $from appart and get the email address.
       // from can have: 1) just text with no email
@@ -262,7 +262,7 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
         // BLP 2014-07-20 --
         
         if($from == "IFTTT Action <action@ifttt.com>" && $allowIFTTT == 'yes') {
-          date_default_timezone_set("America/Denver");
+          date_default_timezone_set("America/New_York");
           echo date("Y-m-d H:i T") . ", from:$from, subject: $S->subject\n+++++++++++++++++++++++++\n";
 
           // This is a photo from IFTTT
@@ -421,7 +421,7 @@ EOF;
   imap_close($mbox, CL_EXPUNGE); // remove any deleted messages
 }
 
-date_default_timezone_set("America/Denver");
+date_default_timezone_set("America/New_York");
 $d = date("Y-m-d H:i T");
 $time = time() - $starttime;
 
@@ -503,8 +503,8 @@ function fixupNewPhotos($S) {
   // Now just put this fullsized image in the content directory.
   // We will resize it later.
 
-  echo "Filename: ../content/$newfile\n";
-  file_put_contents("../content/$newfile", $S->image);
+  echo "Filename: " . DOC_ROOT . "/content/$newfile\n";
+  file_put_contents(DOC_ROOT . "/content/$newfile", $S->image);
 
   return $S;
 }

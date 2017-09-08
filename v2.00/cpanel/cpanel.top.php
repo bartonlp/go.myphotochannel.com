@@ -72,7 +72,7 @@ $siteId = $S->siteId; // All of the cpanel.xxx.php files use $siteId appended to
 $cwd = realpath(TOP . $S->self);
 $cpanelVersion = preg_replace("~^.*?/(v\d+\.\d+)/.*$~", "$1", $cwd);
 
-$cpanelAr = 
+$cpanelAr = array("cpanel.*php", "cpanel.ajax.php", "!js/cpanel.admin.js", "js/cpanel.*.js");
 $lastMod = $cpanelVersion; //lastMod(array("cpanel.*php", "cpanel.ajax.php", "!js/cpanel.admin.js", "js/cpanel.*.js"),
                    //$cwd) . ", $cpanelVersion";
 
@@ -83,6 +83,7 @@ $h->extra =<<<EOF
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
   <link rel="stylesheet" href="css/cpanel.photoadmin.css">
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
   <script>
 var siteId="$S->siteId";
@@ -94,7 +95,6 @@ var lastMod="$lastMod";
   </script>
   <script src="js/cpanel.js"></script>
   <script src="js/cpanel.tv.js"></script>
-
   <script src="js/cpanel.account.js"></script>
   <script src="js/cpanel.approve.js"></script>
   <script src="js/cpanel.commercial.js"></script>
@@ -105,7 +105,6 @@ var lastMod="$lastMod";
   <script src="js/cpanel.managecontent.js"></script>
   <script src="js/cpanel.games.js"></script>
   <script src="js/cpanel.lotto.js"></script>
-  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 EOF;
 
 if(!$nopagetop) {

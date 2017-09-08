@@ -11,6 +11,9 @@ var version = " (" + lastMod +")";
 var ajaxfile = "cpanel.ajax.php";
 var startupId = null;
 
+// Insert into the startup table and start Pusher
+// Returns the lastid from the insert.
+
 $.ajax({
   url: ajaxfile,
   data: { page: 'startup', siteId: siteId, unit: 'cpanel id='+userId, version: version },
@@ -25,6 +28,9 @@ $.ajax({
        }
 });
 
+// Update startup table and register 'unload' with Pusher
+// Returns the sql statement
+
 $(window).bind("unload", function(e) {
   $.ajax({
     url: ajaxfile,
@@ -33,6 +39,9 @@ $(window).bind("unload", function(e) {
     async: false
   });
 });
+
+// Update startup table register 'startup-update' with Pusher
+// Returns sql statement
 
 function sendstartupupdate() {
   $.ajax({
@@ -56,6 +65,7 @@ var newDeleteTimeout;
 
 jQuery(document).on("pagehide", "#home", function(e, data) {
   console.log("PAGEHIDE", e, data);
+    
   clearTimeout(newDeleteTimeout);
   newDeleteTimeout = null;
 });
@@ -161,6 +171,8 @@ function createImage(message) {
 
   return dataUri;
 }
+
+// Check the 'Approve Photos' and the 'Remove Photos' links.
 
 function checkNewDelete() {
   // Check for Deletes

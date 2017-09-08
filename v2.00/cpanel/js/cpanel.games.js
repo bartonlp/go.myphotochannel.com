@@ -22,14 +22,14 @@ jQuery(document).on("pagebeforeshow", "#games", function(e, data) {
 
     var trivianum = $("#trivianum").val(),
     triviaqtime = $("#triviaqtime").val(),
-    triviaatime = $("#triviaatime").val(),
+    //triviaatime = $("#triviaatime").val(),
     triviacat = $("#triviacat").val(),
     triviafontsize = $("#triviafontsize").val(),
     triviafontstyle = $("#triviafontstyle").val();
 
     sqlt += "trivianum='"+trivianum+
             "', triviaqtime='"+triviaqtime+
-            "', triviaatime='"+triviaatime+
+            //"', triviaatime='"+triviaatime+
             "', triviacat='"+triviacat+
             "', triviafontsize='"+triviafontsize+
             "', triviafontstyle='"+triviafontstyle+
@@ -71,7 +71,7 @@ jQuery(document).on("pagebeforeshow", "#games", function(e, data) {
         "l.expires as lottoExpires, "+
         "t.trivianum as trivianum, "+
         "t.triviaqtime as triviaqtime, "+
-        "t.triviaatime as triviaatime, "+
+        //"t.triviaatime as triviaatime, "+
         "t.triviacat as triviacat, "+
         "t.triviafontsize as triviafontsize, "+
         "triviafontstyle as triviafontstyle "+
@@ -99,16 +99,24 @@ jQuery(document).on("pagebeforeshow", "#games", function(e, data) {
 
       $("#trivianum").val(row.trivianum);
       $("#triviaqtime").val(row.triviaqtime);
-      $("#triviaatime").val(row.triviaatime);
+      //$("#triviaatime").val(row.triviaatime);
       $("#triviacat").val(row.triviacat);
       $("#triviafontsize").val(row.triviafontsize);
       $("#triviafontstyle").val(row.triviafontstyle);
 
-      $("#trivanum, #triviaqtime, #triviaatime, #triviafontsize").slider('refresh');
+      $("#trivanum, #triviaqtime, #triviafontsize").slider('refresh');
 
       $("#triviacat, #triviafontstyle").selectmenu("refresh");
 
       $("#gamescontent").trigger('create');      
     }
+  });
+
+  // Change back to the main page
+
+  $("#homejames").on("click", function() {
+    $("#home").remove();
+    $.mobile.changePage("cpanel.php?siteId="+siteId);
+    return false;
   });
 });

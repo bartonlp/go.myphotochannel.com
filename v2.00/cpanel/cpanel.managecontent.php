@@ -3,7 +3,6 @@ include("cpanel.top.php");
 
 echo <<<EOF
 <div id="photoadminpanel" data-role="page" data-theme="a">
-
 <div id="prevnexthelp" class="ui-btn-left"> 
   <div data-role="controlgroup" data-type='horizontal' data-mini="true">
     <button id="prev100">Prev 100</button>
@@ -15,7 +14,7 @@ echo <<<EOF
 
 <div data-role="header">
   <h1>Admin Photos<span></span></h1>
-	<a href="cpanel.php?siteId=$siteId" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
+	<a href="cpanel.php?siteId=$siteId" id="homejames" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right"></a>
 </div><!-- /header -->
 
 <div data-role="panel" id="photoadmin-help-panel" data-theme="b" data-position="right"
