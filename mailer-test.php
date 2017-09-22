@@ -1,25 +1,37 @@
 <?php
-require 'PHPMailer/PHPMailerAutoload.php';
+// Example of sending email with attachment using PHPMailer
+// This now uses PHPMailer 6.0 via /var/www/bartonphillips.org/vendor
+// See: https://github.com/PHPMailer/PHPMailer for documentation
+
+// Added namespace info
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Get the autoloader
+require_once(getenv("SITELOADNAME"));
+
+// Instantiate PHPMailer
 $mail = new PHPMailer();
+
 $mail->IsSendmail(); // telling the class to use SendMail transport
-$body = "<p>This is a test <img src='images/myphotochannel.png'/></p>";
-//$body = eregi_replace("[\]",'',$body);
+
+$body = <<<EOF
+  <h1>This is a test of PHPMailer.</h1>
+  <div align="center">
+    <img src="images/myphotochannel.png">
+  </div>
+EOF;
+
 $mail->AddReplyTo("bartonphillips@gmail.com","Barton Phillips");
 $mail->SetFrom('info@myphotochannel.com');
-//$mail->AddReplyTo("name@yourdomain.com","First Last");
 $address = "bartonphillips@gmail.com";
 $mail->AddAddress($address, "Barton Phillips");
-$mail->Subject    = "PHPMailer Test Subject via Sendmail, basic";
-$mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
-$mail->MsgHTML($body);
-//$mail->AddEmbeddedImage("rocks.png", "my-attach", "rocks.png");
-//$mail->Body = 'Your <b>HTML</b> with an embedded Image: <img src="cid:my-attach"> Here is an image!';
-
-$mail->AddAttachment("images/myphotochannel.png");      // attachment
-//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
+$mail->Subject = "PHPMailer Test Subject via Sendmail, basic";
+$mail->MsgHTML($body, dirname(__FILE__));
+//$mail->msgHTML(file_get_contents('content.html'), dirname(__FILE__));
+$mail->AddAttachment("images/myphotochannel.png");
 if(!$mail->Send()) {
   echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
   echo "Message sent!";
 }
-?>
