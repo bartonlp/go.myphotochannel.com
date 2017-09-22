@@ -357,7 +357,7 @@ EOF;
   if($debug) putit($msg);
   
   // DOCUMENTATION for PHPMailer.
-  // http://phpmailer.github.io/PHPMailer/classes/PHPMailer.html
+  // https://github.com/PHPMailer/PHPMailer
   
   require DOC_ROOT .'/PHPMailer/PHPMailerAutoload.php';
   

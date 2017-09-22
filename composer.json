@@ -1,7 +1,8 @@
 {
     "require": {
         "bartonlp/site-class": "^2.0",
-        "kint-php/kint": "^2.1"
+        "kint-php/kint": "^2.1",
+        "phpmailer/phpmailer": "^6.0"
     },
     "autoload": {
       "classmap": [

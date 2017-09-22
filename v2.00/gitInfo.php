@@ -1,4 +1,3 @@
-
 <?php
 // BLP 2014-04-29 -- Do various git functions
 if($cmd = $_GET['page']) {
