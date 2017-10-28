@@ -1,39 +1,11 @@
-database-engines/
-  Directory with all of the new database classes and the helper file.
-    Database.class.php
-      Main database class. It extends dbAbstract.
-      This gets instantiated by most classes that extend SiteClass like this:
-<code>
-      public function __construct($x=null) {
-        global $dbinfo, $siteinfo; // from .sitemap.php
-        $s = $siteinfo;
-        $s['databaseClass'] = new Database($dbinfo);
-        ...
-      }
-</code>
-      
-    dbAbstract.class.php
-      Abatract database class.
-    dbMysqli.class.php
-      Implements the MySqli interface.
-    SqlException.class.php
-      Exception class.
-    Error.class.php
-      Error Class.
-    dbTables.class.php
-      Implements table creation via the database.
-    helper-functions.php
-      This is NOT a class but just a bunch of useful functions used by everything.
-Pusher.php
-  This is a copy of the Pusher.com program that implements the websockets in our application.
-  This copy is now used as of v1.08 (cpanel and slideshow). Previous versions used a copy of this
-  program in their directories under 'websocket//vendor/pusher/pusher-php-server/lib/Pusher.php'.
-  By living in include the siteautoload.php can now find this program and we don't need to have a
-  require statement for it in other code.
-SiteClass.class.php
-  This is the main site class which Tom.class.php extends.
-Tom.class.php
-  This is the site specific class that extends SiteClass.
-myphotochannelbanner.i.php
-  This is the banner for the index.php file.
-
+BLP 2017-09-22 -- This directory is ONLY used by version v1.08. Version v2.00 uses the 
+/var/www/vendor/bartonlp/site-class instead of this directory. The Pusher.php and 
+myphotochannelbanner.i.php files have been copied to currentVersion/includes and have been modified
+for the v2.00 version. The /var/www/composer.json file has
+  "autoload": {
+    "classmap": [
+      "v2.00/includes"
+    ]
+  }
+which adds that path to the composer path (see vendor/composer/autoload_static.php).
+BLP 2017-09-22 -- End Comment
