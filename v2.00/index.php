@@ -204,6 +204,23 @@ EOF;
   return $link;
 }
 
+// Ajax: get users from usres table
+
+if($_GET['page'] == 'getusers') {
+  $S = new Database($_site);
+  $sql = "select id, concat(fname, ' ', lname) from users";
+  $S->query($sql);
+  $ar = array();
+  
+  while(list($id, $name) = $S->fetchrow('num')) {
+    $ar[$id] = $name;
+  }
+  $found = json_encode($ar);
+  
+  echo $found;
+  exit();
+}
+
 // Ajax: Get the link area for the correct version (currentVersion or workingVersin)
 
 if($_GET['page'] == 'getlink') {
@@ -263,7 +280,7 @@ if($_GET['name'] == 'gettable') {
   $c = $S->query($sql) - $n;
 
   while(list($id, $siteId, $unit, $version, $status, $starttime, $lasttime, $run) = $S->fetchrow('num')) {
-    $tbl .= "<tr><td>$siteId</td><td>$unit</td><td>$version</td>".
+    $tbl .= "<tr><td>$siteId</td><td class='unitblp'>$unit</td><td>$version</td>".
             "<td class='status'>$status</td><td>$starttime</td><td>$lasttime</td><td>$run</td></tr>";
   }
 
@@ -558,8 +575,9 @@ $curSlideshowTimes
 
 <p class='notes'>All <i>Last Modified</i> times are $tz.<br>
 Files modified during the last three days have the date in <span style="color: red">RED</span>.<br>
-<a target="_blank" href="change.log">Change Log</a> started Oct. 4, 2013.<br>
-<a target="_blank" href="currentVersion/gitInfo.php">Git Info</a>
+<a target="_blank" href="currentVersion/change.log">Change Log</a> log for v2.00.<br>
+<a target="_blank" href="currentVersion/gitinfo.php">Git Info</a>
+
 </p>
 
 <p>The first time you run the <i>slideshow</i> you will need to enter the 'SiteCode' from the

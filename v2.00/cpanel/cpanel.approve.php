@@ -101,7 +101,7 @@ function resizeImage($filename, $destfile, $S) {
   $filesize = filesize($filename);
   $toobig = '';
   
-  if($filesize > 2000000) {
+  if($filesize > 5000000) { // BLP 2017-10-14 -- set to 5M 
     $toobig = " TOO BIG NOT RESIZED";
   }
   file_put_contents($S->resizelog, "Destination file name: " . basename($destfile) .
@@ -117,10 +117,9 @@ function resizeImage($filename, $destfile, $S) {
       return false;
     }
   } else {
-    // BLP 2014-09-16 -- if toobig then just return without resizing
-    // NOTE if the toobig file is something other than a jpg the items table will have the wrong
-    // extension. I should fix this at some point!!
-    return true;
+    // BLP 2017-10-14 -- Change this return false. We don't want this file to have its 'resized'
+    // flag changed to yes. We want it to be set to 'inactive'
+    return false;
   }
   
   // The original width and height of the image
