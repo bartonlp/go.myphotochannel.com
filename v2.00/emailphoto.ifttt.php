@@ -135,6 +135,10 @@ while(list($siteId, $host, $user, $password, $port) = $S->fetchrow($result, 'num
   $photonum = 0;
   // Open the imap server for this site
 
+  //echo "Try open with $user, $host, $password, $port\n";
+
+  //if($user == 'dbs@myphotochannel.com') $password = '709Blp8653?';
+  //echo "password: $password\n";
   $mbox = @imap_open("{{$host}/imap/notls:{$port}}INBOX", "$user", "$password");
 
   if(!$mbox) {

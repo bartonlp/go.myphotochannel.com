@@ -1,12 +1,8 @@
-# Site-class 2.0
-SiteClass class mini framework for simple, small websites.
-## dbTables
+# dbTables Documentation
 
-This is the documentation for dbTables.
+---
 
-In addition to the SiteClass and Database classes there are several others classes in the 'database-engins' directory.
-
-The dbTables class uses the Database class to make creating tables simple. For example:
+The **dbTables** makes creating tables simple.
 
 ```php
 <?php
@@ -101,9 +97,10 @@ Here is an example with all of the items:
 ```php
 $info = $T->maketable($sql, array('callback'=>callback1, 'callback2'=>callback2,  
         'footer'=>$footer, 'attr'=>array('border'=>'1', 'class'=>'something')));
+// $info[0] or $info['table'] is the table html.
 ```
 
-There is a second **dbTables** method which is not used directly as much. It creates only the result rows.
+There is a second **dbTables** method which is not used directly as much. This method is called by 'maketable'. It creates only the result rows.
 
 ```bash
   /**
@@ -130,8 +127,6 @@ There is a second **dbTables** method which is not used directly as much. It cre
   public function makeresultrows($query, $rowdesc, array $extra=array()) {...}
 ```
 
-The database methods are implemented for all supported engines. There are some minor behavioral differences, for example in the syntax the engine queries uses or the return values. For example sqlite3 does not support a number of rows returned functionality and there are also several (many) syntactial differenced between sqlite and mysql when it comes to supported functions etc. (caviat emptor).
-
 ## dbTables Methods
 
 * constructor
@@ -141,16 +136,16 @@ $extra is an optional assoc array: $extra['callback'], $extra['callback2'], $ext
 $extra['attr'] is an assoc array that can have attributes for the <table> tag, like 'id', 'title', 'class', 'style' etc.  
 $extra['callback'] function that can modify the header after it is filled in.  
 $extra['footer'] a footer string   
-@return array [{string table}, {result}, {num}, {hdr}, table=>{string}, result=>{result},
- num=>{num rows}, header=>{hdr}]  
- or === false
+@return array [{string table}, {result}, {num}, {hdr}, table=>{string}, result=>{result}, num=>{num rows}, header=>{hdr}] or === false
 
 ---
-[Examples](examples.html)  
-[dbTables](dbTables.html)  
-[SiteClass Methods](siteclass.html)  
-[Additional Files](files.html)  
-[Analysis and Tracking](analysis.html)  
+
+[Examples](examples.html)
+[dbTables](dbTables.html)
+[SiteClass Methods](siteclass.html)
+[Additional Files](files.html)
+[Analysis and Tracking](analysis.html)
+[Testing](testing.html)
 [Index](index.html)
 
 ## Contact Me

@@ -19,7 +19,7 @@ ErrorClass::setDevelopment(true);
 ErrorClass::setNoEmailErrs(true);
 $S = new Database($_site);
 
-define(SITE_ROOT, '/var/www/myphotochannel.com');
+define(SITE_ROOT, '/kunden/homepages/45/d454707514/htdocs');
 
 function getversion($path) {
   $name = realpath("$path");
@@ -36,23 +36,10 @@ echo "Resize: version $version\n";
 echo date("Y-m-d H:i T") . "\n--------------------------\n";
 $starttime = time();
 
-try {
-  // BLP 2014-01-21 -- add status='active'
-  $S->query("select itemId, location, siteId from items where resized='no' ".
-            "and type='image'");
+// BLP 2014-01-21 -- add status='active'
+$S->query("select itemId, location, siteId from items where resized='no' ".
+          "and type='image'");
   
-} catch(Exception $e) {
-  unset($S);
-  $S = new Database($GLOBALS['dbinfo']);
-  echo "RETRY: $sql\n";
-  try {
-    $S->query($sql); // try same sql again
-  } catch(Exception $e) {
-    echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
-    exit();
-  }
-}
-
 $r = $S->getResult();
 
 $itemCnt = 0;
@@ -87,20 +74,8 @@ while(list($itemId, $location, $siteId) = $S->fetchrow($r, 'num')) {
 
   $destfile = "content/" .basename($destfile);
 
-  try {
-    $S->query("update items set resized='yes', location='$destfile' where itemId='$itemId'");
-  } catch(Exception $e) {
-    unset($S);
-    $S = new Database($GLOBALS['dbinfo']);
-    echo "RETRY: $sql\n";
-    try {
-      $S->query($sql); // try same sql again
-    } catch(Exception $e) {
-      echo "Tried retry unset and new Database but still got error. Error: ".$e->getCode()."\n";
-      exit();
-    }
-  }
-
+  $S->query("update items set resized='yes', location='$destfile' where itemId='$itemId'");
+  
   echo "Image $siteId, $itemId, $location Resized\n";
   ++$itemCnt;
 }
@@ -113,6 +88,10 @@ if($itemCnt) {
   echo date("Y-m-d H:i T") . "-- processed $itemCnt photos in $time sec. DONE\n--------------------------\n";
 }
 
+// Look for files that are still in the directory and are too big
+
+findTooBig($S);
+
 exit();
 
 // resize the image file
@@ -124,7 +103,7 @@ function resizeImage($filename, $destfile) {
   // get an image for the original source file: jpeg, gif, png
 
   echo "Destination file name: " . basename($destfile) . "\n";
-  
+
   $source = open_image($filename); 
 
   if($source === false) {
@@ -178,7 +157,7 @@ function resizeImage($filename, $destfile) {
   $afterSize = $width * $height;
 
   echo "Size before: $beforeSize, size after: $afterSize\n";
-  
+
   if($GLOBALS['debug']) echo "end of resizeimage\n";
   
   return true;
@@ -191,7 +170,7 @@ function open_image($file) {
 
   $size = getimagesize($file);
 
-  echo "open_image: $file: $size[0]x$size[1], mime:{$size['mime']}\n";
+  if($GLOBALS['debug']) echo "open_image: $file: $size[0]x$size[1], mime:{$size['mime']}\n";
   
   switch($size["mime"]){
     case "image/jpeg":
@@ -207,6 +186,46 @@ function open_image($file) {
       $im = false;
       break;
   }
-  if($GLOBALS['debug']) echo "end open_image: $im\n";
+  if($GLOBALS['debug']) echo "end open_image: " .($im === false ? 'false' : $im) . "\n";
   return $im;
+}
+
+function findTooBig($S) {
+  $ret = '';
+  exec('find ' . SITE_ROOT . " -name '*.jpg' -size +1M", $ret);
+
+  $cnt = 0;
+  
+  foreach($ret as $v) {
+    $ar = pathinfo($v);
+    $v = 'content/' . basename($v);
+    $n = $S->query("select * from items where location='$v'");
+    if(!$n) {
+      echo "$v not found in 'items' DELETING FILE $v\n";
+      unlink(SITE_ROOT . "/$v");
+      continue;
+    }
+
+    // Build the destination file name. Make sure it is a 'jpg' regardless of what the original was.
+
+    $destfile = SITE_ROOT . "/content/" . $ar['filename'] . ".jpg";
+    $location = SITE_ROOT. "/$v"; // Add root to the filename
+    
+    if(resizeImage($location, $destfile) === false) {
+      // ERROR
+      echo "ResizeImage Error ($siteId): $location\n";
+      // BLP 2014-01-21 -- If we got an error mark the item inactive and press on.
+      $location = "content/".basename($location);
+      $S->query("update items set status='delete' where location='$location'");
+      continue;
+    }
+
+    // Update the database table
+
+    $destfile = "content/" .basename($destfile);
+
+    $S->query("update items set resized='yes' where location='$destfile'");
+    ++$cnt;
+  }
+  echo "Resized $cnt records\n";
 }

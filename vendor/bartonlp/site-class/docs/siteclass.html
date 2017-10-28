@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>SiteClass Methods</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -54,37 +54,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     background-color: #EEF3E2;
   }
   </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<h1 id="siteclass-verion-2.0">SiteClass Verion 2.0</h1>
-<p><strong>SiteClass</strong> is a PHP mini framework for simple, small websites. It can be esaly combined with other frameworks or templeting engines if needed. For small websites I feel that frameworks like Laravel or Meteor etc. are just too much.</p>
+<h1 id="siteclass-and-database-methods">SiteClass and Database Methods</h1>
 <hr />
-<h1 id="class-methods">Class Methods</h1>
-<p>While there are a number of methods for each of the major classes there are really only a small handful you will use on a regular bases. The ones most used have some documentation with them.</p>
 <h2 id="siteclass-methods">SiteClass methods:</h2>
+<p>While there are a number of methods for each of the major classes there are really only a small handful you will use on a regular bases. The ones most used have some documentation with them.</p>
 <ul>
 <li>constructor</li>
 <li>public function setSiteCookie($cookie, $value, $expire, $path=&quot;/&quot;)</li>
-<li>public function getId() // if a memberTable</li>
-<li>public function setId($id) // if a memberTable</li>
 <li>public function getIp()</li>
 <li>public function getPageTopBottom($h, $b=null)<br />
 This is the most used method. It takes one or two arguments which can be string|array|object.<br />
 $h can have 'title', 'desc', 'banner' and a couple of other less used options.<br />
 $b is for the footer or bottom. I sometimes pass a &lt;hr&gt; but you can also pass a 'msg', 'msg1', 'msg2' (see the code). I usually put things into the 'footerFile' but on occasions a page needs something extra.<br />
-This method calls getPageHead(), getBanner(), getFooter().</li>
+This method calls getPageHead(), getPageBanner(), getPageFooter().</li>
 <li>public function getPageTop($header, $banner=null, $bodytag=null)</li>
-<li>public function getDoctype()</li>
-<li>public function getPageHead(/<em>$title, $desc=null, $extra=null, $doctype, $lang</em>/)</li>
+<li>public function getPageHead(/* mixed */)</li>
 <li>public function getPageBanner($mainTitle, $nonav=false, $bodytag=null)</li>
 <li>public function getPageFooter(/* mixed */)</li>
+<li>public function getDoctype()</li>
 <li>public function __toString()</li>
 <li>A number of 'protected' methods and properties that can be used in a child class.</li>
 </ul>
 <h2 id="database-methods">Database methods:</h2>
+<p>The database methods are implemented for all supported engines. There are some minor behavioral differences in the syntax the engine queries uses or the return values. For example sqlite3 does not support a number of rows functionality and there are also several syntactial differences between sqlite and mysql (caviat emptor).</p>
 <ul>
 <li>constructor</li>
-<li>public function getDb()</li>
+<li>public function getDb(). Get the database object.</li>
+<li>public function setDb($db). Set the database object.</li>
 <li>public function query($query)<br />
 This is the workhourse of the database. It is used for 'select', 'update', 'insert' and basically anything you need to do like 'drop', 'alter' etc. $query is the sql statement.</li>
 <li>public function fetchrow($result=null, $type=&quot;both&quot;)<br />
@@ -95,7 +96,7 @@ The $type can be 'assoc', 'num' or default 'both'. 'assoc' returns only an assoc
 <ul>
 <li>public function queryfetch($query, $retarray=false)</li>
 <li>public function getLastInsertId()<br />
-After an 'insert' this method returns the new row primary key id.</li>
+After an 'insert' this method returns the new row's primary key id.</li>
 <li>public function getResult()<br />
 Returns the result object from the last 'query'. Usually not needed.</li>
 <li>public function escape($string)</li>
@@ -114,9 +115,11 @@ I hardly ever use prepare(), bindParam(), bindResults() or execute() so they are
 <a href="siteclass.html">SiteClass Methods</a><br />
 <a href="files.html">Additional Files</a><br />
 <a href="analysis.html">Analysis and Tracking</a><br />
+<a href="testing.html">Testing</a><br />
 <a href="index.html">Index</a></p>
 <h2 id="contact-me">Contact Me</h2>
 <p>Barton Phillips : <a href="mailto://bartonphillips@gmail.com">bartonphillips@gmail.com</a><br />
-Copyright © 2015 Barton Phillips</p>
+Copyright © 2015 Barton Phillips<br />
+Project maintained by <a href="https://github.com/bartonlp">bartonlp</a></p>
 </body>
 </html>
