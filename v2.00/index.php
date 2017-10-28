@@ -58,7 +58,7 @@ function lastMod($ar, $path=null) {
       }
 
       $files = glob($file);
-
+            
       foreach($files as $file) {
         // does the notfile match the file? If so then skip that file
         if($notfile && strpos($file, $notfile) !== false) {
@@ -73,6 +73,7 @@ function lastMod($ar, $path=null) {
     // No glob
     
     $filename = "$path{$file}";
+
     if(substr($filename, 0,1) == "/") {
       $filename = DOC_ROOT . "$filename";
     }
@@ -116,7 +117,7 @@ $curSlideshowTimes = "";
 
 foreach($slideshowAr as $file) {
   $curSlideshowTimes .= "<tr><td>/slideshow/$file:</td>".
-                        "<td>{$lm($slideshowAr, '/currentVersion/slideshow')}</td></tr>\n";
+                        "<td>{$lm($file, 'slideshow')}</td></tr>\n";
 }
 
 function getlinkversion($type) {
@@ -135,54 +136,54 @@ function getlinkversion($type) {
 <ul>
 <li><a target="_blank" href="currentVersion/slideshow/slideshow.php">SlideShow ($currentVersion) 
 with debug info in upper left</a>
-<span class='superextra'>*</span> {$lm($slideshowAr,"currentVersion/slideshow")}</li>
+<span class='superextra'>*</span> {$lm($slideshowAr,"slideshow")}</li>
 <li><a  target="_blank" href="currentVersion/cpanel/cpanel.php">Control Panel ($currentVersion)</a>
-<span class='superextra'>*</span> {$lm($cpanelAr,"currentVersion/cpanel")}</li>
+<span class='superextra'>*</span> {$lm($cpanelAr,"cpanel")}</li>
 <li><a target="_blank" href="currentVersion/cpanel/PC-cpanel.php">PC-cpanel</a>
-<span class='superextra'>*</span> {$lm(array("PC-cpanel.php","js/PC-cpanel.js"),"currentVersion/cpanel")}.
+<span class='superextra'>*</span> {$lm(array("PC-cpanel.php","js/PC-cpanel.js"),"cpanel")}.
 This is the full screen PC version not the iPhone version.</li>
 <li><a target="_blank" href="currentVersion/cpanel/PC-delete.php">PC-delete</a>
-<span class='superextra'>*</span> {$lm(array("PC-delete.php"),"currentVersion/cpanel")}.
+<span class='superextra'>*</span> {$lm(array("PC-delete.php"),"cpanel")}.
 This is the a PC version not an iPhone version.</li>
 <li><a target="_blank" href="currentVersion/uploadphotos.php">Upload Photos From Client</a>
 <span class='superextra'>*</span> 
-{$lm(array("uploadphotos.php","js/uploadphotos.js"), "currentVersion")}</li>
+{$lm(array("uploadphotos.php","js/uploadphotos.js"), "")}</li>
 <li><a target="_blank" href="currentVersion/itemsInfo.php">Slide Show Info</a>
-<span class='superextra'>*</span>  {$lm('itemsInfo.php', "currentVersion")}</li>
+<span class='superextra'>*</span>  {$lm('itemsInfo.php', "")}</li>
 <li><a target="_blank" href="currentVersion/siteInfo.php">'sites' Table Info</a>
-{$lm('siteInfo.php',"currentVersion")}</li>
+{$lm('siteInfo.php',"")}</li>
 <li><a target="_blank" href="currentVersion/userinfo.php">'users' Table Info</a>
-{$lm('userinfo.php',"currentVersion")}</li>
+{$lm('userinfo.php',"")}</li>
 <li><a target="_blank" href="currentVersion/appInfo.php">'appinfo' Table Info</a>
-{$lm('appInfo.php',"currentVersion")}</li>
+{$lm('appInfo.php',"")}</li>
 <li><a target="_blank" href="currentVersion/webstats.php">Web Stats</a>
-<span class='super'>*</span>  {$lm('webstats.php',"currentVersion")}</li>
+<span class='super'>*</span>  {$lm('webstats.php',"")}</li>
 <li><a target="_blank" href="currentVersion/itemsTableMaint2.php">Check Items Table for Integrity</a> 
-<span class='super'>*</span>  {$lm('itemsTableMaint2.php',"currentVersion")}</li>
+<span class='super'>*</span>  {$lm('itemsTableMaint2.php',"")}</li>
 <li><a target="_blank" href="currentVersion/uploadsforweek.php">Who Emailed Photos This Week</a>
- {$lm('uploadsforweek.php',"currentVersion")}</li>
+ {$lm('uploadsforweek.php',"")}</li>
 <li><a target="_blank" href="currentVersion/whoapproved.php">Who Approved Photos</a>
- {$lm('whoapproved.php',"currentVersion")}</li>
+ {$lm('whoapproved.php',"")}</li>
 <li><a target="_blank" href="currentVersion/track-startup.php">Track Startups</a>
- {$lm('track-startup.php',"currentVersion")}</li>
+ {$lm('track-startup.php',"")}</li>
 <li><a target="_blank" href="currentVersion/pushercheck.php">Pusher Status</a>
- {$lm('pushercheck.php',"currentVersion")}</li>
+ {$lm('pushercheck.php',"")}</li>
 <li><a target="_blank" href="currentVersion/videocontrol.php">Video Control Panel</a> <span class='super'>*</span>
-{$lm(array('videocontrol.php', 'js/videocontrol.js'),"currentVersion")}. Control Panel for vidos in the 'ads' and 'items' tables</li>
+{$lm(array('videocontrol.php', 'js/videocontrol.js'),"")}. Control Panel for vidos in the 'ads' and 'items' tables</li>
 <li><a target="_blank" href="currentVersion/createNewSite.php">Create A Site</a>
-<span class='super'>*</span> {$lm('createNewSite.php',"currentVersion")}</li>
+<span class='super'>*</span> {$lm('createNewSite.php',"")}</li>
 <li><a target="_blank" href="currentVersion/deleteSite.php">Delete A Site</a> <span class='super'>*</span>
-{$lm('deleteSite.php',"currentVersion")}. 
+{$lm('deleteSite.php',"")}. 
 <span style="color: white; background: red; padding: 0 4px"><b>BE VERY CAREFUL!</b></span></li>
-<li><i>emailphoto.php</i> {$lm('emailphoto.php',"currentVersion")}. 
+<li><i>emailphoto.php</i> {$lm('emailphoto.php',"")}. 
 A CLI run from CRON. Processes photos emailed by
 customers every minute.</li>
-<li><i>mysitemap.json</i> {$lm('mysitemap.json', "/")}. Configuration file for site.</li>
+<li><i>mysitemap.json</i> {$lm('mysitemap.json', "")}. Configuration file for site.</li>
 <li><a target="_blank" href="currentVersion/slideshow/photoloto.php">Photo Lotto (photoloto.php)</a>
- {$lm('photoloto.php', "currentVersion/slideshow")}. CLI or Web program. The CLI is
+ {$lm('photoloto.php', "slideshow")}. CLI or Web program. The CLI is
 run from a CRON job.</li>
 <li><a target="_blank" href="currentVersion/showlottowinners.php">Show Lotto Winners</a>
- {$lm('showlottowinners.php', "currentVersion")}.</li>
+ {$lm('showlottowinners.php', "")}.</li>
 </ul>
 
 <h3>Ads Programs (not in production use)</h3>
@@ -190,14 +191,14 @@ run from a CRON job.</li>
 <ul>
 <li><a target="_blank" href="currentVersion/cpanel/adsCpanel.admin.php">Ads CPanel</a>
 <span class='super'>*</span>
-{$lm(array("adsCpanel.admin.php", "adsCpanel.ajax.php", "js/adsCpanel.js"),"currentVersion/cpanel")}</li>
+{$lm(array("adsCpanel.admin.php", "adsCpanel.ajax.php", "js/adsCpanel.js"),"cpanel")}</li>
 <li><a target="_blank" href="currentVersion/adsadmin.php">Admin adsInfo</a>
-{$lm('adsadmin.php',"currentVersion")} <span class='super'>*</span></li>
+{$lm('adsadmin.php',"")} <span class='super'>*</span></li>
 <li><a target="_blank" href="currentVersion/adsAccountAdmin.php">Admin the Ads Accounts</a>
-{$lm('adsAccountAdmin.php',"currentVersion")}. Add or Edit Account Info
+{$lm('adsAccountAdmin.php',"")}. Add or Edit Account Info
 <span class='super'>*</span></li>
 <li><a target="_blank" href="currentVersion/uploadads.php">Upload Ads from Client</a>
-<span class='super'>*</span> {$lm(array('uploadads.php', 'js/uploadads.js'),"currentVersion")}</li>
+<span class='super'>*</span> {$lm(array('uploadads.php', 'js/uploadads.js'),"")}</li>
 </ul>
 EOF;
 
