@@ -35,3 +35,1312 @@
 
 [21-Oct-2017 16:05:23 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}
 
+[28-Oct-2017 11:54:01 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/emailphoto.ifttt.php on line 44
+User: IP= 
+AGENT=
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:06 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:12 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:18 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:18 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:19 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:25 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:31 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:31 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:31 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:31 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:31 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:31 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:32 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:32 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:32 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:38 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:44 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:45 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:45 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:51 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:54:57 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:01 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/emailphoto.ifttt.php on line 44
+User: IP= 
+AGENT=
+[28-Oct-2017 11:55:03 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:03 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:04 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:10 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:16 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:16 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:16 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:16 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:17 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:17 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:17 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:17 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:17 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
+[28-Oct-2017 11:55:23 America/Los_Angeles] ErrorClass, finalOutput: SqlException
+"dbMysqli::opendb: Can't connect to database"
+error="Can't connect to local MySQL server through socket '/tmp/mysqld.sock' (2)", errno="2002"
+cwd=/homepages/45/d454707514/htdocs/v2.00/slideshow
+called from /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 82
+Back Trace:
+dbMysqli::opendb() in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/dbMysqli.class.php on line 58
+dbMysqli::__construct('localhost', 'barton', '7098653', 'myphotochannel') in /homepages/45/d454707514/htdocs/vendor/bartonlp/site-class/includes/database-engines/Database.class.php on line 75
+Database::__construct() in /homepages/45/d454707514/htdocs/v2.00/slideshow/slideshow.ajax.php on line 78
+User: IP=24.240.188.150 
+AGENT=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36
