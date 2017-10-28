@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>dbTables</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -54,14 +54,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     background-color: #EEF3E2;
   }
   </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<h1 id="site-class-2.0">Site-class 2.0</h1>
-<p>SiteClass class mini framework for simple, small websites.</p>
-<h2 id="dbtables">dbTables</h2>
-<p>This is the documentation for dbTables.</p>
-<p>In addition to the SiteClass and Database classes there are several others classes in the 'database-engins' directory.</p>
-<p>The dbTables class uses the Database class to make creating tables simple. For example:</p>
+<h1 id="dbtables-documentation">dbTables Documentation</h1>
+<hr />
+<p>The <strong>dbTables</strong> makes creating tables simple.</p>
 <div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
 <span class="co">// example5.php</span>
 
@@ -142,8 +142,9 @@ field. This argument is the final row description with all of the HTML in place.
 </ul>
 <p>Here is an example with all of the items:</p>
 <div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$info</span> = <span class="kw">$T</span>-&gt;maketable<span class="ot">(</span><span class="kw">$sql</span><span class="ot">,</span> <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;callback&#39;</span>=&gt;callback1<span class="ot">,</span> <span class="st">&#39;callback2&#39;</span>=&gt;callback2<span class="ot">,</span>  
-        <span class="st">&#39;footer&#39;</span>=&gt;<span class="kw">$footer</span><span class="ot">,</span> <span class="st">&#39;attr&#39;</span>=&gt;<span class="fu">array</span><span class="ot">(</span><span class="st">&#39;border&#39;</span>=&gt;<span class="st">&#39;1&#39;</span><span class="ot">,</span> <span class="st">&#39;class&#39;</span>=&gt;<span class="st">&#39;something&#39;</span><span class="ot">)));</span></code></pre></div>
-<p>There is a second <strong>dbTables</strong> method which is not used directly as much. It creates only the result rows.</p>
+        <span class="st">&#39;footer&#39;</span>=&gt;<span class="kw">$footer</span><span class="ot">,</span> <span class="st">&#39;attr&#39;</span>=&gt;<span class="fu">array</span><span class="ot">(</span><span class="st">&#39;border&#39;</span>=&gt;<span class="st">&#39;1&#39;</span><span class="ot">,</span> <span class="st">&#39;class&#39;</span>=&gt;<span class="st">&#39;something&#39;</span><span class="ot">)));</span>
+<span class="co">// $info[0] or $info[&#39;table&#39;] is the table html.</span></code></pre></div>
+<p>There is a second <strong>dbTables</strong> method which is not used directly as much. This method is called by 'maketable'. It creates only the result rows.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">  <span class="kw">/**</span>
    <span class="kw">*</span> makeresultrows
    <span class="kw">*</span> The <span class="ot">$rowdesc</span> can have a wild card like this: <span class="st">&#39;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;/tr&gt;&#39;</span>. Then make the <span class="ot">$extra[delim]</span> be
@@ -166,7 +167,6 @@ field. This argument is the final row description with all of the HTML in place.
    <span class="kw">*/</span>
   
   <span class="kw">public</span> function makeresultrows(<span class="ot">$query</span>, <span class="ot">$rowdesc</span>, array <span class="ot">$extra</span>=array()) <span class="dt">{...}</span></code></pre></div>
-<p>The database methods are implemented for all supported engines. There are some minor behavioral differences, for example in the syntax the engine queries uses or the return values. For example sqlite3 does not support a number of rows returned functionality and there are also several (many) syntactial differenced between sqlite and mysql when it comes to supported functions etc. (caviat emptor).</p>
 <h2 id="dbtables-methods">dbTables Methods</h2>
 <ul>
 <li>constructor</li>
@@ -176,9 +176,7 @@ $extra is an optional assoc array: $extra['callback'], $extra['callback2'], $ext
 $extra['attr'] is an assoc array that can have attributes for the <table> tag, like 'id', 'title', 'class', 'style' etc.<br />
 $extra['callback'] function that can modify the header after it is filled in.<br />
 $extra['footer'] a footer string<br />
-@return array [{string table}, {result}, {num}, {hdr}, table=&gt;{string}, result=&gt;{result},<br />
-num=&gt;{num rows}, header=&gt;{hdr}]<br />
-or === false</li>
+@return array [{string table}, {result}, {num}, {hdr}, table=&gt;{string}, result=&gt;{result}, num=&gt;{num rows}, header=&gt;{hdr}] or === false</li>
 </ul>
 <hr />
 <p><a href="examples.html">Examples</a><br />
@@ -186,6 +184,7 @@ or === false</li>
 <a href="siteclass.html">SiteClass Methods</a><br />
 <a href="files.html">Additional Files</a><br />
 <a href="analysis.html">Analysis and Tracking</a><br />
+<a href="testing.html">Testing</a><br />
 <a href="index.html">Index</a></p>
 <h2 id="contact-me">Contact Me</h2>
 <p>Barton Phillips : <script type="text/javascript">

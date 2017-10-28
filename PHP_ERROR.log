@@ -1,5 +1,36 @@
-[04-Sep-2017 11:27:24 America/New_York] BLP Test **********
-[05-Sep-2017 09:34:25 America/New_York] BLP Test **********
-[05-Sep-2017 09:44:38 America/New_York] BLP Test **********
-[06-Sep-2017 12:57:50 America/New_York] BLP Test **********
-[08-Sep-2017 09:37:20 America/New_York] BLP Test **********
+[21-Oct-2017 15:51:24 America/New_York] Array
+(
+    [page] => getusers
+)
+
+[21-Oct-2017 15:51:24 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}
+[21-Oct-2017 15:52:16 America/New_York] Array
+(
+    [page] => getusers
+)
+
+[21-Oct-2017 15:52:16 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}
+[21-Oct-2017 15:53:26 America/New_York] Array
+(
+    [page] => getusers
+)
+
+[21-Oct-2017 15:53:26 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}
+[21-Oct-2017 15:55:56 America/New_York] Array
+(
+    [page] => getusers
+)
+
+[21-Oct-2017 15:55:56 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}
+[21-Oct-2017 16:01:03 America/New_York] Array
+(
+    [page] => getusers
+)
+
+[21-Oct-2017 16:01:03 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}
+[21-Oct-2017 16:05:23 America/New_York] Array
+(
+    [page] => getusers
+)
+
+[21-Oct-2017 16:05:23 America/New_York] found: {"1":"Barton Phillips","2":"Tom Galbraith","32":"Steve Kolb","36":"Cory Gallagher","49":"Tom Galbraith","51":"Barton Phillips","3":"Barton Phillips","4":"Tom Galbraith"}

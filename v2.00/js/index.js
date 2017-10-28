@@ -226,4 +226,30 @@ jQuery(document).ready(function($) {
     }
     this.flag = !this.flag;
   });
+
+  // Unit in the 'Site Status Open' table
+
+  $("#startup-table").on('click', 'td', function() {
+    var txt = $(this).text(), id;
+    if(id = txt.match(/=(\d+)/)) {
+      if(typeof unitar == 'undefined') {
+        $.ajax({
+          url: 'index.php',
+          type: 'get',
+          dataType: 'json',
+          data: { page: 'getusers' },
+          success: function(data) {
+            console.log(data);
+            unitar = data;
+            alert("User: " + unitar[id[1]]);
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+      } else {
+        alert("User: " + unitar[id[1]]);
+      }
+    }
+  });
 });

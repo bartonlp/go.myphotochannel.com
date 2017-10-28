@@ -1,37 +1,34 @@
-# SiteClass Verion 2.0
-
-**SiteClass** is a PHP mini framework for simple, small websites. It can be esaly combined with other frameworks or templeting engines if needed. For small websites I feel that frameworks like Laravel or Meteor etc. are just too much.
+# SiteClass and Database Methods
 
 ---
 
-# Class Methods
+## SiteClass methods:
 
 While there are a number of methods for each of the major classes there are really only a small handful you will use on a regular bases. The ones most used have some documentation with them.
 
-## SiteClass methods:
-
 * constructor
 * public function setSiteCookie($cookie, $value, $expire, $path="/")
-* public function getId() // if a memberTable
-* public function setId($id) // if a memberTable
 * public function getIp()
 * public function getPageTopBottom($h, $b=null)  
 This is the most used method. It takes one or two arguments which can be string|array|object.  
 $h can have 'title', 'desc', 'banner' and a couple of other less used options.  
 $b is for the footer or bottom. I sometimes pass a &lt;hr&gt; but you can also pass a 'msg', 'msg1', 'msg2' (see the code). I usually put things into the 'footerFile' but on occasions a page needs something extra.  
-This method calls getPageHead(), getBanner(), getFooter().
+This method calls getPageHead(), getPageBanner(), getPageFooter().
 * public function getPageTop($header, $banner=null, $bodytag=null)
-* public function getDoctype()
-* public function getPageHead(/*$title, $desc=null, $extra=null, $doctype, $lang*/)
+* public function getPageHead(/* mixed */)
 * public function getPageBanner($mainTitle, $nonav=false, $bodytag=null)
 * public function getPageFooter(/* mixed */)
+* public function getDoctype()
 * public function \__toString()
 * A number of 'protected' methods and properties that can be used in a child class.
 
 ## Database methods:
 
+The database methods are implemented for all supported engines. There are some minor behavioral differences in the syntax the engine queries uses or the return values. For example sqlite3 does not support a number of rows functionality and there are also several syntactial differences between sqlite and mysql (caviat emptor).
+
 * constructor
-* public function getDb()
+* public function getDb(). Get the database object.
+* public function setDb($db). Set the database object.
 * public function query($query)  
 This is the workhourse of the database. It is used for 'select', 'update', 'insert' and basically anything you need to do like 'drop', 'alter' etc. $query is the sql statement.
 * public function fetchrow($result=null, $type="both")  
@@ -44,7 +41,7 @@ while(list($name, $email) = $S->fetchrow('num')) { ... }
 
 * public function queryfetch($query, $retarray=false)
 * public function getLastInsertId()  
-After an 'insert' this method returns the new row primary key id.
+After an 'insert' this method returns the new row's primary key id.
 * public function getResult()  
 Returns the result object from the last 'query'. Usually not needed.
 * public function escape($string)
@@ -64,9 +61,11 @@ I hardly ever use prepare(), bindParam(), bindResults() or execute() so they are
 [SiteClass Methods](siteclass.html)
 [Additional Files](files.html)
 [Analysis and Tracking](analysis.html)
+[Testing](testing.html)
 [Index](index.html)
 
 ## Contact Me
 
 Barton Phillips : <a href="mailto://bartonphillips@gmail.com">bartonphillips@gmail.com</a>
 Copyright &copy; 2015 Barton Phillips
+Project maintained by [bartonlp](https://github.com/bartonlp)
