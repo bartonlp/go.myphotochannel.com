@@ -48,3 +48,43 @@ Every night the database is extracted and zipped into the 'other' directory.
 Every night all of the code is mirrored onto my home computer at www.bartonphillips.dyndns.org into
 a directory called '/extra/myphotochannel' and that directory is tar backed up to '/extra/myphotochannel-backup'
 once a week.  The mirror is done with rsync so only new or changed files are actually moved.
+
+## GITHUB
+
+This site is backed up on github.com. The .gitignore looks like this:
+
+content/
+Archive/
+fonts/
+logs/
+kint/
+myphotochannel.git/
+pusher/
+websocket/
+adscontent/
+composer/
+other/
+vendor/
+mysitemap.json
+PHP_ERROR.log
+.gitignore
+.gitnew
+.composer
+*.pdf
+*.doc
+*.jpg
+*.png
+*.gif
+database.log
+database.log.save
+emailphoto.log
+emailphoto.log.save
+resize.log
+resize.log.save
+photolotto.log
+photolotto.log.save
+composer.json
+composer.lock
+
+This keeps us from backing up site specific stuff. The main site is at 1and1 but there is a duplicate site at www.bartonphillips.org.
+
