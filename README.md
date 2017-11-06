@@ -52,7 +52,7 @@ once a week.  The mirror is done with rsync so only new or changed files are act
 ## GITHUB
 
 This site is backed up on github.com. The .gitignore looks like this:
-
+<pre>
 content/
 Archive/
 fonts/
@@ -85,6 +85,7 @@ photolotto.log
 photolotto.log.save
 composer.json
 composer.lock
+</pre>
 
 This keeps us from backing up site specific stuff. The main site is at 1and1 but there is a duplicate site at www.bartonphillips.org.
 
