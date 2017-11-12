@@ -1,0 +1,4 @@
+0 23 * * * ~/other/dbBackup.sh
+#
+* * * * *	/kunden/homepages/45/d454707514/htdocs/currentVersion/emailphoto.ifttt.php >> /kunden/homepages/45/d454707514/htdocs/emailphoto.log
+
