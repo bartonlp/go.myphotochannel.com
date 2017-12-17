@@ -2,12 +2,36 @@
 // BLP 2014-01-10 -- Add logic for resize.log
 
 var showclosed = false, positionTimeout;
+var ajaxfile = 'index.php';
+
+// ***********************
+// Get/Set stuff from/in database
+// The Ajax simply executes a sql statement and if a 'select' returns
+// rows.
+
+function doSql(sql, callback) {
+  // use Ajax to call the ajaxfile with page=doSql
+
+  $.ajax({
+    url: ajaxfile,
+    data: { page: 'doSql', sql: sql },
+    dataType: 'json',
+    type: 'post',
+    success: function(data) {
+      if(typeof callback == 'function') return callback(data);
+      console.log("NO Callback", data)
+    },
+    error: function(err) {
+      console.log(err.responseText);
+    }
+  });
+}
 
 // Get the startup table
 
 function getTable(callback) {
   $.ajax({
-    url: 'index.php',
+    url: ajaxfile,
     type: 'get',
     dataType: 'html',
     data: { name: 'gettable' },
@@ -36,13 +60,25 @@ var maxx =0;
 function positionClearlog() {
   // class clearlog does not exist if this is not superuser.
   
-  if($(".clearlog").length == 0)
+  if($(".clearlog").length == 0) {
     return;
+  }
 
+  if($(".showlog[data-logname='/emailphoto.log']")) {
+    doSql("select count(*) as epcnt from items where creationTime=current_date()", function(data) {
+      var epcnt = JSON.parse(data.rows[0].epcnt);
+      if(epcnt) {
+        $("#epcnt").html("New: " + epcnt);
+      } else {
+        $("#epcnt").html('');
+      }
+    });
+  }
+  
   $("#logfiles .row div:first-child").each(function(i, v) {
     // Get the logfile name
     var logname = $("a", v).attr("data-logname");
-    $(".size", v).load("index.php", { page: 'filesize', file: logname });
+    $(".size", v).load(ajaxfile, { page: 'filesize', file: logname });
   });
   
   // Every five minutes update
@@ -111,7 +147,7 @@ jQuery(document).ready(function($) {
   $("#versiontype").change(function(e) {
     var $type = $(this).val();
     $.ajax({
-      url: "index.php",
+      url: ajaxfile,
       data: {page: 'getlink', linkversion: $type },
       success: function(data) {
              //console.log(data);
@@ -147,7 +183,7 @@ jQuery(document).ready(function($) {
     var file = $(this).attr("data-logname");
 
     $.ajax({
-      url: 'index.php',
+      url: ajaxfile,
       data: {page: 'clearlog', logfile: file},
       success: function(data) {
              //console.log(data);
@@ -234,7 +270,7 @@ jQuery(document).ready(function($) {
     if(id = txt.match(/=(\d+)/)) {
       if(typeof unitar == 'undefined') {
         $.ajax({
-          url: 'index.php',
+          url: ajaxfile,
           type: 'get',
           dataType: 'json',
           data: { page: 'getusers' },

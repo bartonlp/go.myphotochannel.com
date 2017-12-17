@@ -19,190 +19,33 @@ ErrorClass::setNoEmailErrs(true);
 
 $tz = date('T (O \G\M\T)');
 
-// Here is a little bit of trickery
-// The function lastMod() returns the filemtine() for the filename in $x.
-// We can embed this into a string as follows: first we make a variable with the name of the
-// function ($lm = 'lastMod';)
-// then we use it in the string like this: "this is a string {$lm('filename')}" and it works.
+// ************************************************************
+// Ajax, doSql
+// Do general SQL task
+// $_POST['sql'] is a sql statment to execute.
+// If the statement is a 'select' we return the result rows.
+// If 'insert' or 'update' we return the number of rows affected
+// *************************************************************
 
-// lastMod
-// @param $ar string|array if any of the elements have a wild card (*) glob expand it
-// @param $path string|null
-// @return string "Last Modified ...."
-
-function lastMod($ar, $path=null) {
-  if(is_string($ar)) {
-    // if $ar is a string make it an array with one element.
-    $ar = array($ar);
+if($_POST['page'] == 'doSql') {
+  $S = new Database($_site);
+  
+  $sql = $_POST['sql'];
+  if($sql == '') {
+    echo "NO SQL"; exit();
   }
-  
-  $times = array();
-  $notfile = '';
-  
-  // If $path is not empty or null append a '/'
 
-  if($path) $path .= '/';
+  $n = $S->query($sql);
 
-  foreach($ar as $file) {
-    if(strpos($file, '!') === 0) {
-      // don't test flag
-      $notfile = ltrim($file, '!');
-      continue;
+  if(strpos($sql, 'select') !== false) {
+    while($row = $S->fetchrow('assoc')) {
+      $rows[] = $row;
     }
-    // If the filename has an '*' in it then do a glob and do all of the files.
-
-    if(strpos($file, '*') !== false) {
-      $file = "$path{$file}";
-      if(substr($file, 0, 1) == '/') {
-        $file = DOC_ROOT . $file;
-      }
-
-      $files = glob($file);
-            
-      foreach($files as $file) {
-        // does the notfile match the file? If so then skip that file
-        if($notfile && strpos($file, $notfile) !== false) {
-          continue;
-        }
-        $mtime = filemtime($file);
-        //cout("file: $file, $mtime");
-        $times[] = $mtime;
-      }
-      continue;
-    }
-    // No glob
-    
-    $filename = "$path{$file}";
-
-    if(substr($filename, 0,1) == "/") {
-      $filename = DOC_ROOT . "$filename";
-    }
-    $mtime = filemtime($filename);
-    $times[] = $mtime;
+    echo json_encode(array('num'=>$n, 'rows'=>$rows));
+    exit();
   }
-  // From the $times array of filemtimes return the max value
-
-  $modtime = max($times);
-  define(ONEDAY, 86400);
-  
-  if($modtime > (time() - (ONEDAY*3))) {
-    return "Last Modified: <span style='color: red'>" . date("M j, Y H:i", $modtime) . "</span>";
-  } else {
-    return "Last Modified: " . date("M j, Y H:i", $modtime);
-  }
-}
-
-$lm = 'lastMod'; // $lm is the lastMod function
-
-// Get the version given the path
-
-function getversion($path) {
-  $name = realpath(DOC_ROOT ."$path");
-  $version = preg_replace('/^.*?(v\d+\.\d+).*$/', "$1", $name);
-  return $version;
-}
-
-// Get the link version information
-
-// List of file for slideshow and cpanel. Used all over.
-
-$slideshowRealName = realpath(DOC_ROOT ."/currentVersion/slideshow");
-$cpanelRealName = realpath(DOC_ROOT ."/currentVersion/cpanel");
-
-$slideshowAr = array("slideshow.php", "slideshow.ajax.php", "js/slideshow.js");
-$cpanelAr = array("cpanel.*php", "cpanel.ajax.php", "js/cpanel.*.js");
-
-$currentVersion = getversion("/currentVersion");
-$curSlideshowTimes = "";
-
-foreach($slideshowAr as $file) {
-  $curSlideshowTimes .= "<tr><td>/slideshow/$file:</td>".
-                        "<td>{$lm($file, 'slideshow')}</td></tr>\n";
-}
-
-function getlinkversion($type) {
-  global $lm, $slideshowAr, $cpanelAr, $currentVersion;
-  
-  switch($type) {
-    case "current":
-    default:
-      $name = "current";
-      //$path = "http://bartonlp.com/myphotochannel.com/currentVersion";
-      break;
-  }
-
-  $link = <<<EOF
-<p>Debug links to the $name versions ($currentVersion):</p>
-<ul>
-<li><a target="_blank" href="currentVersion/slideshow/slideshow.php">SlideShow ($currentVersion) 
-with debug info in upper left</a>
-<span class='superextra'>*</span> {$lm($slideshowAr,"slideshow")}</li>
-<li><a  target="_blank" href="currentVersion/cpanel/cpanel.php">Control Panel ($currentVersion)</a>
-<span class='superextra'>*</span> {$lm($cpanelAr,"cpanel")}</li>
-<li><a target="_blank" href="currentVersion/cpanel/PC-cpanel.php">PC-cpanel</a>
-<span class='superextra'>*</span> {$lm(array("PC-cpanel.php","js/PC-cpanel.js"),"cpanel")}.
-This is the full screen PC version not the iPhone version.</li>
-<li><a target="_blank" href="currentVersion/cpanel/PC-delete.php">PC-delete</a>
-<span class='superextra'>*</span> {$lm(array("PC-delete.php"),"cpanel")}.
-This is the a PC version not an iPhone version.</li>
-<li><a target="_blank" href="currentVersion/uploadphotos.php">Upload Photos From Client</a>
-<span class='superextra'>*</span> 
-{$lm(array("uploadphotos.php","js/uploadphotos.js"), "")}</li>
-<li><a target="_blank" href="currentVersion/itemsInfo.php">Slide Show Info</a>
-<span class='superextra'>*</span>  {$lm('itemsInfo.php', "")}</li>
-<li><a target="_blank" href="currentVersion/siteInfo.php">'sites' Table Info</a>
-{$lm('siteInfo.php',"")}</li>
-<li><a target="_blank" href="currentVersion/userinfo.php">'users' Table Info</a>
-{$lm('userinfo.php',"")}</li>
-<li><a target="_blank" href="currentVersion/appInfo.php">'appinfo' Table Info</a>
-{$lm('appInfo.php',"")}</li>
-<li><a target="_blank" href="currentVersion/webstats.php">Web Stats</a>
-<span class='super'>*</span>  {$lm('webstats.php',"")}</li>
-<li><a target="_blank" href="currentVersion/itemsTableMaint2.php">Check Items Table for Integrity</a> 
-<span class='super'>*</span>  {$lm('itemsTableMaint2.php',"")}</li>
-<li><a target="_blank" href="currentVersion/uploadsforweek.php">Who Emailed Photos This Week</a>
- {$lm('uploadsforweek.php',"")}</li>
-<li><a target="_blank" href="currentVersion/whoapproved.php">Who Approved Photos</a>
- {$lm('whoapproved.php',"")}</li>
-<li><a target="_blank" href="currentVersion/track-startup.php">Track Startups</a>
- {$lm('track-startup.php',"")}</li>
-<li><a target="_blank" href="currentVersion/pushercheck.php">Pusher Status</a>
- {$lm('pushercheck.php',"")}</li>
-<li><a target="_blank" href="currentVersion/videocontrol.php">Video Control Panel</a> <span class='super'>*</span>
-{$lm(array('videocontrol.php', 'js/videocontrol.js'),"")}. Control Panel for vidos in the 'ads' and 'items' tables</li>
-<li><a target="_blank" href="currentVersion/createNewSite.php">Create A Site</a>
-<span class='super'>*</span> {$lm('createNewSite.php',"")}</li>
-<li><a target="_blank" href="currentVersion/deleteSite.php">Delete A Site</a> <span class='super'>*</span>
-{$lm('deleteSite.php',"")}. 
-<span style="color: white; background: red; padding: 0 4px"><b>BE VERY CAREFUL!</b></span></li>
-<li><i>emailphoto.php</i> {$lm('emailphoto.php',"")}. 
-A CLI run from CRON. Processes photos emailed by
-customers every minute.</li>
-<li><i>mysitemap.json</i> {$lm('mysitemap.json', "")}. Configuration file for site.</li>
-<li><a target="_blank" href="currentVersion/slideshow/photoloto.php">Photo Lotto (photoloto.php)</a>
- {$lm('photoloto.php', "slideshow")}. CLI or Web program. The CLI is
-run from a CRON job.</li>
-<li><a target="_blank" href="currentVersion/showlottowinners.php">Show Lotto Winners</a>
- {$lm('showlottowinners.php', "")}.</li>
-</ul>
-
-<h3>Ads Programs (not in production use)</h3>
-<p>These are pretty stable but only work with <i>slideshow-v1.02</i> or higher.</p>
-<ul>
-<li><a target="_blank" href="currentVersion/cpanel/adsCpanel.admin.php">Ads CPanel</a>
-<span class='super'>*</span>
-{$lm(array("adsCpanel.admin.php", "adsCpanel.ajax.php", "js/adsCpanel.js"),"cpanel")}</li>
-<li><a target="_blank" href="currentVersion/adsadmin.php">Admin adsInfo</a>
-{$lm('adsadmin.php',"")} <span class='super'>*</span></li>
-<li><a target="_blank" href="currentVersion/adsAccountAdmin.php">Admin the Ads Accounts</a>
-{$lm('adsAccountAdmin.php',"")}. Add or Edit Account Info
-<span class='super'>*</span></li>
-<li><a target="_blank" href="currentVersion/uploadads.php">Upload Ads from Client</a>
-<span class='super'>*</span> {$lm(array('uploadads.php', 'js/uploadads.js'),"")}</li>
-</ul>
-EOF;
-
-  return $link;
+  echo json_encode($n);
+  exit();
 }
 
 // Ajax: get users from usres table
@@ -319,6 +162,193 @@ EOF;
 // End Ajax
 
 $S = new $_site->className($_site);
+
+// Functions Calls
+
+// Here is a little bit of trickery
+// The function lastMod() returns the filemtine() for the filename in $x.
+// We can embed this into a string as follows: first we make a variable with the name of the
+// function ($lm = 'lastMod';)
+// then we use it in the string like this: "this is a string {$lm('filename')}" and it works.
+
+// lastMod
+// @param $ar string|array if any of the elements have a wild card (*) glob expand it
+// @param $path string|null
+// @return string "Last Modified ...."
+
+function lastMod($ar, $path=null) {
+  if(is_string($ar)) {
+    // if $ar is a string make it an array with one element.
+    $ar = array($ar);
+  }
+  
+  $times = array();
+  $notfile = '';
+  
+  // If $path is not empty or null append a '/'
+
+  if($path) $path .= '/';
+
+  foreach($ar as $file) {
+    if(strpos($file, '!') === 0) {
+      // don't test flag
+      $notfile = ltrim($file, '!');
+      continue;
+    }
+    // If the filename has an '*' in it then do a glob and do all of the files.
+
+    if(strpos($file, '*') !== false) {
+      $file = "$path{$file}";
+      if(substr($file, 0, 1) == '/') {
+        $file = DOC_ROOT . $file;
+      }
+
+      $files = glob($file);
+            
+      foreach($files as $file) {
+        // does the notfile match the file? If so then skip that file
+        if($notfile && strpos($file, $notfile) !== false) {
+          continue;
+        }
+        $mtime = filemtime($file);
+        //cout("file: $file, $mtime");
+        $times[] = $mtime;
+      }
+      continue;
+    }
+    // No glob
+    
+    $filename = "$path{$file}";
+
+    if(substr($filename, 0,1) == "/") {
+      $filename = DOC_ROOT . "$filename";
+    }
+    $mtime = filemtime($filename);
+    $times[] = $mtime;
+  }
+  // From the $times array of filemtimes return the max value
+
+  $modtime = max($times);
+  define(ONEDAY, 86400);
+  
+  if($modtime > (time() - (ONEDAY*3))) {
+    return "Last Modified: <span style='color: red'>" . date("M j, Y H:i", $modtime) . "</span>";
+  } else {
+    return "Last Modified: " . date("M j, Y H:i", $modtime);
+  }
+}
+
+$lm = 'lastMod'; // $lm is the lastMod function
+
+// Get the version given the path
+
+function getversion($path) {
+  $name = realpath(DOC_ROOT ."$path");
+  $version = preg_replace('/^.*?(v\d+\.\d+).*$/', "$1", $name);
+  return $version;
+}
+
+// Get the link version information
+// List of file for slideshow and cpanel. Used all over.
+
+$slideshowRealName = realpath(DOC_ROOT ."/currentVersion/slideshow");
+$cpanelRealName = realpath(DOC_ROOT ."/currentVersion/cpanel");
+
+$slideshowAr = array("slideshow.php", "slideshow.ajax.php", "js/slideshow.js");
+$cpanelAr = array("cpanel.*php", "cpanel.ajax.php", "js/cpanel.*.js");
+
+$currentVersion = getversion("/currentVersion");
+$curSlideshowTimes = "";
+
+foreach($slideshowAr as $file) {
+  $curSlideshowTimes .= "<tr><td>/slideshow/$file:</td>".
+                        "<td>{$lm($file, 'slideshow')}</td></tr>\n";
+}
+
+function getlinkversion($type) {
+  global $lm, $slideshowAr, $cpanelAr, $currentVersion;
+  
+  switch($type) {
+    case "current":
+    default:
+      $name = "current";
+      //$path = "http://bartonlp.com/myphotochannel.com/currentVersion";
+      break;
+  }
+
+  $link = <<<EOF
+<p>Debug links to the $name versions ($currentVersion):</p>
+<ul>
+<li><a target="_blank" href="currentVersion/slideshow/slideshow.php">SlideShow ($currentVersion) 
+with debug info in upper left</a>
+<span class='superextra'>*</span> {$lm($slideshowAr,"slideshow")}</li>
+<li><a  target="_blank" href="currentVersion/cpanel/cpanel.php">Control Panel ($currentVersion)</a>
+<span class='superextra'>*</span> {$lm($cpanelAr,"cpanel")}</li>
+<li><a target="_blank" href="currentVersion/cpanel/PC-cpanel.php">PC-cpanel</a>
+<span class='superextra'>*</span> {$lm(array("PC-cpanel.php","js/PC-cpanel.js"),"cpanel")}.
+This is the full screen PC version not the iPhone version.</li>
+<li><a target="_blank" href="currentVersion/cpanel/PC-delete.php">PC-delete</a>
+<span class='superextra'>*</span> {$lm(array("PC-delete.php"),"cpanel")}.
+This is the a PC version not an iPhone version.</li>
+<li><a target="_blank" href="currentVersion/uploadphotos.php">Upload Photos From Client</a>
+<span class='superextra'>*</span> 
+{$lm(array("uploadphotos.php","js/uploadphotos.js"), "")}</li>
+<li><a target="_blank" href="currentVersion/itemsInfo.php">Slide Show Info</a>
+<span class='superextra'>*</span>  {$lm('itemsInfo.php', "")}</li>
+<li><a target="_blank" href="currentVersion/siteInfo.php">'sites' Table Info</a>
+{$lm('siteInfo.php',"")}</li>
+<li><a target="_blank" href="currentVersion/userinfo.php">'users' Table Info</a>
+{$lm('userinfo.php',"")}</li>
+<li><a target="_blank" href="currentVersion/appInfo.php">'appinfo' Table Info</a>
+{$lm('appInfo.php',"")}</li>
+<li><a target="_blank" href="currentVersion/webstats.php">Web Stats</a>
+<span class='super'>*</span>  {$lm('webstats.php',"")}</li>
+<li><a target="_blank" href="currentVersion/itemsTableMaint2.php">Check Items Table for Integrity</a> 
+<span class='super'>*</span>  {$lm('itemsTableMaint2.php',"")}</li>
+<li><a target="_blank" href="currentVersion/uploadsforweek.php">Who Emailed Photos This Week</a>
+ {$lm('uploadsforweek.php',"")}</li>
+<li><a target="_blank" href="currentVersion/whoapproved.php">Who Approved Photos</a>
+ {$lm('whoapproved.php',"")}</li>
+<li><a target="_blank" href="currentVersion/track-startup.php">Track Startups</a>
+ {$lm('track-startup.php',"")}</li>
+<li><a target="_blank" href="currentVersion/pushercheck.php">Pusher Status</a>
+ {$lm('pushercheck.php',"")}</li>
+<li><a target="_blank" href="currentVersion/videocontrol.php">Video Control Panel</a> <span class='super'>*</span>
+{$lm(array('videocontrol.php', 'js/videocontrol.js'),"")}. Control Panel for vidos in the 'ads' and 'items' tables</li>
+<li><a target="_blank" href="currentVersion/createNewSite.php">Create A Site</a>
+<span class='super'>*</span> {$lm('createNewSite.php',"")}</li>
+<li><a target="_blank" href="currentVersion/deleteSite.php">Delete A Site</a> <span class='super'>*</span>
+{$lm('deleteSite.php',"")}. 
+<span style="color: white; background: red; padding: 0 4px"><b>BE VERY CAREFUL!</b></span></li>
+<li><i>emailphoto.php</i> {$lm('emailphoto.php',"")}. 
+A CLI run from CRON. Processes photos emailed by
+customers every minute.</li>
+<li><i>mysitemap.json</i> {$lm('mysitemap.json', "")}. Configuration file for site.</li>
+<li><a target="_blank" href="currentVersion/slideshow/photoloto.php">Photo Lotto (photoloto.php)</a>
+ {$lm('photoloto.php', "slideshow")}. CLI or Web program. The CLI is
+run from a CRON job.</li>
+<li><a target="_blank" href="currentVersion/showlottowinners.php">Show Lotto Winners</a>
+ {$lm('showlottowinners.php', "")}.</li>
+</ul>
+
+<h3>Ads Programs (not in production use)</h3>
+<p>These are pretty stable but only work with <i>slideshow-v1.02</i> or higher.</p>
+<ul>
+<li><a target="_blank" href="currentVersion/cpanel/adsCpanel.admin.php">Ads CPanel</a>
+<span class='super'>*</span>
+{$lm(array("adsCpanel.admin.php", "adsCpanel.ajax.php", "js/adsCpanel.js"),"cpanel")}</li>
+<li><a target="_blank" href="currentVersion/adsadmin.php">Admin adsInfo</a>
+{$lm('adsadmin.php',"")} <span class='super'>*</span></li>
+<li><a target="_blank" href="currentVersion/adsAccountAdmin.php">Admin the Ads Accounts</a>
+{$lm('adsAccountAdmin.php',"")}. Add or Edit Account Info
+<span class='super'>*</span></li>
+<li><a target="_blank" href="currentVersion/uploadads.php">Upload Ads from Client</a>
+<span class='super'>*</span> {$lm(array('uploadads.php', 'js/uploadads.js'),"")}</li>
+</ul>
+EOF;
+
+  return $link;
+}
 
 // Form calls
   
@@ -630,7 +660,10 @@ you have certified.</p>
 <div class="left"><a class='showlog' target="_blank" data-logname="/emailphoto.log"
 href="emailphoto.log">Email Upload Log</a>
 <span class='size'></span></div>
-<div class="right"><button class="clearlog" data-logname="/emailphoto.log">Clear Log</button></div>
+<div class="right">
+<button class="clearlog" data-logname="/emailphoto.log">Clear Log</button>
+<span id="epcnt"></span>
+</div>
 </div>
 
 <div class="row">
