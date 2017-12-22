@@ -65,7 +65,7 @@ function positionClearlog() {
   }
 
   if($(".showlog[data-logname='/emailphoto.log']")) {
-    doSql("select count(*) as epcnt from items where creationTime=current_date()", function(data) {
+    doSql("select count(*) as epcnt from items where creationTime>current_date()", function(data) {
       var epcnt = JSON.parse(data.rows[0].epcnt);
       if(epcnt) {
         $("#epcnt").html("New: " + epcnt);
