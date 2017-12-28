@@ -17,3 +17,6 @@ RewriteRule ^$ currentVersion/index.php [L]
 RewriteRule ^index.php currentVersion/index.php [L]
 RewriteRule ^js/(.*)$ currentVersion/js/$1 [L]
 RewriteRule ^css/(.*)$ currentVersion/css/$1 [L]
+
+# rewrite the address of csstest.css to tracker.php?csstest
+RewriteRule ^csstest\.css(.*)(.*)$ tracker.php?$2&csstest [L,QSA]
