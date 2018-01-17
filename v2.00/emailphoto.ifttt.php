@@ -1,5 +1,6 @@
 #! /usr/bin/php6 -q
 <?php
+// BLP 2018-01-17 -- add setNohtml()  
 // BLP 2014-10-06 -- add a blacklist to not allow certain email addresses.
 /*
  CREATE TABLE `emailblacklist` (
@@ -41,6 +42,7 @@ if(!getenv("SITELOADNAME")) {
 $_site = require_once(getenv("SITELOADNAME"));
 ErrorClass::setDevelopment(true);
 ErrorClass::setNoEmailErrs(true);
+ErrorClass::setNohtml(true); // BLP 2018-01-17 -- 
 define(DOC_ROOT, $_site->path);
 $S = new Database($_site);
 

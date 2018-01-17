@@ -18,6 +18,8 @@ Country: United States
 Phone: +1.3146456565  
 Support Email: support@myphotochannel.com  
 
+## Directory Stucture
+
 Some notes on the directory structure:
 
 There are several symlinks:
@@ -43,6 +45,8 @@ replaces the old 'siteautoload.php'.
 
 The php class files are in the 'includes' directory in the 'root' and possibly in subdirectories.
 
+## Backup
+
 Every night the database is extracted and zipped into the 'other' directory.
 
 Every night all of the code is mirrored onto my home computer at www.bartonphillips.dyndns.org into
@@ -52,6 +56,7 @@ once a week.  The mirror is done with rsync so only new or changed files are act
 ## GITHUB
 
 This site is backed up on github.com. The .gitignore looks like this:
+
 <pre>
 content/
 Archive/
@@ -87,5 +92,8 @@ composer.json
 composer.lock
 </pre>
 
-This keeps us from backing up site specific stuff. The main site is at 1and1 but there is a duplicate site at www.bartonphillips.org.
+This keeps us from backing up site specific stuff. The main site is at 1and1 but there is
+a duplicate site at www.bartonphillips.org.
+
+## Contact Us at [bartonphillips@gmail.com](mailto:bartonphillips@gmail.com)
 
