@@ -15,25 +15,23 @@ and directories are not tracked.
 I have put Pusher.php in the v2.00/includes directory and added to the composer.json
 file so is in the autoload.php file in $HOME/vendor.
 
-<figure style="
+<div style="
   width: 50%;
   font-style: italic;
   font-size: smaller;
-  text-indent: 0;
   border: thin silver solid;
   margin: 0.5em;
   padding: 0.5em;">
-<figcaption>composer.json</figcaption>
+composer.json
 <pre style="
+  font-style: normal;
+  font-size: normal;
 	margin:1em 0;
 	font-size:1rem;
 	background-color:#FCFFFF; /*#eee;*/
 	border:1px solid #ddd;
 	padding: .5rem;
-	line-height:1.5em;
 	color: black; /*#444;*/
-  max-height: 20rem;
-	overflow:auto;
 	box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
 	border-radius:3px;
 	-moz-border-radius:3px;border-radius:3px;">
@@ -43,5 +41,5 @@ file so is in the autoload.php file in $HOME/vendor.
   ]
 }
 </pre>
-</figure>
+</div>
 
