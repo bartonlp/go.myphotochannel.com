@@ -121,7 +121,7 @@ function debug($S, $d, $noselect) {
 
       list($name) = $S->fetchrow('num');
         
-      $sql = "select siteId from sites";
+      $sql = "select siteId from sites where status='active'";
       $S->query($sql);
       $opt = '';
 
@@ -237,10 +237,10 @@ function normal($S) {
       $S->siteId = $S->escape($_GET['siteId']);
     }
     
-    $sql = "select siteId from sites where siteId='$S->siteId'";
+    $sql = "select siteId from sites where siteId='$S->siteId' and status='active'";
 
     if(!$S->query($sql)) {
-      $sql = "select siteId from sites";
+      $sql = "select siteId from sites where status='active'";
       $S->query($sql);
       $opt = '';
 
