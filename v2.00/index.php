@@ -700,21 +700,21 @@ $currlink
 <h3>This is version $currentVersion with the siteCode added to the URL</h3>
 <ul>
 <li><a target="_blank" class="demonodebug"
-href="currentVersion/slideshow/slideshow.php?siteCode=Felix's&unit=">SlideShow $currentVersion
-direct to Felix's</a>
-This has the <code>?siteCode=Felix's</code> attached so it goes right to Felix's in non-debug mode</li>
+href="currentVersion/slideshow/slideshow.php?siteCode=Site-Demo's&unit=">SlideShow $currentVersion
+direct to 'Site-Demo'</a>
+This has the <code>?siteCode=Site-Demo</code> attached so it goes right to 'Site-Demo' in non-debug mode</li>
 </ul>
 <div class="notes">
 <p>Note on Slideshow invocation: There are several arguments that can be attached
 to the program invocation via query strings, that is the URL followed by '?' or '&'.</p>
-<p>For example <code>go.myphotochannel.com/slideshow/slideshow.php?siteCode=Felix's&unit=10</code><br>
+<p>For example <code>go.myphotochannel.com/slideshow/slideshow.php?siteCode=Site-Demo's&unit=10</code><br>
 URL: go.myphotochannel.com/slideshow/slideshowphp<br>
-First query: ?siteCode=Felix's<br>
+First query: ?siteCode=Site-Demo<br>
 Second query: &unit=10</p>
 
 <ul>
 <li><code>debug=nnnn</code> &mdash; <i>nnnn is your super user number</i></li>
-<li><code>siteCode=ssss&hellip;</code> &mdash; <i>ssss is the Site Code like <code>siteCode=Felix's</code></i></li>
+<li><code>siteCode=ssss&hellip;</code> &mdash; <i>ssss is the Site Code like <code>siteCode=Site-Demo</code></i></li>
 <li><code>unit=nnnn</code> &mdash; <i>If a site has multiple Internet feeds (computer boxes)
 a 'unit' number is needed.
 The numbers must be unique for each Internet feed (computer box). If a site has only one Internet feed
@@ -728,7 +728,7 @@ Panel invocation:</p>
 <ul>
 <li><code>debug=nnnn</code> &mdash; <i>same as for slideshow</i></li>
 <li><code>siteId=ssss&hellip;</code> &mdash; <i>ssss is the Site Id (not the Site Code)
-<code>siteId=Felixs</code></i></li>
+<code>siteId=Site-Demo</code></i></li>
 <li><code>userId=nnnn</code> &mdash; <i>nnnnn is the User Id. This is used by <b>emailphoto.php</b></i>
 </li>
 </ul>
