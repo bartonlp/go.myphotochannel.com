@@ -1,6 +1,9 @@
 // JavaScript to Implement the Slide Show
-// Use strict during development.
+// BLP 2018-04-02 -- Add g.sites.status != 'active' to make sure sites
+// that are NOT active do not run.
+
 "use strict"
+
 // GLOBAL VARIABLES
 // Global variable look like 'g.xxxx' the g object has all of the
 // global variables.
@@ -485,6 +488,13 @@ function getStop(x) {
 // determined by the items mpcDur property.
 
 function slideshow() {
+  // If the site status is NOT active return and just let the wait
+  // spinner spin away.
+  
+  if(g.sites.status != 'active') {
+    return;
+  }
+  
   if(getStop(null) === true) {
     // If we have used the debug Stop/Start button then don't do the
     // open/close stuff
