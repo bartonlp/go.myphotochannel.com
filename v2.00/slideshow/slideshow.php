@@ -26,7 +26,7 @@ if($_POST['page'] == "verify") {
 
   $siteCode = $S->escape($_POST['siteCode']); // From the form.
 
-  $sql = "select siteId from sites where siteCode='$siteCode'";
+  $sql = "select siteId, status from sites where siteCode='$siteCode'";
 
   $n = $S->query($sql);
 
@@ -44,8 +44,13 @@ EOF;
 
   // Get the siteId
 
-  list($siteId) = $S->fetchrow('num');
+  list($siteId, $thisStatus) = $S->fetchrow('num');
 
+  if($thisStatus != 'active') {
+    echo "<h1>Site is not 'active' sorry</h1>";
+    exit();
+  }
+  
   $expire = time() + 31536000;  // one year from now
 
   $siteId = $S->escape($siteId);
@@ -120,7 +125,10 @@ if($_GET['debug']) {
 
       // BLP 2014-11-01 -- 
       $sql = "select siteId, siteCode from sites where status='active'";
-      $S->query($sql);
+      if(!$S->query($sql)) {
+        echo "<h1>Site is not 'active' sorry</h1>";
+        exit();
+      }
 
       $opt = '';
 
@@ -159,8 +167,14 @@ if($_GET['siteCode']) {
   $siteCode = $S->escape($_GET['siteCode']);
 
   // Is code valid?
-  $sql = "select siteId from sites where siteCode='$siteCode'";
+  $sql = "select siteId, status from sites where siteCode='$siteCode'";
   if($S->query($sql)) {
+    list($x, $thisStatus) = $S->fetchrow('num');
+    if($thisStatus != 'active') {
+      echo "<h1>Site is not 'active' sorry</h1>";
+      exit();
+    }
+
     // valid so set siteId
     list($siteId) = $S->fetchrow('num');
   }
